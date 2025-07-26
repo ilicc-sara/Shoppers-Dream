@@ -20,8 +20,11 @@ function App() {
         <div className="card-display">
           <span>Cart</span>
           <ion-icon name="bag-outline"></ion-icon>
+          <div className="cart-number-display">0</div>
         </div>
       </nav>
+
+      <section></section>
     </>
   );
 }

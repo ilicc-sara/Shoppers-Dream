@@ -5,3 +5,60 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-cont {
+  font-size: 24px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.logo-cont ion-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.nav-bar a {
+  font-size: 20px;
+}
+
+.card-display {
+  position: relative;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.card-display ion-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.cart-number-display {
+  background-color: rgb(190, 0, 190);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 222px;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+}
