@@ -68,6 +68,39 @@ function App() {
         </div>
         <button className="btn"></button>
       </section>
+
+      <section className="section_3">
+        <p>Creeds we live by</p>
+        <h1>
+          Elevate your home with our attitude of excellence and timeless style.
+        </h1>
+
+        <div className="some-products">
+          <div className="single-product">
+            <img src="./product-15.jpeg" />
+            <div>
+              <span>Sofa Set</span>
+              <span>$1,299.99</span>
+            </div>
+          </div>
+          <div className="single-product">
+            <img src="./product-16.jpeg" />
+            <div>
+              <span>Suede Armchair</span>
+              <span>$159.99</span>
+            </div>
+          </div>
+          <div className="single-product">
+            <img src="./product-17.jpeg" />
+
+            <div>
+              <span>Utopia Sofa</span>
+              <span>$799.99</span>
+            </div>
+          </div>
+        </div>
+        <button className="btn"></button>
+      </section>
     </>
   );
 }
