@@ -62,3 +62,10 @@ nav {
   top: -8px;
   right: -8px;
 }
+
+.section_1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  place-items: center;
+}

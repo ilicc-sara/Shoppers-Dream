@@ -24,7 +24,19 @@ function App() {
         </div>
       </nav>
 
-      <section></section>
+      <section className="section_1">
+        <div className="heading-section">
+          <h1>Furniture design to make you feel at home</h1>
+          <p>Create your perfect space with our designs</p>
+          <div className="btn-cont">
+            <button className="btn">Explore products</button>
+            <button className="btn">Learn more &darr;</button>
+          </div>
+        </div>
+        <div className="heading-section-img">
+          <img src="./heroImg.png" />
+        </div>
+      </section>
     </>
   );
 }
