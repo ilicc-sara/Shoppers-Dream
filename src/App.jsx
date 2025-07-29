@@ -37,6 +37,36 @@ function App() {
           <img src="./heroImg.png" />
         </div>
       </section>
+
+      <section className="section_2">
+        <p>FEATURED PRODUCTS</p>
+        <h1>The art pf modern living unlocked.</h1>
+
+        <div className="some-products">
+          <div className="single-product">
+            <img src="./product-15.jpeg" />
+            <div>
+              <span>Sofa Set</span>
+              <span>$1,299.99</span>
+            </div>
+          </div>
+          <div className="single-product">
+            <img src="./product-16.jpeg" />
+            <div>
+              <span>Suede Armchair</span>
+              <span>$159.99</span>
+            </div>
+          </div>
+          <div className="single-product">
+            <img src="./product-17.jpeg" />
+
+            <div>
+              <span>Utopia Sofa</span>
+              <span>$799.99</span>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

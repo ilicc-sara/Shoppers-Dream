@@ -6,6 +6,12 @@
   background-color: #242424;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -68,4 +74,22 @@ nav {
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   place-items: center;
+}
+
+.section_2 {
+  margin: 100px 0;
+}
+
+.some-products {
+  display: flex;
+  justify-content: space-between;
+}
+
+.some-products img {
+  width: 300px;
+}
+
+.single-product {
+  display: flex;
+  flex-direction: column;
 }
