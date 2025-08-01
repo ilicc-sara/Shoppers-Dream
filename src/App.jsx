@@ -66,7 +66,7 @@ function App() {
             </div>
           </div>
         </div>
-        <button className="btn"></button>
+        <button className="btn">All Products</button>
       </section>
 
       <section className="section_3">
@@ -103,7 +103,11 @@ function App() {
             </p>
           </div>
         </div>
-        <button className="btn"></button>
+      </section>
+
+      <section className="section_3">
+        <p>Operations</p>
+        <h1>Where simplicity meets efficiency to bring your home to life.</h1>
       </section>
     </>
   );
