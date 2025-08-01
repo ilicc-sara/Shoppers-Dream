@@ -75,8 +75,9 @@ function App() {
           Elevate your home with our attitude of excellence and timeless style.
         </h1>
 
-        <div className="some-products">
-          <div className="single-product">
+        <div className="descriptions">
+          <div className="single-description">
+            <ion-icon name="sparkles-outline"></ion-icon>
             <p>Radiance</p>
             <p>
               Our commitment to providing sparkling solutions ensures every
@@ -84,14 +85,16 @@ function App() {
               quality.
             </p>
           </div>
-          <div className="single-product">
+          <div className="single-description">
+            <ion-icon name="eye-outline"></ion-icon>
             <p>Clarity</p>
             <p>
               With clear vision and keen insight, we guide customers down the
               path to lasting success with exceptional service and anticipation.
             </p>
           </div>
-          <div className="single-product">
+          <div className="single-description">
+            <ion-icon name="document-outline"></ion-icon>
             <p>Heritage</p>
             <p>
               As a trusted partner, we offer expert guidance, drawing on our
