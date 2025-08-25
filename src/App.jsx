@@ -13,7 +13,7 @@ function App() {
 
         <div className="nav-bar">
           <a href="#">Home</a>
-          <a href="#">About</a>
+
           <a href="#">Products</a>
         </div>
 
