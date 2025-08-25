@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import "./App.css";
 
 function App() {
@@ -9,6 +7,8 @@ function App() {
         <div className="logo-cont">
           <ion-icon name="bag-outline"></ion-icon>
           <span>X Shopper's Dream</span>
+          <h1 className="text-3xl font-bold underline">Hello world!</h1>
+          <h1 class="text-3xl font-bold underline">Hello world!</h1>
         </div>
 
         <div className="nav-bar">
