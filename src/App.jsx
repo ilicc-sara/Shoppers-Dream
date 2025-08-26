@@ -1,6 +1,14 @@
 import "./App.css";
+import FeaturesImg from "./FeaturesImg";
 
 function App() {
+  const featuresImg = [
+    "./featuresImg/techcrunch.png",
+    "./featuresImg/business-insider.png",
+    "./featuresImg/the-new-york-times.png",
+    "./featuresImg/forbes.png",
+    "./featuresImg/usa-today.png",
+  ];
   return (
     <>
       <nav className="!mx-auto !my-[2rem] flex justify-between max-w-[120rem]">
@@ -45,63 +53,65 @@ function App() {
         </div>
       </section>
 
-      <footer className="!my-[12rem] !mx-auto flex flex-col gap-[30px] !px-[10rem]">
-        <p className="text-[1.4rem] text-gray-500 uppercase font-semibold">
-          As featured in
-        </p>
-        <div className=" flex  justify-between ">
-          <img
-            className="brightness-0 opacity-50 featured-img h-[3rem]"
-            src="./featuresImg/techcrunch.png"
-          />
-          <img
-            className="brightness-0 opacity-50 featured-img h-[3rem]"
-            src="./featuresImg/business-insider.png"
-          />
-          <img
-            className="brightness-0 opacity-50 featured-img h-[3rem]"
-            src="./featuresImg/the-new-york-times.png"
-          />
-          <img
-            className="brightness-0 opacity-50 featured-img h-[3rem]"
-            src="./featuresImg/forbes.png"
-          />
-          <img
-            className="brightness-0 opacity-50 featured-img h-[3rem]"
-            src="./featuresImg/usa-today.png"
-          />
+      <footer className=" border-b-[2px] border-b-[#d5d5d5]">
+        <div className="!py-[12rem] !mx-auto flex flex-col gap-[30px] max-w-[120rem]">
+          <p className="text-[1.4rem] text-gray-500 uppercase font-semibold">
+            As featured in
+          </p>
+          <div className=" flex justify-between ">
+            {featuresImg.map((img, index) => (
+              <FeaturesImg key={index} image={img} />
+            ))}
+          </div>
         </div>
       </footer>
 
-      <section className="section_2 border-[2px] border-[#d5d5d5]">
-        <p>FEATURED PRODUCTS</p>
-        <h1>The art pf modern living unlocked.</h1>
+      <section className="border-b-[2px] border-b-[#d5d5d5] !py-[14rem]">
+        <div className="max-w-[120rem] !mx-auto">
+          <p className="text-left uppercase text-[1.4rem] text-[#d946ef] font-medium ">
+            Featured products
+          </p>
+          <h1 className="text-[3.7rem] font-medium text-left text-[#444]">
+            The art of modern living unlocked.
+          </h1>
 
-        <div className="some-products">
-          <div className="single-product">
-            <img src="./product-15.jpeg" />
-            <div>
-              <span>Sofa Set</span>
-              <span>$1,299.99</span>
+          <div className="some-products">
+            <div className="single-product">
+              <img className="h-[25rem]" src="./product-15.jpeg" />
+              <div className="flex justify-between">
+                <span className="text-[#444] font-semibold text-[1.6rem]">
+                  Sofa Set
+                </span>
+                <span className="text-[#d946ef] text-[1.6rem] font-semibold">
+                  $1,299.99
+                </span>
+              </div>
+            </div>
+            <div className="single-product">
+              <img className="h-[25rem]" src="./product-16.jpeg" />
+              <div className="flex justify-between">
+                <span className="text-[#444] font-semibold text-[1.6rem]">
+                  Suede Armchair
+                </span>
+                <span className="text-[#d946ef] text-[1.6rem] font-semibold">
+                  $159.99
+                </span>
+              </div>
+            </div>
+            <div className="single-product">
+              <img className="h-[25rem]" src="./product-17.jpeg" />
+              <div className="flex justify-between">
+                <span className="text-[#444] font-semibold text-[1.6rem]">
+                  Utopia Sofa
+                </span>
+                <span className="text-[#d946ef] text-[1.6rem] font-semibold">
+                  $799.99
+                </span>
+              </div>
             </div>
           </div>
-          <div className="single-product">
-            <img src="./product-16.jpeg" />
-            <div>
-              <span>Suede Armchair</span>
-              <span>$159.99</span>
-            </div>
-          </div>
-          <div className="single-product">
-            <img src="./product-17.jpeg" />
-
-            <div>
-              <span>Utopia Sofa</span>
-              <span>$799.99</span>
-            </div>
-          </div>
+          <button className="btn explore-btn">All Products</button>
         </div>
-        <button className="btn">All Products</button>
       </section>
 
       <section className="section_3">

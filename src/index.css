@@ -76,10 +76,6 @@ body {
   justify-content: space-between;
 }
 
-.some-products img {
-  width: 300px;
-}
-
 .single-product {
   display: flex;
   flex-direction: column;
