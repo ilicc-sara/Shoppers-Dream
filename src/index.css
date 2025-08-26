@@ -21,15 +21,8 @@ body {
   text-decoration: underline;
 }
 
-.btn-cont {
-  display: flex;
-  align-self: flex-start;
-  justify-content: flex-start;
-  gap: 15px;
-}
-
 .btn {
-  width: 18rem;
+  padding: 0 2.5rem;
   height: 5rem;
   font-size: 1.6rem;
   border-radius: 5px;

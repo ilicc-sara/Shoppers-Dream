@@ -1,6 +1,7 @@
 import "./App.css";
 import ExampleProducts from "./ExampleProducts";
 import FeaturesImg from "./FeaturesImg";
+import Button from "./Button";
 
 function App() {
   const featuresImg = [
@@ -50,9 +51,9 @@ function App() {
           <p className="text-[2.4rem] tracking-[0.5px] font-medium text-left">
             Create your perfect space with our designs.
           </p>
-          <div className="btn-cont">
-            <button className="btn explore-btn">Explore products</button>
-            <button className="btn more-btn">Learn more &darr;</button>
+          <div className="flex gap-[15px]">
+            <Button variation="primary">Explore products</Button>
+            <Button variation="secundary">Learn more &darr;</Button>
           </div>
         </div>
         <div className="heading-section-img">
@@ -87,7 +88,7 @@ function App() {
               <ExampleProducts key={index} image={img} />
             ))}
           </div>
-          <button className="btn explore-btn">All Products</button>
+          <Button variation="primary">All Products</Button>
         </div>
       </section>
 
