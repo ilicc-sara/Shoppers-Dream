@@ -43,7 +43,35 @@ function App() {
         </div>
       </section>
 
-      <section className="section_2">
+      <footer className="featured-footer">
+        <p className="text-[1.4rem] text-gray-500 uppercase font-semibold">
+          As featured in
+        </p>
+        <div className="flex max-w-[1200px] justify-between">
+          <img
+            className="brightness-0 opacity-50 featured-img h-[3rem]"
+            src="./featuresImg/techcrunch.png"
+          />
+          <img
+            className="brightness-0 opacity-50 featured-img h-[3rem]"
+            src="./featuresImg/business-insider.png"
+          />
+          <img
+            className="brightness-0 opacity-50 featured-img h-[3rem]"
+            src="./featuresImg/the-new-york-times.png"
+          />
+          <img
+            className="brightness-0 opacity-50 featured-img h-[3rem]"
+            src="./featuresImg/forbes.png"
+          />
+          <img
+            className="brightness-0 opacity-50 featured-img h-[3rem]"
+            src="./featuresImg/usa-today.png"
+          />
+        </div>
+      </footer>
+
+      <section className="section_2 border-t border-[#808080]">
         <p>FEATURED PRODUCTS</p>
         <h1>The art pf modern living unlocked.</h1>
 

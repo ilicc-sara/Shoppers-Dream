@@ -97,6 +97,13 @@ body {
   height: 570px;
 }
 
+.featured-footer {
+  margin: 140px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
 .section_2 {
   margin: 100px 0;
 }
