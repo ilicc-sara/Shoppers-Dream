@@ -3,13 +3,10 @@ import "./App.css";
 function App() {
   return (
     <>
-      <nav>
+      <nav className="flex justify-between">
         <div className="text-[24px] font-medium flex items-center justify-center gap-[15px]">
-          <ion-icon name="bag-outline" class="w-6 h-6"></ion-icon>
+          <ion-icon name="bag-outline" class="w-[24px] h-[24px]"></ion-icon>
           <span>X Shopper's Dream</span>
-          {/* <h1 className="text-3xl font-bold underline text-red-500">
-            Hello world!
-          </h1> */}
         </div>
 
         <div className="nav-bar">
