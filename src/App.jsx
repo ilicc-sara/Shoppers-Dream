@@ -3,23 +3,23 @@ import "./App.css";
 function App() {
   return (
     <>
-      <nav className="flex justify-between">
-        <div className="text-[2.4rem] font-medium flex items-center justify-center gap-[15px]">
+      <nav className="flex justify-between max-w-[120rem]">
+        <div className="text-[2.2rem] font-medium flex items-center justify-center gap-[15px]">
           <ion-icon name="bag-outline" class="w-[24px] h-[24px]"></ion-icon>
           <span>X Shopper's Dream</span>
         </div>
 
         <div className="flex align-center justify-center gap-[15px]">
-          <a href="#" className="text-[2rem] underline decoration-[#d946ef]">
+          <a href="#" className="text-[1.6rem] underline decoration-[#d946ef]">
             Home
           </a>
-          <a href="#" className="text-[2rem] ">
+          <a href="#" className="text-[1.6rem] ">
             Products
           </a>
         </div>
 
         <div className="relative text-[2rem] flex justify-center items-start gap-[5px]">
-          <span>Cart</span>
+          <span className="text-[1.8rem]">Cart</span>
           <ion-icon name="bag-outline" className="w-[24px] h-[24px]"></ion-icon>
           <div className="text-[14px] padding-[2px] bg-[#d946ef] text-white w-[2rem] h-[2rem] flex justify-center items-center rounded-[222px] absolute -top-[px] -right-[8px]">
             0
@@ -29,15 +29,17 @@ function App() {
 
       <section className="section_1">
         <div className="heading-section">
-          <h1>Furniture design to make you feel at home</h1>
-          <p>Create your perfect space with our designs</p>
+          <h1>
+            Furniture design to <br></br> make you feel at home
+          </h1>
+          <p>Create your perfect space with our designs.</p>
           <div className="btn-cont">
-            <button className="btn">Explore products</button>
-            <button className="btn">Learn more &darr;</button>
+            <button className="btn explore-btn">Explore products</button>
+            <button className="btn more-btn">Learn more &darr;</button>
           </div>
         </div>
         <div className="heading-section-img">
-          <img src="./heroImg.png" />
+          <img className="heading-img" src="./heroImg.png" />
         </div>
       </section>
 
