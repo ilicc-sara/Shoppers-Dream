@@ -3,7 +3,7 @@ import "./App.css";
 function App() {
   return (
     <>
-      <nav className="flex justify-between max-w-[120rem]">
+      <nav className="!mx-auto !my-[2rem] flex justify-between max-w-[120rem]">
         <div className="text-[2.2rem] font-medium flex items-center justify-center gap-[15px]">
           <ion-icon name="bag-outline" class="w-[24px] h-[24px]"></ion-icon>
           <span>X Shopper's Dream</span>
@@ -27,12 +27,14 @@ function App() {
         </div>
       </nav>
 
-      <section className="section_1">
-        <div className="heading-section">
-          <h1>
+      <section className="grid grid-cols-2 justify-center place-items-center !mx-auto my-12 max-w-[1200px]">
+        <div className="flex flex-col gap-[2rem] justify-start">
+          <h1 className="text-[4.8rem] leading-[6.7rem] font-bold text-[#404040] text-left">
             Furniture design to <br></br> make you feel at home
           </h1>
-          <p>Create your perfect space with our designs.</p>
+          <p className="text-[2.4rem] tracking-[0.5px] font-medium text-left">
+            Create your perfect space with our designs.
+          </p>
           <div className="btn-cont">
             <button className="btn explore-btn">Explore products</button>
             <button className="btn more-btn">Learn more &darr;</button>
@@ -43,11 +45,11 @@ function App() {
         </div>
       </section>
 
-      <footer className="featured-footer">
+      <footer className="!my-[12rem] !mx-auto flex flex-col gap-[30px] !px-[10rem]">
         <p className="text-[1.4rem] text-gray-500 uppercase font-semibold">
           As featured in
         </p>
-        <div className="flex max-w-[1200px] justify-between">
+        <div className=" flex  justify-between ">
           <img
             className="brightness-0 opacity-50 featured-img h-[3rem]"
             src="./featuresImg/techcrunch.png"
@@ -71,7 +73,7 @@ function App() {
         </div>
       </footer>
 
-      <section className="section_2 border-t border-[#808080]">
+      <section className="section_2 border-[2px] border-[#d5d5d5]">
         <p>FEATURED PRODUCTS</p>
         <h1>The art pf modern living unlocked.</h1>
 
