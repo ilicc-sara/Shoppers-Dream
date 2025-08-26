@@ -1,4 +1,5 @@
 import "./App.css";
+import ExampleProducts from "./ExampleProducts";
 import FeaturesImg from "./FeaturesImg";
 
 function App() {
@@ -8,6 +9,12 @@ function App() {
     "./featuresImg/the-new-york-times.png",
     "./featuresImg/forbes.png",
     "./featuresImg/usa-today.png",
+  ];
+
+  const exampleProductsImg = [
+    "./exampleProducts/product-15.jpeg",
+    "./exampleProducts/product-16.jpeg",
+    "./exampleProducts/product-17.jpeg",
   ];
   return (
     <>
@@ -75,40 +82,10 @@ function App() {
             The art of modern living unlocked.
           </h1>
 
-          <div className="some-products">
-            <div className="single-product">
-              <img className="h-[25rem]" src="./product-15.jpeg" />
-              <div className="flex justify-between">
-                <span className="text-[#444] font-semibold text-[1.6rem]">
-                  Sofa Set
-                </span>
-                <span className="text-[#d946ef] text-[1.6rem] font-semibold">
-                  $1,299.99
-                </span>
-              </div>
-            </div>
-            <div className="single-product">
-              <img className="h-[25rem]" src="./product-16.jpeg" />
-              <div className="flex justify-between">
-                <span className="text-[#444] font-semibold text-[1.6rem]">
-                  Suede Armchair
-                </span>
-                <span className="text-[#d946ef] text-[1.6rem] font-semibold">
-                  $159.99
-                </span>
-              </div>
-            </div>
-            <div className="single-product">
-              <img className="h-[25rem]" src="./product-17.jpeg" />
-              <div className="flex justify-between">
-                <span className="text-[#444] font-semibold text-[1.6rem]">
-                  Utopia Sofa
-                </span>
-                <span className="text-[#d946ef] text-[1.6rem] font-semibold">
-                  $799.99
-                </span>
-              </div>
-            </div>
+          <div className="flex justify-between !pt-[7rem] !pb-[4rem]">
+            {exampleProductsImg.map((img, index) => (
+              <ExampleProducts key={index} image={img} />
+            ))}
           </div>
           <button className="btn explore-btn">All Products</button>
         </div>

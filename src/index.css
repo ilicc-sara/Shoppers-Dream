@@ -70,13 +70,3 @@ body {
 .section_2 {
   margin: 100px 0;
 }
-
-.some-products {
-  display: flex;
-  justify-content: space-between;
-}
-
-.single-product {
-  display: flex;
-  flex-direction: column;
-}
