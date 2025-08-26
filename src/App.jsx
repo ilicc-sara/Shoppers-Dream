@@ -4,21 +4,26 @@ function App() {
   return (
     <>
       <nav className="flex justify-between">
-        <div className="text-[24px] font-medium flex items-center justify-center gap-[15px]">
+        <div className="text-[2.4rem] font-medium flex items-center justify-center gap-[15px]">
           <ion-icon name="bag-outline" class="w-[24px] h-[24px]"></ion-icon>
           <span>X Shopper's Dream</span>
         </div>
 
-        <div className="nav-bar">
-          <a href="#">Home</a>
-
-          <a href="#">Products</a>
+        <div className="flex align-center justify-center gap-[15px]">
+          <a href="#" className="text-[2rem] underline decoration-[#d946ef]">
+            Home
+          </a>
+          <a href="#" className="text-[2rem] ">
+            Products
+          </a>
         </div>
 
-        <div className="card-display">
+        <div className="relative text-[2rem] flex justify-center items-start gap-[5px]">
           <span>Cart</span>
-          <ion-icon name="bag-outline"></ion-icon>
-          <div className="cart-number-display">0</div>
+          <ion-icon name="bag-outline" className="w-[24px] h-[24px]"></ion-icon>
+          <div className="text-[14px] padding-[2px] bg-[#d946ef] text-white w-[2rem] h-[2rem] flex justify-center items-center rounded-[222px] absolute -top-[px] -right-[8px]">
+            0
+          </div>
         </div>
       </nav>
 
