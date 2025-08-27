@@ -87,7 +87,7 @@ function App() {
 
       <section className="border-b-[2px] border-b-[#d5d5d5] !py-[14rem]">
         <div className="max-w-[120rem] !mx-auto">
-          <p className="text-left uppercase text-[1.4rem] text-[#d946ef] font-medium ">
+          <p className="text-left uppercase text-[1.4rem] text-[#d946ef] font-medium">
             Creeds we live by
           </p>
           <h1 className="text-[3.7rem] font-medium text-left text-[#444]">
@@ -95,7 +95,7 @@ function App() {
             style.
           </h1>
 
-          <div className="flex justify-between !mt-[4rem] !mb-[2rem]">
+          <div className="flex justify-between !mt-[6rem] !mb-[3rem]">
             {pillars.map((pillar, index) => (
               <CoreValues
                 key={index}
@@ -108,9 +108,40 @@ function App() {
         </div>
       </section>
 
-      <section className="section_3">
-        <p>Operations</p>
-        <h1>Where simplicity meets efficiency to bring your home to life.</h1>
+      <section className="border-b-[2px] border-b-[#d5d5d5] !py-[14rem]">
+        <div className="max-w-[90rem] !mx-auto">
+          <p className="text-left uppercase text-[1.4rem] text-[#d946ef] font-medium">
+            Operations
+          </p>
+          <h1 className="text-[3.7rem] font-medium text-left text-[#444]">
+            Where simplicity meets efficiency to bring your home to life.
+            <i class="bxr  bx-handshake"></i>
+            <i class="bxr  bx-check"></i>
+            <i class="bxr  bx-dollar-circle"></i>
+          </h1>
+
+          <div className="!mx-auto w-[95%] flex justify-between items-center !my-[5rem]">
+            <Button variation="primary">Swift Delivery</Button>
+            <Button variation="secundary">Stellar Support</Button>
+            <Button variation="secundary">Fresh Finds</Button>
+            <Button variation="secundary">Easy Returns</Button>
+          </div>
+
+          <div>
+            <div className="bg-[#f5d0fe] w-[50px] h-[50px] rounded-[222px] flex justify-center items-center">
+              <i class="bxr  bx-bolt  text-[#d946ef] text-[24px]"></i>
+            </div>
+            <p className="text-left font-bold text-[2rem]">
+              Get your home furnishings in a flash with rapid delivery.
+            </p>
+            <p className="text-left text-[1.5rem] leading-[2.8rem]">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
+              accusamus architecto minus sint, perspiciatis blanditiis iusto
+              dolor, temporibus aperiam explicabo est ex harum eligendi quia
+              ipsa fugit. Explicabo, voluptatibus officia.
+            </p>
+          </div>
+        </div>
       </section>
     </>
   );
