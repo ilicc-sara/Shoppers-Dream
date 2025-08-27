@@ -32,3 +32,38 @@ export const pillars = [
     iconName: "document-outline",
   },
 ];
+
+export const benefits = [
+  {
+    offer: "Get your home furnishings in a flash with rapid delivery.",
+    offerText:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error accusamus architecto minus sint, perspiciatis blanditiis iusto dolor, temporibus aperiam explicabo est ex harum eligendi quia ipsa fugit. Explicabo, voluptatibus officia.",
+    offerIcon: "bx-bolt",
+    id: 0,
+    button: "Swift Delivery",
+  },
+  {
+    offer: "Always here to help: stellar support around the clock.",
+    offerText:
+      "Dolor sit amet consectetur adipisicing elit. Error accusamus architecto minus sint, plorem blanditiis iusto dolor, temporibus aperiam explicabo est ex harum eligendi quia ipsa fugit. Explicabo, voluptatibus officia minus sint, plorem ex harum.",
+    offerIcon: "bx-handshake",
+    id: 1,
+    button: "Stellar Support",
+  },
+  {
+    offer: "Stay ahead of the trends with our latest discoveries.",
+    offerText:
+      "Ipsum dolor sit amet consectetur adipisicing elit. Error accusamus architecto minus sint, pLorem blanditiis iusto dolor, temporibus aperiam explicabo est ex harum eligendi quia ipsa fugit. Explicabo, voluptatibus officia temporibus.",
+    offerIcon: "bx-check",
+    id: 2,
+    button: "Fresh Finds",
+  },
+  {
+    offer: "No stress or worries for your home goods.",
+    offerText:
+      "Explicabo ipsum Error sit ametperspiciati consectetur voluptatibus elit. Error accusamus arc explicabo explictecto minus sint, se blanditiis iusto dolor, temporibus aperiam explicabo est ex harum eligendi quia ipsa fugit sit amet architecto.",
+    offerIcon: "bx-dollar-circle",
+    id: 3,
+    button: "Easy Returns",
+  },
+];
