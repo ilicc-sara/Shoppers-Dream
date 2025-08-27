@@ -17,29 +17,34 @@ const benefits = [
     offerText:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error accusamus architecto minus sint, perspiciatis blanditiis iusto dolor, temporibus aperiam explicabo est ex harum eligendi quia ipsa fugit. Explicabo, voluptatibus officia.",
     offerIcon: "bx-bolt",
+    id: 0,
   },
   {
     offer: "Always here to help: stellar support around the clock.",
     offerText:
       "Dolor sit amet consectetur adipisicing elit. Error accusamus architecto minus sint, plorem blanditiis iusto dolor, temporibus aperiam explicabo est ex harum eligendi quia ipsa fugit. Explicabo, voluptatibus officia minus sint, plorem ex harum.",
     offerIcon: "bx-handshake",
+    id: 1,
   },
   {
     offer: "Stay ahead of the trends with our latest discoveries.",
     offerText:
       "Ipsum dolor sit amet consectetur adipisicing elit. Error accusamus architecto minus sint, pLorem blanditiis iusto dolor, temporibus aperiam explicabo est ex harum eligendi quia ipsa fugit. Explicabo, voluptatibus officia temporibus.",
     offerIcon: "bx-check",
+    id: 2,
   },
   {
     offer: "No stress or worries for your home goods.",
     offerText:
       "Explicabo ipsum Error sit ametperspiciati consectetur voluptatibus elit. Error accusamus arc explicabo explictecto minus sint, se blanditiis iusto dolor, temporibus aperiam explicabo est ex harum eligendi quia ipsa fugit sit amet architecto.",
     offerIcon: "bx-dollar-circle",
+    id: 3,
   },
 ];
 
 function App() {
   const [benefit, setBenefit] = useState(benefits[0]);
+
   return (
     <>
       <nav className="!mx-auto !my-[2rem] flex justify-between max-w-[120rem]">
@@ -152,10 +157,30 @@ function App() {
           </h1>
 
           <div className="!mx-auto w-[95%] flex justify-between items-center !my-[5rem]">
-            <Button variation="primary">Swift Delivery</Button>
-            <Button variation="secundary">Stellar Support</Button>
-            <Button variation="secundary">Fresh Finds</Button>
-            <Button variation="secundary">Easy Returns</Button>
+            <Button
+              variation="primary"
+              handleClick={() => setBenefit(benefits[0])}
+            >
+              Swift Delivery
+            </Button>
+            <Button
+              variation="secundary"
+              handleClick={() => setBenefit(benefits[1])}
+            >
+              Stellar Support
+            </Button>
+            <Button
+              variation="secundary"
+              handleClick={() => setBenefit(benefits[2])}
+            >
+              Fresh Finds
+            </Button>
+            <Button
+              variation="secundary"
+              handleClick={() => setBenefit(benefits[3])}
+            >
+              Easy Returns
+            </Button>
           </div>
 
           <Benefits

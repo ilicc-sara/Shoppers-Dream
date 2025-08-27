@@ -1,7 +1,7 @@
 import React from "react";
 
 function Button(props) {
-  const { variation, children } = props;
+  const { variation, children, handleClick } = props;
   let baseClassName = "btn";
   // "!py-[2.5rem] height-[5rem] text-[1.6rem] rounded-[5px] font-bold";
   let modifierClassName;
@@ -17,7 +17,10 @@ function Button(props) {
   }
 
   return (
-    <button className={`${baseClassName} ${modifierClassName}`}>
+    <button
+      className={`${baseClassName} ${modifierClassName}`}
+      onClick={handleClick}
+    >
       {children}
     </button>
   );
