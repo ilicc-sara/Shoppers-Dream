@@ -1,22 +1,15 @@
 import "./App.css";
-import ExampleProducts from "./ExampleProducts";
-import FeaturesImg from "./FeaturesImg";
+import ExampleProducts from "./homeComponents/ExampleProducts";
+import FeaturesImg from "./homeComponents/FeaturesImg";
 import Button from "./Button";
+import CoreValues from "./homeComponents/CoreValues";
+import {
+  featuresImg,
+  exampleProductsImg,
+  pillars,
+} from "./homeComponents/helpers";
 
 function App() {
-  const featuresImg = [
-    "./featuresImg/techcrunch.png",
-    "./featuresImg/business-insider.png",
-    "./featuresImg/the-new-york-times.png",
-    "./featuresImg/forbes.png",
-    "./featuresImg/usa-today.png",
-  ];
-
-  const exampleProductsImg = [
-    "./exampleProducts/product-15.jpeg",
-    "./exampleProducts/product-16.jpeg",
-    "./exampleProducts/product-17.jpeg",
-  ];
   return (
     <>
       <nav className="!mx-auto !my-[2rem] flex justify-between max-w-[120rem]">
@@ -103,48 +96,14 @@ function App() {
           </h1>
 
           <div className="flex justify-between !mt-[4rem] !mb-[2rem]">
-            <div className=" w-[30rem] flex flex-col justify-start items-start gap-[1rem]">
-              <div className="bg-[#f5d0fe] w-[50px] h-[50px] rounded-[222px] flex justify-center items-center">
-                <ion-icon
-                  name="sparkles-outline"
-                  className="text-[#d946ef] text-[24px]"
-                ></ion-icon>
-              </div>
-              <p className="text-left font-bold text-[2rem]">Radiance</p>
-              <p className="text-left text-[1.5rem] leading-[2.8rem]">
-                Our commitment to providing sparkling solutions ensures every
-                customer enjoys a shining, glowing experience with unmatched
-                quality.
-              </p>
-            </div>
-            <div className=" w-[30rem] flex flex-col justify-start items-start gap-[1rem]">
-              <div className="bg-[#f5d0fe] w-[50px] h-[50px] rounded-[222px] flex justify-center items-center">
-                <ion-icon
-                  name="eye-outline"
-                  className="text-[#d946ef] text-[24px]"
-                ></ion-icon>
-              </div>
-              <p className="text-left font-bold text-[2rem]">Clarity</p>
-              <p className="text-left text-[1.5rem] leading-[2.8rem]">
-                With clear vision and keen insight, we guide customers down the
-                path to lasting success with exceptional service and
-                anticipation.
-              </p>
-            </div>
-            <div className=" w-[30rem] flex flex-col justify-start items-start gap-[1rem]">
-              <div className="bg-[#f5d0fe] w-[50px] h-[50px] rounded-[222px] flex justify-center items-center">
-                <ion-icon
-                  name="document-outline"
-                  className="text-[#d946ef]  text-[24px]"
-                ></ion-icon>
-              </div>
-              <p className="text-left font-bold text-[2rem]">Heritage</p>
-              <p className="text-left text-[1.5rem] leading-[2.8rem]">
-                As a trusted partner, we offer expert guidance, drawing on our
-                deep wisdom and wealth of experience to ensure satisfaction and
-                success.
-              </p>
-            </div>
+            {pillars.map((pillar, index) => (
+              <CoreValues
+                key={index}
+                icon={pillar.iconName}
+                value={pillar.coreValue}
+                text={pillar.description}
+              />
+            ))}
           </div>
         </div>
       </section>
