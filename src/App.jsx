@@ -92,38 +92,59 @@ function App() {
         </div>
       </section>
 
-      <section className="section_3">
-        <p>Creeds we live by</p>
-        <h1>
-          Elevate your home with our attitude of excellence and timeless style.
-        </h1>
+      <section className="border-b-[2px] border-b-[#d5d5d5] !py-[14rem]">
+        <div className="max-w-[120rem] !mx-auto">
+          <p className="text-left uppercase text-[1.4rem] text-[#d946ef] font-medium ">
+            Creeds we live by
+          </p>
+          <h1 className="text-[3.7rem] font-medium text-left text-[#444]">
+            Elevate your home with our attitude of excellence and timeless
+            style.
+          </h1>
 
-        <div className="descriptions">
-          <div className="single-description">
-            <ion-icon name="sparkles-outline"></ion-icon>
-            <p>Radiance</p>
-            <p>
-              Our commitment to providing sparkling solutions ensures every
-              customer enjoys a shining, glowing experience with unmatched
-              quality.
-            </p>
-          </div>
-          <div className="single-description">
-            <ion-icon name="eye-outline"></ion-icon>
-            <p>Clarity</p>
-            <p>
-              With clear vision and keen insight, we guide customers down the
-              path to lasting success with exceptional service and anticipation.
-            </p>
-          </div>
-          <div className="single-description">
-            <ion-icon name="document-outline"></ion-icon>
-            <p>Heritage</p>
-            <p>
-              As a trusted partner, we offer expert guidance, drawing on our
-              deep wisdom and wealth of experience to ensure satisfaction and
-              success.
-            </p>
+          <div className="flex justify-between !mt-[4rem] !mb-[2rem]">
+            <div className=" w-[30rem] flex flex-col justify-start items-start gap-[1rem]">
+              <div className="bg-[#f5d0fe] w-[50px] h-[50px] rounded-[222px] flex justify-center items-center">
+                <ion-icon
+                  name="sparkles-outline"
+                  className="text-[#d946ef] text-[24px]"
+                ></ion-icon>
+              </div>
+              <p className="text-left font-bold text-[2rem]">Radiance</p>
+              <p className="text-left text-[1.5rem] leading-[2.8rem]">
+                Our commitment to providing sparkling solutions ensures every
+                customer enjoys a shining, glowing experience with unmatched
+                quality.
+              </p>
+            </div>
+            <div className=" w-[30rem] flex flex-col justify-start items-start gap-[1rem]">
+              <div className="bg-[#f5d0fe] w-[50px] h-[50px] rounded-[222px] flex justify-center items-center">
+                <ion-icon
+                  name="eye-outline"
+                  className="text-[#d946ef] text-[24px]"
+                ></ion-icon>
+              </div>
+              <p className="text-left font-bold text-[2rem]">Clarity</p>
+              <p className="text-left text-[1.5rem] leading-[2.8rem]">
+                With clear vision and keen insight, we guide customers down the
+                path to lasting success with exceptional service and
+                anticipation.
+              </p>
+            </div>
+            <div className=" w-[30rem] flex flex-col justify-start items-start gap-[1rem]">
+              <div className="bg-[#f5d0fe] w-[50px] h-[50px] rounded-[222px] flex justify-center items-center">
+                <ion-icon
+                  name="document-outline"
+                  className="text-[#d946ef]  text-[24px]"
+                ></ion-icon>
+              </div>
+              <p className="text-left font-bold text-[2rem]">Heritage</p>
+              <p className="text-left text-[1.5rem] leading-[2.8rem]">
+                As a trusted partner, we offer expert guidance, drawing on our
+                deep wisdom and wealth of experience to ensure satisfaction and
+                success.
+              </p>
+            </div>
           </div>
         </div>
       </section>
