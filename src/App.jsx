@@ -1,15 +1,45 @@
+import { useState } from "react";
 import "./App.css";
 import ExampleProducts from "./homeComponents/ExampleProducts";
 import FeaturesImg from "./homeComponents/FeaturesImg";
 import Button from "./Button";
 import CoreValues from "./homeComponents/CoreValues";
+import Benefits from "./homeComponents/Benefits";
 import {
   featuresImg,
   exampleProductsImg,
   pillars,
 } from "./homeComponents/helpers";
 
+const benefits = [
+  {
+    offer: "Get your home furnishings in a flash with rapid delivery.",
+    offerText:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error accusamus architecto minus sint, perspiciatis blanditiis iusto dolor, temporibus aperiam explicabo est ex harum eligendi quia ipsa fugit. Explicabo, voluptatibus officia.",
+    offerIcon: "bx-bolt",
+  },
+  {
+    offer: "Always here to help: stellar support around the clock.",
+    offerText:
+      "Dolor sit amet consectetur adipisicing elit. Error accusamus architecto minus sint, plorem blanditiis iusto dolor, temporibus aperiam explicabo est ex harum eligendi quia ipsa fugit. Explicabo, voluptatibus officia minus sint, plorem ex harum.",
+    offerIcon: "bx-handshake",
+  },
+  {
+    offer: "Stay ahead of the trends with our latest discoveries.",
+    offerText:
+      "Ipsum dolor sit amet consectetur adipisicing elit. Error accusamus architecto minus sint, pLorem blanditiis iusto dolor, temporibus aperiam explicabo est ex harum eligendi quia ipsa fugit. Explicabo, voluptatibus officia temporibus.",
+    offerIcon: "bx-check",
+  },
+  {
+    offer: "No stress or worries for your home goods.",
+    offerText:
+      "Explicabo ipsum Error sit ametperspiciati consectetur voluptatibus elit. Error accusamus arc explicabo explictecto minus sint, se blanditiis iusto dolor, temporibus aperiam explicabo est ex harum eligendi quia ipsa fugit sit amet architecto.",
+    offerIcon: "bx-dollar-circle",
+  },
+];
+
 function App() {
+  const [benefit, setBenefit] = useState(benefits[0]);
   return (
     <>
       <nav className="!mx-auto !my-[2rem] flex justify-between max-w-[120rem]">
@@ -118,6 +148,7 @@ function App() {
             <i class="bxr  bx-handshake"></i>
             <i class="bxr  bx-check"></i>
             <i class="bxr  bx-dollar-circle"></i>
+            <i class="bxr  bx-bolt"></i>
           </h1>
 
           <div className="!mx-auto w-[95%] flex justify-between items-center !my-[5rem]">
@@ -127,20 +158,11 @@ function App() {
             <Button variation="secundary">Easy Returns</Button>
           </div>
 
-          <div>
-            <div className="bg-[#f5d0fe] w-[50px] h-[50px] rounded-[222px] flex justify-center items-center">
-              <i class="bxr  bx-bolt  text-[#d946ef] text-[24px]"></i>
-            </div>
-            <p className="text-left font-bold text-[2rem]">
-              Get your home furnishings in a flash with rapid delivery.
-            </p>
-            <p className="text-left text-[1.5rem] leading-[2.8rem]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-              accusamus architecto minus sint, perspiciatis blanditiis iusto
-              dolor, temporibus aperiam explicabo est ex harum eligendi quia
-              ipsa fugit. Explicabo, voluptatibus officia.
-            </p>
-          </div>
+          <Benefits
+            icon={benefit.offerIcon}
+            benefit={benefit.offer}
+            text={benefit.offerText}
+          />
         </div>
       </section>
     </>
