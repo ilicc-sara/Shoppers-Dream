@@ -19,12 +19,18 @@ function Home() {
   const [benefit, setBenefit] = useState(benefits[0]);
   const [width, setWidth] = useState(0);
 
+  const benefitsRef = useRef();
+
+  const scrollToBenefits = () => {
+    benefitsRef.current.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   useEffect(() => {
     let time = 5;
-
     const tick = function () {
       time--;
-
       let timeString = String(time);
       setTime(timeString);
       setWidth((5 - time) * 20);
@@ -33,10 +39,8 @@ function Home() {
         clearInterval(timer);
       }
     };
-
     tick();
     const timer = setInterval(tick, 1000);
-
     return () => clearInterval(timer);
   }, []);
 
@@ -54,7 +58,12 @@ function Home() {
             <Link to="/products">
               <Button variation="primary">Explore products</Button>
             </Link>
-            <Button variation="secundary">Learn more &darr;</Button>
+            <Button
+              variation="secundary"
+              handleClick={() => scrollToBenefits()}
+            >
+              Learn more &darr;
+            </Button>
           </div>
         </div>
         <div className="heading-section-img">
@@ -96,7 +105,10 @@ function Home() {
       </Reveal>
 
       <Reveal>
-        <section className="border-b-[2px] border-b-[#d5d5d5] !py-[14rem]">
+        <section
+          ref={benefitsRef}
+          className="border-b-[2px] border-b-[#d5d5d5] !py-[14rem]"
+        >
           <div className="max-w-[120rem] !mx-auto">
             <p className="text-left uppercase text-[1.4rem] text-[#d946ef] font-medium">
               Creeds we live by
