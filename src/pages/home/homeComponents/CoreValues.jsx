@@ -1,5 +1,3 @@
-import React from "react";
-
 function CoreValues(props) {
   const { icon, value, text } = props;
   return (

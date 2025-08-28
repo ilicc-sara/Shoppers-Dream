@@ -1,5 +1,3 @@
-import React from "react";
-
 function Benefits(props) {
   const { icon, benefit, text } = props;
   return (

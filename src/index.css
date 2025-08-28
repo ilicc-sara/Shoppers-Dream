@@ -13,7 +13,6 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   color: #535353;
-
   background-color: #eeeeee;
 }
 
@@ -73,16 +72,4 @@ button {
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
-}
-
-.heading-section-img {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-}
-
-.heading-img {
-  width: 490px;
-  height: 570px;
 }

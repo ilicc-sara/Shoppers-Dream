@@ -1,5 +1,3 @@
-import React from "react";
-
 function ExampleProducts({ image }) {
   return (
     <div className="flex flex-col gap-[1rem] ">

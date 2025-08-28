@@ -26,7 +26,7 @@ function Home() {
       behavior: "smooth",
     });
   };
-
+  // requestAnimationFrame
   useEffect(() => {
     let time = 5;
     const tick = function () {
@@ -66,8 +66,8 @@ function Home() {
             </Button>
           </div>
         </div>
-        <div className="heading-section-img">
-          <img className="heading-img" src="./heroImg.png" />
+        <div className="flex justify-end items-center w-[100%]">
+          <img className="w-[49rem] h-[57rem]" src="./heroImg.png" />
         </div>
       </section>
 
@@ -185,7 +185,8 @@ function Home() {
                   {testimonials[0].header}
                 </p>
                 <div
-                  className={`bg-[#d946ef] w-[${String(width)}%] h-[0.5rem]`}
+                  style={{ width: `${width}%` }}
+                  className={`bg-[#d946ef]  h-[0.5rem]`}
                 ></div>
 
                 <p className="text-left text-[1.5rem] leading-[2.8rem]">
