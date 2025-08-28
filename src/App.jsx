@@ -229,8 +229,10 @@ function App() {
                 className="w-[5rem] h-[5rem] rounded-[222px] object-cover"
                 src={`${testimonials[0].image}`}
               />
-              <p>{testimonials[0].name}</p>
-              <p>{testimonials[0].location}</p>
+              <p className="text-[1.4rem] font-medium">
+                {testimonials[0].name}
+              </p>
+              <p className="text-[1.2rem]">{testimonials[0].location}</p>
             </div>
 
             <button className="arrow-btn">
