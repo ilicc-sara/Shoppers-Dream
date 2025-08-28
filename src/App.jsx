@@ -185,15 +185,24 @@ function App() {
             counting!
           </h1>
 
-          <div>
-            <p>{testimonials[0].header}</p>
-            <p>{testimonials[0].text}</p>
-            <img
-              className="w-[5rem] h-[5rem] rounded-[222px] object-cover"
-              src={`${testimonials[0].image}`}
-            />
-            <p>{testimonials[0].name}</p>
-            <p>{testimonials[0].location}</p>
+          <div className="flex max-w-[70rem] !mx-auto  items-center">
+            <button className="arrow-btn">&larr;</button>
+            <div className="flex flex-col items-start max-w-[58rem] !mx-auto gap-[1.5rem] !my-[6rem]">
+              <p className=" text-left text-[2.8rem] leading-[1.9rem] font-semibold">
+                {testimonials[0].header}
+              </p>
+              <p className="text-left text-[1.5rem] leading-[2.8rem]">
+                {testimonials[0].text}
+              </p>
+              <img
+                className="w-[5rem] h-[5rem] rounded-[222px] object-cover"
+                src={`${testimonials[0].image}`}
+              />
+              <p>{testimonials[0].name}</p>
+              <p>{testimonials[0].location}</p>
+            </div>
+
+            <button className="arrow-btn">&rarr;</button>
           </div>
         </div>
       </section>

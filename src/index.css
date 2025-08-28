@@ -48,6 +48,17 @@ body {
   background-color: #cccccc;
 }
 
+.arrow-btn {
+  font-size: 1.8rem;
+  font-weight: 800;
+  height: 5rem !important;
+  width: 5rem !important;
+
+  border-radius: 222px;
+  background-color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s;
+}
+
 .heading-section-img {
   display: flex;
   justify-content: flex-end;
