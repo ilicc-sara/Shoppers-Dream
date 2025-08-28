@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import ExampleProducts from "./homeComponents/ExampleProducts";
 import FeaturesImg from "./homeComponents/FeaturesImg";
-import Button from "./Button";
+import Button from "../Button";
 import CoreValues from "./homeComponents/CoreValues";
 import Benefits from "./homeComponents/Benefits";
-import Nav from "./layouts/Nav";
+import { Link } from "react-router-dom";
 import {
   featuresImg,
   exampleProductsImg,
@@ -50,7 +50,9 @@ function Home() {
             Create your perfect space with our designs.
           </p>
           <div className="flex gap-[15px]">
-            <Button variation="primary">Explore products</Button>
+            <Link to="/products">
+              <Button variation="primary">Explore products</Button>
+            </Link>
             <Button variation="secundary">Learn more &darr;</Button>
           </div>
         </div>

@@ -17,8 +17,9 @@ body {
   background-color: #eeeeee;
 }
 
-.active {
-  text-decoration: underline;
+h1 {
+  font-size: 40px;
+  font-weight: 700;
 }
 
 button {
