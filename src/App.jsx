@@ -5,49 +5,18 @@ import FeaturesImg from "./homeComponents/FeaturesImg";
 import Button from "./Button";
 import CoreValues from "./homeComponents/CoreValues";
 import Benefits from "./homeComponents/Benefits";
+import Nav from "./Nav";
 import {
   featuresImg,
   exampleProductsImg,
   pillars,
   benefits,
+  testimonials,
 } from "./homeComponents/helpers";
 
-const testimonials = [
-  {
-    header: "These pieces transformed my home!",
-    text: "The level of hospitality and professionalism shown by the company made my shopping experience a breeze. The modern designs and top-quality materials of these products exceeded my expectations, and I couldn't be happier with my purchase!",
-    name: "Anastasiya Petrova",
-    location: "Kyiv, Ukraine",
-    image: "./testimonialsPeople/human1.webp",
-  },
-  {
-    header: "My space now finally feels complete.",
-    text: "The beautiful furniture pieces I purchased fit perfectly in my home and bring me so much joy every day. The quality and modern design exceeded my expectations, and the entire experience with your company was seamless.",
-    name: "Sophie Martin",
-    location: "Paris, France",
-    image: "./testimonialsPeople/human2.jpg",
-  },
-  {
-    header: "You guys brought vision back to my life.",
-    text: "I cannot speak highly enough of the quality of the products I received from this company. The attention to detail and craftsmanship is unparalleled. I am so grateful to have found such a reliable and professional source for my furniture needs.",
-    name: "Tyron Mayers",
-    location: "San Francisco, USA",
-    image: "./testimonialsPeople/human3.jpg",
-  },
-  {
-    header: "Can't believe I have been missing on this!",
-    text: "The furniture I found on this e-commerce store was exactly what I was looking for. The pieces have truly transformed my home and brought my vision to life, adding a touch of sophistication and elegance to every corner.",
-    name: "Vinney Malesh",
-    location: "Los Angeles, USA",
-    image: "./testimonialsPeople/human4.jpg",
-  },
-];
-
 function App() {
-  const [time, setTime] = useState("5");
-
+  const [time, setTime] = useState(5);
   const [benefit, setBenefit] = useState(benefits[0]);
-
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -71,35 +40,11 @@ function App() {
     return () => clearInterval(timer);
   }, []);
 
-  console.log(time);
-
   return (
     <>
-      <nav className="!mx-auto !my-[2rem] flex justify-between max-w-[120rem]">
-        <div className="text-[2.2rem] font-medium flex items-center justify-center gap-[15px]">
-          <ion-icon name="bag-outline" class="w-[24px] h-[24px]"></ion-icon>
-          <span>X Shopper's Dream</span>
-        </div>
+      <Nav />
 
-        <div className="flex align-center justify-center gap-[15px]">
-          <a href="#" className="text-[1.6rem] underline decoration-[#d946ef]">
-            Home
-          </a>
-          <a href="#" className="text-[1.6rem] ">
-            Products
-          </a>
-        </div>
-
-        <div className="relative text-[2rem] flex justify-center items-start gap-[5px]">
-          <span className="text-[1.8rem]">Cart</span>
-          <ion-icon name="bag-outline" className="w-[24px] h-[24px]"></ion-icon>
-          <div className="text-[14px] padding-[2px] bg-[#d946ef] text-white w-[2rem] h-[2rem] flex justify-center items-center rounded-[222px] absolute -top-[px] -right-[8px]">
-            0
-          </div>
-        </div>
-      </nav>
-
-      <section className="grid grid-cols-2 justify-center place-items-center !mx-auto my-12 max-w-[1200px]">
+      <section className="grid grid-cols-2 justify-center place-items-center !mx-auto !my-[3rem] max-w-[1200px]">
         <div className="flex flex-col gap-[2rem] justify-start">
           <h1 className="text-[4.8rem] leading-[6.7rem] font-bold text-[#404040] text-left">
             Furniture design to <br></br> make you feel at home
