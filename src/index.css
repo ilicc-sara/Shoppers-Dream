@@ -26,6 +26,13 @@ button {
   cursor: pointer;
 }
 
+.active {
+  text-decoration-line: underline;
+  text-decoration-color: #d946ef;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 2px;
+}
+
 .btn {
   padding: 0 2.5rem;
   height: 5rem;

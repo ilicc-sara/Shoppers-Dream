@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function Nav() {
   return (
@@ -10,12 +11,12 @@ function Nav() {
         </div>
 
         <div className="flex align-center justify-center gap-[15px]">
-          <a href="#" className="text-[1.6rem] underline decoration-[#d946ef]">
+          <NavLink to="/" className="text-[1.6rem] ">
             Home
-          </a>
-          <a href="#" className="text-[1.6rem] ">
+          </NavLink>
+          <NavLink to="/products" className="text-[1.6rem] ">
             Products
-          </a>
+          </NavLink>
         </div>
 
         <div className="relative text-[2rem] flex justify-center items-start gap-[5px]">
