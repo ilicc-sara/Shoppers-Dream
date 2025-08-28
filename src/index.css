@@ -21,6 +21,10 @@ body {
   text-decoration: underline;
 }
 
+button {
+  cursor: pointer;
+}
+
 .btn {
   padding: 0 2.5rem;
   height: 5rem;
@@ -49,14 +53,18 @@ body {
 }
 
 .arrow-btn {
-  font-size: 1.8rem;
+  font-size: 2.8rem;
   font-weight: 800;
-  height: 5rem !important;
-  width: 5rem !important;
+  height: 5rem;
+  width: 5rem;
 
   border-radius: 222px;
   background-color: rgba(255, 255, 255, 0.7);
   transition: all 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
 }
 
 .heading-section-img {

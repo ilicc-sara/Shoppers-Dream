@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import ExampleProducts from "./homeComponents/ExampleProducts";
 import FeaturesImg from "./homeComponents/FeaturesImg";
@@ -44,7 +44,34 @@ const testimonials = [
 ];
 
 function App() {
+  const [time, setTime] = useState("5");
+
   const [benefit, setBenefit] = useState(benefits[0]);
+
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    let time = 5;
+
+    const tick = function () {
+      time--;
+
+      let timeString = String(time);
+      setTime(timeString);
+      setWidth((5 - time) * 20);
+
+      if (time === 0) {
+        clearInterval(timer);
+      }
+    };
+
+    tick();
+    const timer = setInterval(tick, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  console.log(time);
 
   return (
     <>
@@ -185,12 +212,16 @@ function App() {
             counting!
           </h1>
 
-          <div className="flex max-w-[70rem] !mx-auto  items-center">
-            <button className="arrow-btn">&larr;</button>
+          <div className="flex max-w-[70rem] !mx-auto items-center">
+            <button className="arrow-btn">
+              <i class="bxr  bx-arrow-left-stroke"></i>
+            </button>
             <div className="flex flex-col items-start max-w-[58rem] !mx-auto gap-[1.5rem] !my-[6rem]">
               <p className=" text-left text-[2.8rem] leading-[1.9rem] font-semibold">
                 {testimonials[0].header}
               </p>
+              <div className={`bg-[#d946ef] w-[${width}%] h-[0.5rem]`}></div>
+
               <p className="text-left text-[1.5rem] leading-[2.8rem]">
                 {testimonials[0].text}
               </p>
@@ -202,7 +233,9 @@ function App() {
               <p>{testimonials[0].location}</p>
             </div>
 
-            <button className="arrow-btn">&rarr;</button>
+            <button className="arrow-btn">
+              <i class="bxr  bx-arrow-right-stroke"></i>
+            </button>
           </div>
         </div>
       </section>
