@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import "./App.css";
 import ExampleProducts from "./homeComponents/ExampleProducts";
 import FeaturesImg from "./homeComponents/FeaturesImg";
 import Button from "./Button";
 import CoreValues from "./homeComponents/CoreValues";
 import Benefits from "./homeComponents/Benefits";
-import Nav from "./Nav";
+import Nav from "./layouts/Nav";
 import {
   featuresImg,
   exampleProductsImg,
@@ -14,7 +13,7 @@ import {
   testimonials,
 } from "./homeComponents/helpers";
 
-function App() {
+function Home() {
   const [time, setTime] = useState(5);
   const [benefit, setBenefit] = useState(benefits[0]);
   const [width, setWidth] = useState(0);
@@ -42,8 +41,6 @@ function App() {
 
   return (
     <>
-      <Nav />
-
       <section className="grid grid-cols-2 justify-center place-items-center !mx-auto !my-[3rem] max-w-[1200px]">
         <div className="flex flex-col gap-[2rem] justify-start">
           <h1 className="text-[4.8rem] leading-[6.7rem] font-bold text-[#404040] text-left">
@@ -158,9 +155,9 @@ function App() {
           </h1>
 
           <div className="flex max-w-[70rem] !mx-auto items-center">
-            <button className="arrow-btn">
+            <Button variation="arrow" handleClick={() => {}}>
               <i class="bxr  bx-arrow-left-stroke"></i>
-            </button>
+            </Button>
             <div className="flex flex-col items-start max-w-[58rem] !mx-auto gap-[1.5rem] !my-[6rem]">
               <p className=" text-left text-[2.8rem] leading-[1.9rem] font-semibold">
                 {testimonials[0].header}
@@ -180,9 +177,9 @@ function App() {
               <p className="text-[1.2rem]">{testimonials[0].location}</p>
             </div>
 
-            <button className="arrow-btn">
+            <Button variation="arrow" handleClick={() => {}}>
               <i class="bxr  bx-arrow-right-stroke"></i>
-            </button>
+            </Button>
           </div>
         </div>
       </section>
@@ -190,4 +187,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

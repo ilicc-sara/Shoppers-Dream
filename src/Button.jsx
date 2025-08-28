@@ -16,6 +16,11 @@ function Button(props) {
     modifierClassName = "more-btn";
   }
 
+  if (variation === "arrow") {
+    baseClassName = "";
+    modifierClassName = "arrow-btn";
+  }
+
   return (
     <button
       className={`${baseClassName} ${modifierClassName}`}
