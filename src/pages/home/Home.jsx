@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import ExampleProducts from "./homeComponents/ExampleProducts";
 import FeaturesImg from "./homeComponents/FeaturesImg";
-import Button from "../Button";
+import Button from "../../reusableComponents/Button";
 import CoreValues from "./homeComponents/CoreValues";
 import Benefits from "./homeComponents/Benefits";
 import { Link } from "react-router-dom";
