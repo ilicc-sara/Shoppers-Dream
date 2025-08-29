@@ -192,14 +192,17 @@ function Home() {
                 <p className="text-left text-[1.5rem] leading-[2.8rem]">
                   {testimonials[0].text}
                 </p>
-                <img
-                  className="w-[5rem] h-[5rem] rounded-[222px] object-cover"
-                  src={`${testimonials[0].image}`}
-                />
-                <p className="text-[1.4rem] font-medium">
-                  {testimonials[0].name}
-                </p>
-                <p className="text-[1.2rem]">{testimonials[0].location}</p>
+
+                <div className="flex flex-col items-start !my-[2rem]">
+                  <img
+                    className="w-[5rem] h-[5rem] rounded-[222px] object-cover"
+                    src={`${testimonials[0].image}`}
+                  />
+                  <p className="text-[1.4rem] font-medium">
+                    {testimonials[0].name}
+                  </p>
+                  <p className="text-[1.2rem]">{testimonials[0].location}</p>
+                </div>
               </div>
               <Button variation="arrow" handleClick={() => {}}>
                 <i class="bxr  bx-arrow-right-stroke"></i>
