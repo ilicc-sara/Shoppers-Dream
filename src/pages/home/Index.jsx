@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import ExampleProducts from "./homeComponents/ExampleProducts";
-import FeaturesImg from "./homeComponents/FeaturesImg";
-import Button from "../../reusableComponents/Button";
-import CoreValues from "./homeComponents/CoreValues";
-import Benefits from "./homeComponents/Benefits";
+import ExampleProducts from "./components/ExampleProducts";
+import FeaturesImg from "./components/FeaturesImg";
+import Button from "../../UI/Button";
+import CoreValues from "./components/CoreValues";
+import Benefits from "./components/Benefits";
 import { Link } from "react-router-dom";
 import {
   featuresImg,
@@ -11,10 +11,10 @@ import {
   pillars,
   benefits,
   testimonials,
-} from "./homeComponents/helpers";
-import Reveal from "./homeComponents/Reveal";
+} from "./components/helpers";
+import Reveal from "./components/Reveal";
 
-function Home() {
+function Index() {
   const [time, setTime] = useState(5);
   const [benefit, setBenefit] = useState(benefits[0]);
   const [width, setWidth] = useState(0);
@@ -215,4 +215,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Index;
