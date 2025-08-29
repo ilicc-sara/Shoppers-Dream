@@ -1,6 +1,5 @@
-import React from "react";
 import ExampleProducts from "./components/ExampleProducts";
-import Button from "../../../../UI/Button";
+import Button from "@/UI/Button";
 import { exampleProductsImg } from "../helpers";
 
 function ProductsSection() {

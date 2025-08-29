@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { benefits } from "../helpers";
 import Benefits from "./components/Benefits";
-import Button from "../../../../UI/Button";
+import Button from "@/UI/Button";
 
 function BenefitsSection() {
   const [benefit, setBenefit] = useState(benefits[0]);

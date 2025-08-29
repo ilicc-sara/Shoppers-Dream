@@ -1,26 +1,14 @@
 import { useState, useEffect, useRef } from "react";
-import ExampleProducts from "./components/productsSection/components/ExampleProducts";
-import FeaturesImg from "./components/homeSection/components/FeaturesImg";
-import Button from "../../UI/Button";
-import CoreValues from "./components/benefitsSection/components/CoreValues";
-import Benefits from "./components/operationsSection/components/Benefits";
+import Button from "@/UI/Button";
 import HomeSection from "./components/homeSection/HomeSection";
 import ProductsSection from "./components/productsSection/ProductsSection";
 import CoreValuesSection from "./components/benefitsSection/CoreValuesSection";
 import BenefitsSection from "./components/operationsSection/BenefitsSection";
-
-import {
-  featuresImg,
-  exampleProductsImg,
-  pillars,
-  benefits,
-  testimonials,
-} from "./components/helpers";
+import { benefits, testimonials } from "./components/helpers";
 import Reveal from "./components/Reveal";
 
 function Index() {
   const [time, setTime] = useState(5);
-  const [benefit, setBenefit] = useState(benefits[0]);
   const [width, setWidth] = useState(0);
 
   const coreValuesRef = useRef();

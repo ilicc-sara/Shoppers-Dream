@@ -1,4 +1,3 @@
-import React from "react";
 import CoreValues from "./components/CoreValues";
 import { pillars } from "../helpers";
 
