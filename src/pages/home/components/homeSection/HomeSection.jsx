@@ -3,7 +3,7 @@ import Button from "../../../../UI/Button";
 import FeaturesImg from "./components/FeaturesImg";
 import { featuresImg } from "../helpers";
 
-function HomeSection() {
+function HomeSection({ scrollToCoreValues }) {
   return (
     <>
       <section className="grid grid-cols-2 justify-center place-items-center !mx-auto !my-[3rem] max-w-[1200px]">
@@ -20,7 +20,7 @@ function HomeSection() {
             </Link>
             <Button
               variation="secundary"
-              handleClick={() => scrollToBenefits()}
+              handleClick={() => scrollToCoreValues()}
             >
               Learn more &darr;
             </Button>

@@ -2,10 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import ExampleProducts from "./components/productsSection/components/ExampleProducts";
 import FeaturesImg from "./components/homeSection/components/FeaturesImg";
 import Button from "../../UI/Button";
-import CoreValues from "./components/CoreValues";
+import CoreValues from "./components/benefitsSection/components/CoreValues";
 import Benefits from "./components/Benefits";
 import HomeSection from "./components/homeSection/HomeSection";
 import ProductsSection from "./components/productsSection/ProductsSection";
+import CoreValuesSection from "./components/benefitsSection/CoreValuesSection";
 
 import {
   featuresImg,
@@ -21,10 +22,10 @@ function Index() {
   const [benefit, setBenefit] = useState(benefits[0]);
   const [width, setWidth] = useState(0);
 
-  const benefitsRef = useRef();
+  const coreValuesRef = useRef();
 
-  const scrollToBenefits = () => {
-    benefitsRef.current.scrollIntoView({
+  const scrollToCoreValues = () => {
+    coreValuesRef.current.scrollIntoView({
       behavior: "smooth",
     });
   };
@@ -48,38 +49,14 @@ function Index() {
 
   return (
     <>
-      <HomeSection />
+      <HomeSection scrollToCoreValues={scrollToCoreValues} />
 
       <Reveal>
         <ProductsSection />
       </Reveal>
 
       <Reveal>
-        <section
-          ref={benefitsRef}
-          className="border-b-[2px] border-b-[#d5d5d5] !py-[14rem]"
-        >
-          <div className="max-w-[120rem] !mx-auto">
-            <p className="text-left uppercase text-[1.4rem] text-[#d946ef] font-medium">
-              Creeds we live by
-            </p>
-            <h1 className="text-[3.7rem] font-medium text-left text-[#444]">
-              Elevate your home with our attitude of excellence and timeless
-              style.
-            </h1>
-
-            <div className="flex justify-between !mt-[6rem] !mb-[3rem]">
-              {pillars.map((pillar, index) => (
-                <CoreValues
-                  key={index}
-                  icon={pillar.iconName}
-                  value={pillar.coreValue}
-                  text={pillar.description}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+        <CoreValuesSection coreValuesRef={coreValuesRef} />
       </Reveal>
 
       <Reveal>
