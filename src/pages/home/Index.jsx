@@ -3,10 +3,11 @@ import ExampleProducts from "./components/productsSection/components/ExampleProd
 import FeaturesImg from "./components/homeSection/components/FeaturesImg";
 import Button from "../../UI/Button";
 import CoreValues from "./components/benefitsSection/components/CoreValues";
-import Benefits from "./components/Benefits";
+import Benefits from "./components/operationsSection/components/Benefits";
 import HomeSection from "./components/homeSection/HomeSection";
 import ProductsSection from "./components/productsSection/ProductsSection";
 import CoreValuesSection from "./components/benefitsSection/CoreValuesSection";
+import BenefitsSection from "./components/operationsSection/BenefitsSection";
 
 import {
   featuresImg,
@@ -60,36 +61,7 @@ function Index() {
       </Reveal>
 
       <Reveal>
-        <section className="border-b-[2px] border-b-[#d5d5d5] !py-[14rem]">
-          <div className="max-w-[90rem] !mx-auto">
-            <p className="text-left uppercase text-[1.4rem] text-[#d946ef] font-medium">
-              Operations
-            </p>
-            <h1 className="text-[3.7rem] font-medium text-left text-[#444]">
-              Where simplicity meets efficiency to bring your home to life.
-            </h1>
-
-            <div className="!mx-auto w-[95%] flex justify-between items-center !my-[5rem]">
-              {benefits.map((offer, index) => (
-                <Button
-                  key={index}
-                  variation={`${
-                    benefit.button === offer.button ? "primary" : "secundary"
-                  }`}
-                  handleClick={() => setBenefit(benefits[offer.id])}
-                >
-                  {offer.button}
-                </Button>
-              ))}
-            </div>
-
-            <Benefits
-              icon={benefit.offerIcon}
-              benefit={benefit.offer}
-              text={benefit.offerText}
-            />
-          </div>
-        </section>
+        <BenefitsSection />
       </Reveal>
 
       <Reveal>
