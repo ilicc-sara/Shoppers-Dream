@@ -74,49 +74,48 @@ button {
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
 }
 
+.arrow-btn {
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  z-index: 10;
+  border-radius: 222px;
+  background-color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+  top: 35%;
+}
+
+.arrow-left {
+  left: 0;
+}
+
+.arrow-right {
+  right: 0;
+}
+
 /* /////////// SLIDER COMPONENT ///////////////////////////// */
 
 .sliders {
   position: relative;
-  width: 600px;
-  height: 600px;
+  width: 700px;
+  height: 350px;
   overflow-x: hidden;
+  margin: 20px auto;
 }
 
 .slider {
   position: absolute;
-  width: 580px;
-  margin: 50px;
-  padding: 20px;
+
+  padding: 10px 60px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 
   transition: transform 1s;
-}
-
-.btn-left,
-.btn-right {
-  border: 1px solid #535353;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
-  border-radius: 222px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  z-index: 10;
-}
-
-.btn-left {
-  top: 50%;
-  left: 6px;
-}
-
-.btn-right {
-  top: 50%;
-  right: 6px;
 }
 
 /*  //////////////////////////////////////////////////////// */

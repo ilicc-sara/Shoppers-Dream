@@ -16,9 +16,14 @@ function Button(props) {
     modifierClassName = "more-btn";
   }
 
-  if (variation === "arrow") {
-    baseClassName = "";
-    modifierClassName = "arrow-btn";
+  if (variation === "arrow-left") {
+    baseClassName = "arrow-btn";
+    modifierClassName = "arrow-left";
+  }
+
+  if (variation === "arrow-right") {
+    baseClassName = "arrow-btn";
+    modifierClassName = "arrow-right";
   }
 
   return (

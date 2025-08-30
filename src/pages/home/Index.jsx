@@ -37,14 +37,6 @@ function Index() {
     return () => clearInterval(timer);
   }, []);
 
-  // const refs = useRef([]);
-
-  // function changeColors() {
-  //   refs.current.forEach((el) => {
-  //     if (el) el.style.backgroundColor = "red";
-  //   });
-  // }
-
   function changeCurrentSlideRight() {
     setCurrentSlide((prev) => {
       if (prev !== testimonials.length - 1) {
@@ -92,85 +84,51 @@ function Index() {
               counting!
             </h1>
 
-            <div className="flex max-w-[70rem] !mx-auto items-center">
-              {/* <Button variation="arrow" handleClick={() => {}}>
+            <div className="flex w-[75rem] !mx-auto items-center relative h-[40rem] !my-[4rem] overflow-x-hidden">
+              <Button
+                variation="arrow-left"
+                handleClick={() => changeCurrentSlideLeft()}
+              >
                 <i class="bxr  bx-arrow-left-stroke"></i>
-              </Button> */}
-              {/* <div className="flex flex-col items-start max-w-[58rem] !mx-auto gap-[1.5rem] !my-[6rem]">
-                <p className=" text-left text-[2.8rem] leading-[1.9rem] font-semibold">
-                  {testimonials[0].header}
-                </p>
+              </Button>
+              {testimonials.map((testimonial, index) => (
                 <div
-                  style={{ width: `${width}%` }}
-                  className={`bg-[#d946ef]  h-[0.5rem]`}
-                ></div>
-
-                <p className="text-left text-[1.5rem] leading-[2.8rem]">
-                  {testimonials[0].text}
-                </p>
-
-                <div className="flex flex-col items-start !my-[2rem]">
-                  <img
-                    className="w-[5rem] h-[5rem] rounded-[222px] object-cover"
-                    src={`${testimonials[0].image}`}
-                  />
-                  <p className="text-[1.4rem] font-medium">
-                    {testimonials[0].name}
+                  key={index}
+                  className="absolute top-10 !py-[1rem] !px-[8rem] flex flex-col gap-[2rem] ransition-transform duration-1000"
+                  style={{
+                    transform: `translateX(${(index - currentSlide) * 100}%)`,
+                  }}
+                >
+                  <p className=" text-left text-[2.7rem] leading-[1.9rem] font-semibold">
+                    {testimonial.header}
                   </p>
-                  <p className="text-[1.2rem]">{testimonials[0].location}</p>
-                </div>
-              </div> */}
-              {/* <Button variation="arrow" handleClick={() => {}}>
-                <i class="bxr  bx-arrow-right-stroke"></i>
-              </Button> */}
-
-              <div className="sliders">
-                <button
-                  className=" btn-left"
-                  onClick={() => changeCurrentSlideLeft()}
-                >
-                  &larr;
-                </button>
-                {testimonials.map((testimonial, index) => (
                   <div
-                    // ref={(el) => (refs.current[index] = el)}
-                    key={index}
-                    className={`slider slider-${index}`}
-                    style={{
-                      transform: `translateX(${(index - currentSlide) * 100}%)`,
-                    }}
-                  >
-                    <p className=" text-left text-[2.8rem] leading-[1.9rem] font-semibold">
-                      {testimonial.header}
-                    </p>
-                    <div
-                      style={{ width: `${width}%` }}
-                      className={`bg-[#d946ef]  h-[0.5rem]`}
-                    ></div>
+                    style={{ width: `${width}%` }}
+                    className={`bg-[#d946ef]  h-[0.5rem]`}
+                  ></div>
 
-                    <p className="text-left text-[1.5rem] leading-[2.8rem]">
-                      {testimonial.text}
-                    </p>
+                  <p className="text-left text-[1.5rem] leading-[2.8rem]">
+                    {testimonial.text}
+                  </p>
 
-                    <div className="flex flex-col items-start !my-[2rem]">
-                      <img
-                        className="w-[5rem] h-[5rem] rounded-[222px] object-cover"
-                        src={`${testimonial.image}`}
-                      />
-                      <p className="text-[1.4rem] font-medium">
-                        {testimonial.name}
-                      </p>
-                      <p className="text-[1.2rem]">{testimonial.location}</p>
-                    </div>
+                  <div className="flex flex-col items-start !my-[2rem]">
+                    <img
+                      className="w-[5rem] h-[5rem] rounded-[222px] object-cover"
+                      src={`${testimonial.image}`}
+                    />
+                    <p className="text-[1.4rem] font-medium">
+                      {testimonial.name}
+                    </p>
+                    <p className="text-[1.2rem]">{testimonial.location}</p>
                   </div>
-                ))}
-                <button
-                  className=" btn-right"
-                  onClick={() => changeCurrentSlideRight()}
-                >
-                  &rarr;
-                </button>
-              </div>
+                </div>
+              ))}
+              <Button
+                variation="arrow-right"
+                handleClick={() => changeCurrentSlideRight()}
+              >
+                <i class="bxr  bx-arrow-right-stroke"></i>
+              </Button>
             </div>
           </div>
         </section>
