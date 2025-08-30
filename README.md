@@ -16,3 +16,5 @@ If you are developing a production application, we recommend using TypeScript wi
 <!-- home.jsx  -> index.jsx -->
 <!-- home componenst -> components -->
 <!-- reusable components - UI -->
+
+// requestAnimationFrame
