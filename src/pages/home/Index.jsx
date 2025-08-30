@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import Button from "@/UI/Button";
 import HomeSection from "./components/homeSection/HomeSection";
 import ProductsSection from "./components/productsSection/ProductsSection";
-import CoreValuesSection from "./components/benefitsSection/CoreValuesSection";
-import BenefitsSection from "./components/operationsSection/BenefitsSection";
-import { benefits, testimonials } from "./components/helpers";
+import CoreValuesSection from "./components/coreValuesSection/CoreValuesSection";
+import BenefitsSection from "./components/benefitsSection/BenefitsSection";
+import { testimonials } from "./components/helpers";
 import Reveal from "./components/Reveal";
 
 function Index() {

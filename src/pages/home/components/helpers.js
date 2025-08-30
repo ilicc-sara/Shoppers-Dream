@@ -53,7 +53,7 @@ export const benefits = [
   {
     offer: "Stay ahead of the trends with our latest discoveries.",
     offerText:
-      "Ipsum dolor sit amet consectetur adipisicing elit. Error accusamus architecto minus sint, pLorem blanditiis iusto dolor, temporibus aperiam explicabo est ex harum eligendi quia ipsa fugit. Explicabo, voluptatibus officia temporibus.",
+      "Ipsum dolor sit amet consectetur adipisicing elit. Error accusamus architecto minus sint, pLorem blanditiis iusto dolor, temporibus aperiam explicabo est ex harum eligendi quia ipsa fugit. Explicabo, voluptatibus officia temporibus. Lorem blanditiis iusto dolor.",
     offerIcon: "bx-check",
     id: 2,
     button: "Fresh Finds",
