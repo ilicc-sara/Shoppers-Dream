@@ -74,6 +74,44 @@ button {
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
 }
 
+/* /////////// SLIDER COMPONENT ///////////////////////////// */
+
+.sliders {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  overflow: hidden;
+}
+
+.slider {
+  position: absolute;
+  width: 580px;
+  margin: 50px;
+}
+
+.btn-left,
+.btn-right {
+  border: 1px solid #535353;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  border-radius: 222px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.btn-left {
+  top: 50%;
+  left: 6px;
+}
+
+.btn-right {
+  top: 50%;
+  right: 6px;
+}
+
 /*  //////////////////////////////////////////////////////// */
 .container,
 .single-product {
@@ -107,9 +145,6 @@ button {
 .furniture-price {
   color: #d22dc1;
 }
-
-/* .single-product {
-} */
 
 .single-product-item {
   display: grid;

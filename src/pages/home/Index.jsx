@@ -64,10 +64,10 @@ function Index() {
             </h1>
 
             <div className="flex max-w-[70rem] !mx-auto items-center">
-              <Button variation="arrow" handleClick={() => {}}>
+              {/* <Button variation="arrow" handleClick={() => {}}>
                 <i class="bxr  bx-arrow-left-stroke"></i>
-              </Button>
-              <div className="flex flex-col items-start max-w-[58rem] !mx-auto gap-[1.5rem] !my-[6rem]">
+              </Button> */}
+              {/* <div className="flex flex-col items-start max-w-[58rem] !mx-auto gap-[1.5rem] !my-[6rem]">
                 <p className=" text-left text-[2.8rem] leading-[1.9rem] font-semibold">
                   {testimonials[0].header}
                 </p>
@@ -90,10 +90,45 @@ function Index() {
                   </p>
                   <p className="text-[1.2rem]">{testimonials[0].location}</p>
                 </div>
-              </div>
-              <Button variation="arrow" handleClick={() => {}}>
+              </div> */}
+              {/* <Button variation="arrow" handleClick={() => {}}>
                 <i class="bxr  bx-arrow-right-stroke"></i>
-              </Button>
+              </Button> */}
+
+              <div className="sliders">
+                <button className=" btn-left">&larr;</button>
+                {testimonials.map((testimonial, index) => (
+                  <div
+                    key={index}
+                    className="slider"
+                    style={{ transform: `translateX(${index * 100}%)` }}
+                  >
+                    <p className=" text-left text-[2.8rem] leading-[1.9rem] font-semibold">
+                      {testimonial.header}
+                    </p>
+                    <div
+                      style={{ width: `${width}%` }}
+                      className={`bg-[#d946ef]  h-[0.5rem]`}
+                    ></div>
+
+                    <p className="text-left text-[1.5rem] leading-[2.8rem]">
+                      {testimonial.text}
+                    </p>
+
+                    <div className="flex flex-col items-start !my-[2rem]">
+                      <img
+                        className="w-[5rem] h-[5rem] rounded-[222px] object-cover"
+                        src={`${testimonial.image}`}
+                      />
+                      <p className="text-[1.4rem] font-medium">
+                        {testimonial.name}
+                      </p>
+                      <p className="text-[1.2rem]">{testimonial.location}</p>
+                    </div>
+                  </div>
+                ))}
+                <button className=" btn-right">&rarr;</button>
+              </div>
             </div>
           </div>
         </section>
