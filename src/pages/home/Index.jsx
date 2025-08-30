@@ -10,6 +10,7 @@ import Reveal from "./components/Reveal";
 function Index() {
   const [time, setTime] = useState(5);
   const [width, setWidth] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const coreValuesRef = useRef();
 
@@ -35,6 +36,24 @@ function Index() {
     const timer = setInterval(tick, 1000);
     return () => clearInterval(timer);
   }, []);
+
+  // const refs = useRef([]);
+
+  // function changeColors() {
+  //   refs.current.forEach((el) => {
+  //     if (el) el.style.backgroundColor = "red";
+  //   });
+  // }
+
+  function changeCurrentSlide() {
+    setCurrentSlide((prev) => {
+      if (prev !== 3) {
+        return prev + 1;
+      } else {
+        return 0;
+      }
+    });
+  }
 
   return (
     <>
@@ -96,12 +115,17 @@ function Index() {
               </Button> */}
 
               <div className="sliders">
-                <button className=" btn-left">&larr;</button>
+                <button className=" btn-left" onClick={() => {}}>
+                  &larr;
+                </button>
                 {testimonials.map((testimonial, index) => (
                   <div
+                    // ref={(el) => (refs.current[index] = el)}
                     key={index}
-                    className="slider"
-                    style={{ transform: `translateX(${index * 100}%)` }}
+                    className={`slider slider-${index}`}
+                    style={{
+                      transform: `translateX(${(index - currentSlide) * 100}%)`,
+                    }}
                   >
                     <p className=" text-left text-[2.8rem] leading-[1.9rem] font-semibold">
                       {testimonial.header}
@@ -127,7 +151,12 @@ function Index() {
                     </div>
                   </div>
                 ))}
-                <button className=" btn-right">&rarr;</button>
+                <button
+                  className=" btn-right"
+                  onClick={() => changeCurrentSlide()}
+                >
+                  &rarr;
+                </button>
               </div>
             </div>
           </div>
