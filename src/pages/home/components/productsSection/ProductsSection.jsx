@@ -1,6 +1,7 @@
 import ExampleProducts from "./components/ExampleProducts";
 import Button from "@/UI/Button";
 import { exampleProductsImg } from "../helpers";
+import { Link } from "react-router-dom";
 
 function ProductsSection() {
   return (
@@ -18,7 +19,9 @@ function ProductsSection() {
             <ExampleProducts key={index} image={img} />
           ))}
         </div>
-        <Button variation="primary">All Products</Button>
+        <Link to="/products">
+          <Button variation="primary">All Products</Button>
+        </Link>
       </div>
     </section>
   );

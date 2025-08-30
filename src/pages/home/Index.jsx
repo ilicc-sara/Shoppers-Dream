@@ -5,6 +5,7 @@ import CoreValuesSection from "./components/coreValuesSection/CoreValuesSection"
 import BenefitsSection from "./components/benefitsSection/BenefitsSection";
 import TestimonialsSection from "./components/testimonialsSection/TestimonialsSection";
 import Reveal from "./components/Reveal";
+import { useOutletContext } from "react-router-dom";
 
 function Index() {
   const coreValuesRef = useRef();
@@ -15,9 +16,10 @@ function Index() {
     });
   };
 
+  const { ref } = useOutletContext();
   return (
     <>
-      <HomeSection scrollToCoreValues={scrollToCoreValues} />
+      <HomeSection ref={ref} scrollToCoreValues={scrollToCoreValues} />
 
       <Reveal>
         <ProductsSection />

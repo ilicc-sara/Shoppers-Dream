@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 function Nav() {
   return (
@@ -18,13 +18,18 @@ function Nav() {
           </NavLink>
         </div>
 
-        <div className="relative text-[2rem] flex justify-center items-start gap-[5px]">
-          <span className="text-[1.8rem]">Cart</span>
-          <ion-icon name="bag-outline" className="w-[24px] h-[24px]"></ion-icon>
-          <div className="text-[14px] padding-[2px] bg-[#d946ef] text-white w-[2rem] h-[2rem] flex justify-center items-center rounded-[222px] absolute -top-[px] -right-[8px]">
-            0
+        <Link to="/cart">
+          <div className="relative text-[2rem] flex justify-center items-start gap-[5px]">
+            <span className="text-[1.8rem]">Cart</span>
+            <ion-icon
+              name="bag-outline"
+              className="w-[24px] h-[24px]"
+            ></ion-icon>
+            <div className="text-[14px] padding-[2px] bg-[#d946ef] text-white w-[2rem] h-[2rem] flex justify-center items-center rounded-[222px] absolute -top-[px] -right-[8px]">
+              0
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     </nav>
   );
