@@ -45,12 +45,22 @@ function Index() {
   //   });
   // }
 
-  function changeCurrentSlide() {
+  function changeCurrentSlideRight() {
     setCurrentSlide((prev) => {
-      if (prev !== 3) {
+      if (prev !== testimonials.length - 1) {
         return prev + 1;
       } else {
         return 0;
+      }
+    });
+  }
+
+  function changeCurrentSlideLeft() {
+    setCurrentSlide((prev) => {
+      if (prev !== 0) {
+        return prev - 1;
+      } else {
+        return testimonials.length - 1;
       }
     });
   }
@@ -115,7 +125,10 @@ function Index() {
               </Button> */}
 
               <div className="sliders">
-                <button className=" btn-left" onClick={() => {}}>
+                <button
+                  className=" btn-left"
+                  onClick={() => changeCurrentSlideLeft()}
+                >
                   &larr;
                 </button>
                 {testimonials.map((testimonial, index) => (
@@ -153,7 +166,7 @@ function Index() {
                 ))}
                 <button
                   className=" btn-right"
-                  onClick={() => changeCurrentSlide()}
+                  onClick={() => changeCurrentSlideRight()}
                 >
                   &rarr;
                 </button>
