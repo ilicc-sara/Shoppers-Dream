@@ -20,29 +20,26 @@ function Products() {
     fetchPost();
   }, []);
   return (
-    <>
-      <h1>Products</h1>
-      <div className="container">
-        <ul className="furniture-list">
-          {products?.map((product, index) => (
-            <Link to={`/product/${product.id}`}>
-              <li key={index} className="furniture-item">
-                <img
-                  src={product.image}
-                  alt="Furniture-Picture"
-                  className="furniture-picture"
-                  style={{ display: "block" }}
-                />
-                <div className="furniture-item-info">
-                  <h3 className="furniture-name">{product.name}</h3>
-                  <h3 className="furniture-price">${+product.price / 100} $</h3>
-                </div>
-              </li>
-            </Link>
-          ))}
-        </ul>
-      </div>
-    </>
+    <div className="container !mt-[8rem]">
+      <ul className="furniture-list">
+        {products?.map((product, index) => (
+          <Link to={`/product/${product.id}`}>
+            <li key={index} className="furniture-item">
+              <img
+                src={product.image}
+                alt="Furniture-Picture"
+                className="furniture-picture"
+                style={{ display: "block" }}
+              />
+              <div className="furniture-item-info">
+                <h3 className="furniture-name">{product.name}</h3>
+                <h3 className="furniture-price">${+product.price / 100} $</h3>
+              </div>
+            </li>
+          </Link>
+        ))}
+      </ul>
+    </div>
   );
 }
 
