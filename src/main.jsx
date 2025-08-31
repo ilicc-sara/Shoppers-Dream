@@ -8,6 +8,8 @@ import Products from "./pages/Products.jsx";
 import SingleProduct from "./pages/SingleProduct.jsx";
 import Cart from "./pages/Cart.jsx";
 import SharedLayout from "./layouts/SharedLayout.jsx";
+import { Provider } from "react-redux";
+import { store } from "./redux/store.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +38,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </StrictMode>
 );
