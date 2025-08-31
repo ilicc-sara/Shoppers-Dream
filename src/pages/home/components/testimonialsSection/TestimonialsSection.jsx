@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Button from "@/UI/Button";
 import { testimonials } from "../helpers";
 
@@ -6,6 +6,7 @@ function TestimonialsSection() {
   const [time, setTime] = useState(5);
   const [width, setWidth] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
+
   // requestAnimationFrame
   useEffect(() => {
     let time = 5;
@@ -22,6 +23,26 @@ function TestimonialsSection() {
     tick();
     const timer = setInterval(tick, 1000);
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    let startTime = null;
+    function animate(timeStamp) {
+      if (!startTime) {
+        startTime = timeStamp;
+      }
+      let progress = timeStamp - startTime;
+      console.log("progress", progress);
+      setWidth((5 - progress) * 20);
+
+      if (progress < 5000) {
+        window.requestAnimationFrame(animate);
+      }
+
+      return () => {
+        window.requestAnimationFrame(animate);
+      };
+    }
   }, []);
 
   function changeCurrentSlideRight() {
