@@ -5,8 +5,10 @@ function Nav() {
   const sectionIsInView = useSelector((state) => state.view.isInView);
   return (
     <nav
-      className={`w-full !py-[2rem] ${
-        !sectionIsInView ? "fixed top-0 left-0 w-full z-50 bg-white" : ""
+      className={`w-full !py-[2rem]  ${
+        !sectionIsInView
+          ? "fixed top-0 left-0 w-full z-50 bg-white shadow-[0px_4px_6px_-2px_rgba(0,0,0,0.1)] opacity-[0.95]"
+          : ""
       } `}
     >
       <div className="max-w-[120rem] flex justify-between !mx-auto ">

@@ -99,25 +99,6 @@ button {
 
 /* /////////// SLIDER COMPONENT ///////////////////////////// */
 
-.sliders {
-  position: relative;
-  width: 700px;
-  height: 350px;
-  overflow-x: hidden;
-  margin: 20px auto;
-}
-
-.slider {
-  position: absolute;
-
-  padding: 10px 60px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  transition: transform 1s;
-}
-
 /*  //////////////////////////////////////////////////////// */
 .container,
 .single-product {

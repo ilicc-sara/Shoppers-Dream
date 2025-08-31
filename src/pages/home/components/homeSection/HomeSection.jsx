@@ -5,11 +5,11 @@ import { featuresImg } from "../helpers";
 
 function HomeSection({ scrollToCoreValues, homeSectionRef }) {
   return (
-    <section>
-      <section
-        ref={homeSectionRef}
-        className="grid grid-cols-2 justify-center place-items-center !mx-auto !my-[3rem] max-w-[1200px]"
-      >
+    <section
+      ref={homeSectionRef}
+      className="flex flex-col w-full border-b-[2px] border-b-[#d5d5d5]"
+    >
+      <section className="grid grid-cols-2 justify-center place-items-center !mx-auto !my-[3rem] max-w-[1200px]">
         <div className="flex flex-col gap-[2rem] justify-start">
           <h1 className="text-[4.8rem] leading-[6.7rem] font-bold text-[#404040] text-left">
             Furniture design to <br></br> make you feel at home
@@ -34,7 +34,7 @@ function HomeSection({ scrollToCoreValues, homeSectionRef }) {
         </div>
       </section>
 
-      <footer className=" border-b-[2px] border-b-[#d5d5d5]">
+      <footer className=" ">
         <div className="!py-[12rem] !mx-auto flex flex-col gap-[30px] max-w-[120rem]">
           <p className="text-[1.4rem] text-gray-500 uppercase font-semibold">
             As featured in
