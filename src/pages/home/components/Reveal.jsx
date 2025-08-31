@@ -12,7 +12,6 @@ function Reveal(props) {
   useEffect(() => {
     if (isInView) {
       mainControls.start("visible");
-      console.log(isInView);
     }
   }, [isInView]);
   return (

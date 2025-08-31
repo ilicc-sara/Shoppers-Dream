@@ -3,10 +3,13 @@ import Button from "@/UI/Button";
 import FeaturesImg from "./components/FeaturesImg";
 import { featuresImg } from "../helpers";
 
-function HomeSection({ scrollToCoreValues }) {
+function HomeSection({ scrollToCoreValues, homeSectionRef }) {
   return (
-    <>
-      <section className="grid grid-cols-2 justify-center place-items-center !mx-auto !my-[3rem] max-w-[1200px]">
+    <section>
+      <section
+        ref={homeSectionRef}
+        className="grid grid-cols-2 justify-center place-items-center !mx-auto !my-[3rem] max-w-[1200px]"
+      >
         <div className="flex flex-col gap-[2rem] justify-start">
           <h1 className="text-[4.8rem] leading-[6.7rem] font-bold text-[#404040] text-left">
             Furniture design to <br></br> make you feel at home
@@ -43,7 +46,7 @@ function HomeSection({ scrollToCoreValues }) {
           </div>
         </div>
       </footer>
-    </>
+    </section>
   );
 }
 
