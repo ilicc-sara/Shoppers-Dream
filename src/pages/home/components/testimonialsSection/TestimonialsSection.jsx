@@ -25,26 +25,6 @@ function TestimonialsSection() {
     return () => clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    let startTime = null;
-    function animate(timeStamp) {
-      if (!startTime) {
-        startTime = timeStamp;
-      }
-      let progress = timeStamp - startTime;
-      console.log("progress", progress);
-      setWidth((5 - progress) * 20);
-
-      if (progress < 5000) {
-        window.requestAnimationFrame(animate);
-      }
-
-      return () => {
-        window.requestAnimationFrame(animate);
-      };
-    }
-  }, []);
-
   function changeCurrentSlideRight() {
     setCurrentSlide((prev) => {
       if (prev !== testimonials.length - 1) {
