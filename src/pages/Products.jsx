@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Products() {
   const [products, setProducts] = useState(null);
@@ -9,6 +10,7 @@ function Products() {
           "https://www.course-api.com/react-store-products"
         );
         const posts = await response.json();
+        console.log(posts);
         setProducts(posts);
       } catch (error) {
         console.log(error);
@@ -23,18 +25,20 @@ function Products() {
       <div className="container">
         <ul className="furniture-list">
           {products?.map((product, index) => (
-            <li key={index} className="furniture-item">
-              <img
-                src={product.image}
-                alt="Furniture-Picture"
-                className="furniture-picture"
-                style={{ display: "block" }}
-              />
-              <div className="furniture-item-info">
-                <h3 className="furniture-name">{product.name}</h3>
-                <h3 className="furniture-price">${+product.price / 100} $</h3>
-              </div>
-            </li>
+            <Link to={`/product/${product.id}`}>
+              <li key={index} className="furniture-item">
+                <img
+                  src={product.image}
+                  alt="Furniture-Picture"
+                  className="furniture-picture"
+                  style={{ display: "block" }}
+                />
+                <div className="furniture-item-info">
+                  <h3 className="furniture-name">{product.name}</h3>
+                  <h3 className="furniture-price">${+product.price / 100} $</h3>
+                </div>
+              </li>
+            </Link>
           ))}
         </ul>
       </div>
