@@ -7,7 +7,7 @@ function Nav() {
     <nav
       className={`w-full !py-[20px]  ${
         !sectionIsInView
-          ? "fixed top-0 left-0 w-full z-50 bg-white shadow-[0px_4px_6px_-2px_rgba(0,0,0,0.1)] "
+          ? "fixed top-0 left-0 w-full z-50 bg-white shadow-[0px_4px_6px_-2px_rgba(0,0,0,0.1)] sticky-nav"
           : ""
       } `}
     >
@@ -34,7 +34,7 @@ function Nav() {
               className="w-[24px] h-[24px]"
             ></ion-icon>
             <div className="text-[14px] padding-[2px] bg-[#d946ef] !text-white w-[20px] h-[20px] flex justify-center items-center rounded-[222px] absolute -top-[px] -right-[8px]">
-              <span className="!text-white">0</span>
+              <span className="cart-amount">0</span>
             </div>
           </div>
         </Link>
