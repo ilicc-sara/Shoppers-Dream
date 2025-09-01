@@ -33,8 +33,8 @@ function Nav() {
               name="bag-outline"
               className="w-[24px] h-[24px]"
             ></ion-icon>
-            <div className="text-[14px] padding-[2px] bg-[#d946ef] text-white w-[20px] h-[20px] flex justify-center items-center rounded-[222px] absolute -top-[px] -right-[8px]">
-              0
+            <div className="text-[14px] padding-[2px] bg-[#d946ef] !text-white w-[20px] h-[20px] flex justify-center items-center rounded-[222px] absolute -top-[px] -right-[8px]">
+              <span className="!text-white">0</span>
             </div>
           </div>
         </Link>
