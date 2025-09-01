@@ -1,12 +1,12 @@
 function ExampleProducts({ image }) {
   return (
-    <div className="flex flex-col gap-[1rem] ">
-      <img className="h-[25rem]" src={image} />
+    <div className="flex flex-col gap-[10px] ">
+      <img className="h-[250px]" src={image} />
       <div className="flex justify-between">
-        <span className="text-[#444] font-semibold text-[1.6rem]">
+        <span className="text-[#444] font-semibold text-[16px]">
           Suede Armchair
         </span>
-        <span className="text-[#d946ef] text-[1.6rem] font-semibold">
+        <span className="text-[#d946ef] text-[16px] font-semibold">
           $159.99
         </span>
       </div>

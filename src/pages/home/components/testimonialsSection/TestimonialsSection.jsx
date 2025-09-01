@@ -26,17 +26,17 @@ function TestimonialsSection() {
     });
   }
   return (
-    <section className="border-b-[2px] border-b-[#d5d5d5] !py-[14rem]">
-      <div className="max-w-[90rem] !mx-auto">
-        <p className="text-left uppercase text-[1.4rem] text-[#d946ef] font-medium">
+    <section className="border-b-[2px] border-b-[#d5d5d5] !py-[140px]">
+      <div className="max-w-[900px] !mx-auto">
+        <p className="text-left uppercase text-[14px] text-[#d946ef] font-medium">
           Testimonials
         </p>
-        <h1 className="text-[3.7rem] font-medium text-left text-[#444]">
+        <h1 className="text-[37px] font-medium text-left text-[#444]">
           Discover the stories of our delighted customers - thousands and
           counting!
         </h1>
 
-        <div className="flex w-[75rem] !mx-auto items-center relative h-[40rem] !my-[4rem] overflow-x-hidden">
+        <div className="flex w-[750px] !mx-auto items-center relative h-[400px] !my-[40px] overflow-x-hidden">
           <Button
             variation="arrow-left"
             handleClick={() => changeCurrentSlideLeft()}
@@ -46,12 +46,12 @@ function TestimonialsSection() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="absolute top-10 !py-[1rem] !px-[8rem] flex flex-col gap-[2rem] ransition-transform duration-1000"
+              className="absolute top-10 !py-[10px] !px-[80px] flex flex-col gap-[20px] ransition-transform duration-1000"
               style={{
                 transform: `translateX(${(index - currentSlide) * 100}%)`,
               }}
             >
-              <p className=" text-left text-[2.7rem] leading-[1.9rem] font-semibold">
+              <p className=" text-left text-[27px] leading-[19px] font-semibold">
                 {testimonial.header}
               </p>
               {currentSlide === index ? (
@@ -62,26 +62,26 @@ function TestimonialsSection() {
                   onAnimationComplete={() => {
                     changeCurrentSlideRight();
                   }}
-                  className={`bg-[#d946ef]  h-[0.5rem]`}
+                  className={`bg-[#d946ef]  h-[5px]`}
                 ></motion.div>
               ) : (
                 <div
-                  className={`bg-[#d946ef]  h-[0.5rem]`}
+                  className={`bg-[#d946ef]  h-[5px]`}
                   style={{ width: 0 }}
                 ></div>
               )}
 
-              <p className="text-left text-[1.5rem] leading-[2.8rem]">
+              <p className="text-left text-[15px] leading-[28px]">
                 {testimonial.text}
               </p>
 
-              <div className="flex flex-col items-start !my-[2rem]">
+              <div className="flex flex-col items-start !my-[20]">
                 <img
-                  className="w-[5rem] h-[5rem] rounded-[222px] object-cover"
+                  className="w-[50px] h-[50px] rounded-[222px] object-cover"
                   src={`${testimonial.image}`}
                 />
-                <p className="text-[1.4rem] font-medium">{testimonial.name}</p>
-                <p className="text-[1.2rem]">{testimonial.location}</p>
+                <p className="text-[14px] font-medium">{testimonial.name}</p>
+                <p className="text-[12px]">{testimonial.location}</p>
               </div>
             </div>
           ))}

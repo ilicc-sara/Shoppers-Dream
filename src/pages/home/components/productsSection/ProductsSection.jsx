@@ -5,16 +5,16 @@ import { Link } from "react-router-dom";
 
 function ProductsSection() {
   return (
-    <section className="border-b-[2px] border-b-[#d5d5d5] !py-[14rem]">
-      <div className="max-w-[120rem] !mx-auto">
-        <p className="text-left uppercase text-[1.4rem] text-[#d946ef] font-medium ">
+    <section className="border-b-[2px] border-b-[#d5d5d5] !py-[140px]">
+      <div className="max-w-[1200px] !mx-auto">
+        <p className="text-left uppercase text-[14px] text-[#d946ef] font-medium ">
           Featured products
         </p>
-        <h1 className="text-[3.7rem] font-medium text-left text-[#444]">
+        <h1 className="text-[37px] font-medium text-left text-[#444]">
           The art of modern living unlocked.
         </h1>
 
-        <div className="flex justify-between !pt-[7rem] !pb-[4rem]">
+        <div className="flex justify-between !pt-[70px] !pb-[40px]">
           {exampleProductsImg.map((img, index) => (
             <ExampleProducts key={index} image={img} />
           ))}

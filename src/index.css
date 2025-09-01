@@ -7,7 +7,8 @@
 }
 
 html {
-  font-size: 62.5%;
+  /* font-size: 62.5%; */
+  font-size: 100%;
 }
 
 body {
@@ -33,11 +34,12 @@ button {
 }
 
 .btn {
-  padding: 0 2.5rem;
-  height: 5rem;
-  font-size: 1.6rem;
+  padding: 0 25px;
+  height: 50px;
+  font-size: 16px;
   border-radius: 5px;
   font-weight: 600;
+  border: none;
 }
 
 .explore-btn {
@@ -60,10 +62,10 @@ button {
 }
 
 .arrow-btn {
-  font-size: 2.8rem;
+  font-size: 28px;
   font-weight: 800;
-  height: 5rem;
-  width: 5rem;
+  height: 50px;
+  width: 50px;
 
   border-radius: 222px;
   background-color: rgba(255, 255, 255, 0.7);
@@ -75,8 +77,8 @@ button {
 }
 
 .arrow-btn {
-  width: 5rem;
-  height: 5rem;
+  width: 50px;
+  height: 50px;
   position: absolute;
   z-index: 10;
   border-radius: 222px;
