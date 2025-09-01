@@ -10,7 +10,6 @@ function Products() {
           "https://www.course-api.com/react-store-products"
         );
         const posts = await response.json();
-        console.log(posts);
         setProducts(posts);
       } catch (error) {
         console.log(error);

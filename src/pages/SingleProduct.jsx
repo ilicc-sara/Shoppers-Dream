@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 function SingleProduct() {
@@ -13,7 +13,6 @@ function SingleProduct() {
           `https://www.course-api.com/react-store-single-product?id=${params.productId}`
         );
         const post = await response.json();
-        console.log(post);
         setProduct(post);
         setDisplayImage(post.images[0].url);
       } catch (error) {
@@ -23,6 +22,7 @@ function SingleProduct() {
 
     fetchPost();
   }, []);
+
   return (
     <>
       {product && (
@@ -41,35 +41,35 @@ function SingleProduct() {
                 alt="Furniture-Picture"
                 class="side-img"
                 style={{ display: "block" }}
-                onClick={() => setDisplayImage(product.images[0].url)}
+                onClick={(e) => setDisplayImage(e.target.src)}
               />
               <img
                 src={product.images[1].url}
                 alt="Furniture-Picture"
                 class="side-img"
                 style={{ display: "block" }}
-                onClick={() => setDisplayImage(product.images[1].url)}
+                onClick={(e) => setDisplayImage(e.target.src)}
               />
               <img
                 src={product.images[2].url}
                 alt="Furniture-Picture"
                 class="side-img"
                 style={{ display: "block" }}
-                onClick={() => setDisplayImage(product.images[2].url)}
+                onClick={(e) => setDisplayImage(e.target.src)}
               />
               <img
                 src={product.images[3].url}
                 alt="Furniture-Picture"
                 class="side-img"
                 style={{ display: "block" }}
-                onClick={() => setDisplayImage(product.images[3].url)}
+                onClick={(e) => setDisplayImage(e.target.src)}
               />
               <img
                 src={product.images[4].url}
                 alt="Furniture-Picture"
                 class="side-img"
                 style={{ display: "block" }}
-                onClick={() => setDisplayImage(product.images[4].url)}
+                onClick={(e) => setDisplayImage(e.target.src)}
               />
             </div>
           </div>
