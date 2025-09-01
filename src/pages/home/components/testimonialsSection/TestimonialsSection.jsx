@@ -1,9 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Button from "@/UI/Button";
 import { testimonials } from "../helpers";
-import Sequence from "./components/Sequence";
 import { motion } from "framer-motion";
-import { style } from "framer-motion/client";
 
 function TestimonialsSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -58,12 +56,10 @@ function TestimonialsSection() {
               </p>
               {currentSlide === index ? (
                 <motion.div
-                  // style={{ width: `${width}%` }}
                   initial={{ width: 0 }}
                   animate={{ width: "100%" }}
                   transition={{ duration: 5 }}
                   onAnimationComplete={() => {
-                    console.log("animation finished");
                     changeCurrentSlideRight();
                   }}
                   className={`bg-[#d946ef]  h-[0.5rem]`}
