@@ -3,32 +3,10 @@ import Button from "@/UI/Button";
 import { testimonials } from "../helpers";
 import Sequence from "./components/Sequence";
 import { motion } from "framer-motion";
+import { style } from "framer-motion/client";
 
 function TestimonialsSection() {
-  const [time, setTime] = useState(5);
-  const [width, setWidth] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  const sliderRef = useRef();
-  console.log(sliderRef.current);
-
-  // requestAnimationFrame
-  // useEffect(() => {
-  //   let time = 5;
-  //   const tick = function () {
-  //     time--;
-  //     let timeString = String(time);
-  //     setTime(timeString);
-  //     setWidth((5 - time) * 20);
-
-  //     if (time === 0) {
-  //       clearInterval(timer);
-  //     }
-  //   };
-  //   tick();
-  //   const timer = setInterval(tick, 1000);
-  //   return () => clearInterval(timer);
-  // }, []);
 
   function changeCurrentSlideRight() {
     setCurrentSlide((prev) => {
@@ -78,13 +56,24 @@ function TestimonialsSection() {
               <p className=" text-left text-[2.7rem] leading-[1.9rem] font-semibold">
                 {testimonial.header}
               </p>
-              <motion.div
-                ref={sliderRef}
-                // style={{ width: `${width}%` }}
-                initial={{ width: 0 }}
-                animate={{ width: "100%", transition: { duration: 5 } }}
-                className={`bg-[#d946ef]  h-[0.5rem]`}
-              ></motion.div>
+              {currentSlide === index ? (
+                <motion.div
+                  // style={{ width: `${width}%` }}
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 5 }}
+                  onAnimationComplete={() => {
+                    console.log("animation finished");
+                    changeCurrentSlideRight();
+                  }}
+                  className={`bg-[#d946ef]  h-[0.5rem]`}
+                ></motion.div>
+              ) : (
+                <div
+                  className={`bg-[#d946ef]  h-[0.5rem]`}
+                  style={{ width: 0 }}
+                ></div>
+              )}
 
               <p className="text-left text-[1.5rem] leading-[2.8rem]">
                 {testimonial.text}
