@@ -5,13 +5,13 @@ export default {
   theme: {
     extend: {},
     screens: {
-      mobile: { max: "479px" },
+      mobile: "479px",
       // => @media (max-width: 479px) { ... }
 
-      tablet: { max: "767px" },
+      tablet: "767px",
       // => @media (max-width: 767px) { ... }
 
-      desktop: { min: "768px" },
+      desktop: "1280px",
       // => @media (min-width: 768px) { ... }
     },
   },

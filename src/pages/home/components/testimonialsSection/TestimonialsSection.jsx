@@ -28,7 +28,7 @@ function TestimonialsSection() {
   return (
     <section className="border-b-[2px] border-b-[#d5d5d5] !py-[140px]">
       <div className="max-w-4xl !mx-auto">
-        <p className="text-left uppercase text-[14px] text-[#d946ef] font-medium">
+        <p className="text-left uppercase text-[14px] text-brand-pink font-medium">
           Testimonials
         </p>
         <h1 className="text-[37px] font-medium text-left text-[#444]">
@@ -62,11 +62,11 @@ function TestimonialsSection() {
                   onAnimationComplete={() => {
                     changeCurrentSlideRight();
                   }}
-                  className={`bg-[#d946ef]  h-[5px]`}
+                  className={`bg-brand-pink h-[5px]`}
                 ></motion.div>
               ) : (
                 <div
-                  className={`bg-[#d946ef]  h-[5px]`}
+                  className={`bg-brand-pink h-[5px]`}
                   style={{ width: 0 }}
                 ></div>
               )}
