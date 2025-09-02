@@ -11,7 +11,7 @@ function Nav() {
           : ""
       } `}
     >
-      <div className="max-w-7xl flex justify-between !mx-auto tablet:bg-green-400 mobile:bg-blue-300 desktop:bg-yellow-500">
+      <div className="max-w-7xl flex justify-between !mx-auto ">
         <div className="text-2xl font-medium flex items-center justify-center gap-[15px]">
           <ion-icon name="bag-outline" class="w-[24px] h-[24px]"></ion-icon>
           <span>X Shopper's Dream</span>

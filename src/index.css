@@ -4,6 +4,13 @@
   --color-brand-pink: #d946ef;
 }
 
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-tablet: 640px;
+  --breakpoint-laptop: 1024px;
+  --breakpoint-desktop: 1280px;
+}
+
 /* RESET */
 * {
   padding: 0;
