@@ -9,7 +9,7 @@ function HomeSection({ scrollToCoreValues, homeSectionRef }) {
       ref={homeSectionRef}
       className="flex flex-col w-full border-b-[2px] border-b-[#d5d5d5]"
     >
-      <section className="grid grid-cols-2 justify-center place-items-center !mx-auto !my-[30px] max-w-[1200px]">
+      <section className="grid grid-cols-2 justify-center place-items-center !mx-auto !my-[30px] max-w-6xl">
         <div className="flex flex-col gap-[20px] justify-start">
           <h1 className="text-[48px] leading-[67px] font-bold text-[#404040] text-left">
             Furniture design to <br></br> make you feel at home
@@ -35,7 +35,7 @@ function HomeSection({ scrollToCoreValues, homeSectionRef }) {
       </section>
 
       <footer className=" ">
-        <div className="!py-[120px] !mx-auto flex flex-col gap-[30px] max-w-[1200px]">
+        <div className="!py-[120px] !mx-auto flex flex-col gap-[30px] max-w-6xl">
           <p className="text-[14px] text-gray-500 uppercase font-semibold">
             As featured in
           </p>

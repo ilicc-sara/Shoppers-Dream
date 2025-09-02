@@ -1,7 +1,7 @@
 function ExampleProducts({ image }) {
   return (
     <div className="flex flex-col gap-[10px] ">
-      <img className="h-[250px]" src={image} />
+      <img className="h-[240px]" src={image} />
       <div className="flex justify-between">
         <span className="text-[#444] font-semibold text-[16px]">
           Suede Armchair

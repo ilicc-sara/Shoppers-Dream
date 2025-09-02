@@ -7,7 +7,7 @@ function CoreValuesSection({ coreValuesRef }) {
       ref={coreValuesRef}
       className="border-b-[2px] border-b-[#d5d5d5] !py-[140px]"
     >
-      <div className="max-w-[1200px] !mx-auto">
+      <div className="max-w-6xl !mx-auto">
         <p className="text-left uppercase text-[14px] text-[#d946ef] font-medium">
           Creeds we live by
         </p>
