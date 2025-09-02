@@ -16,7 +16,6 @@ function Nav() {
           <ion-icon name="bag-outline" class="w-[24px] h-[24px]"></ion-icon>
           <span>X Shopper's Dream</span>
         </div>
-
         <div className="flex align-center justify-center gap-[15px]">
           <NavLink to="/" className="text-[16px] ">
             Home
@@ -25,7 +24,6 @@ function Nav() {
             Products
           </NavLink>
         </div>
-
         <Link to="/cart">
           <div className="relative text-[20px] flex justify-center items-start gap-[5px]">
             <span className="text-[18px]">Cart</span>

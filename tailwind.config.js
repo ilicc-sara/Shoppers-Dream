@@ -1,15 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{html,js}"],
+  responsive: "desktop-first", // default: 'mobile-first'
   theme: {
     extend: {},
     screens: {
-      DEFAULT: "1280px",
-      sm: "640px",
-      md: "768px",
-      lg: "1024px",
-      xl: "1280px",
-      "2xl": "1536px",
+      mobile: { max: "479px" },
+      // => @media (max-width: 479px) { ... }
+
+      tablet: { max: "767px" },
+      // => @media (max-width: 767px) { ... }
+
+      desktop: { min: "768px" },
+      // => @media (min-width: 768px) { ... }
     },
   },
   plugins: [],
