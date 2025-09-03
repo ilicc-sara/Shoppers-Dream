@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Button from "../UI/Button";
 
 function Products() {
   const [products, setProducts] = useState(null);
   const [activeProducts, setActiveProducts] = useState(null);
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeColor, setActiveColor] = useState("all");
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -26,13 +28,28 @@ function Products() {
   function filterActiveCategoryProducts(category) {
     if (category === "all") {
       setActiveProducts(products);
+      setActiveCategory("all");
     } else {
       const filteredProducts = products.filter(
         (product) => product.category === category
       );
       setActiveProducts(filteredProducts);
+      setActiveCategory(category);
     }
   }
+
+  const categories = [
+    "all",
+    "office",
+    "living room",
+    "kitchen",
+    "bedroom",
+    "dining",
+    "kids",
+  ];
+
+  const colors = ["all", "red", "green", "blue", "black", "yellow"];
+
   return (
     <div className="!mt-[100px] flex gap-6 w-7xl !mx-auto">
       <div className="flex flex-col gap-5">
@@ -43,48 +60,17 @@ function Products() {
         />
         <div className="flex flex-col items-start">
           <p className="text-base font-medium">Category</p>
-          <p
-            className={`text-base capitalize cursor-pointer`}
-            onClick={(e) => filterActiveCategoryProducts(e.target.textContent)}
-          >
-            all
-          </p>
-          <p
-            className={`text-base capitalize cursor-pointer`}
-            onClick={(e) => filterActiveCategoryProducts(e.target.textContent)}
-          >
-            office
-          </p>
-          <p
-            className={`text-base capitalize cursor-pointer`}
-            onClick={(e) => filterActiveCategoryProducts(e.target.textContent)}
-          >
-            living room
-          </p>
-          <p
-            className={`text-base capitalize cursor-pointer`}
-            onClick={(e) => filterActiveCategoryProducts(e.target.textContent)}
-          >
-            kitchen
-          </p>
-          <p
-            className={`text-base capitalize cursor-pointer`}
-            onClick={(e) => filterActiveCategoryProducts(e.target.textContent)}
-          >
-            bedroom
-          </p>
-          <p
-            className={`text-base capitalize cursor-pointer`}
-            onClick={(e) => filterActiveCategoryProducts(e.target.textContent)}
-          >
-            dining
-          </p>
-          <p
-            className={`text-base capitalize cursor-pointer`}
-            onClick={(e) => filterActiveCategoryProducts(e.target.textContent)}
-          >
-            kids
-          </p>
+          {categories.map((category, index) => (
+            <p
+              key={index}
+              className={`text-base capitalize cursor-pointer ${
+                activeCategory === category ? "active" : ""
+              }`}
+              onClick={() => filterActiveCategoryProducts(category)}
+            >
+              {category}
+            </p>
+          ))}
         </div>
 
         <div className="flex flex-col items-start">
