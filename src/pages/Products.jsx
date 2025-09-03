@@ -19,27 +19,53 @@ function Products() {
     fetchPost();
   }, []);
   return (
-    <>
+    <div className="!mt-[150px] flex">
       <div>
-        <input type="text" placeholder="Search" />
-        <div name="categories">
-          <p>Category</p>
-          <p>All</p>
-          <p>Office</p>
-          <p>Living Room</p>
-          <p>Kitchen</p>
-          <p>Bedroom</p>
-          <p>Dining</p>
-          <p>Kids</p>
+        <div>
+          <input type="text" placeholder="Search" />
+          <div className=" flex flex-col items-start">
+            <p className="text-base font-medium">Category</p>
+            <p className="text-base">All</p>
+            <p className="text-base">Office</p>
+            <p className="text-base">Living Room</p>
+            <p className="text-base">Kitchen</p>
+            <p className="text-base">Bedroom</p>
+            <p className="text-base">Dining</p>
+            <p className="text-base">Kids</p>
+          </div>
+        </div>
+        <select type="text">
+          <option>All</option>
+          <option>Marcos</option>
+          <option>Liddy</option>
+          <option>Ikea</option>
+          <option>Caressa</option>
+        </select>
+
+        <div name="color">
+          <p>Color</p>
+          <div name="color-options">
+            <div>All</div>
+            <div>Red</div>
+            <div>Green</div>
+            <div>Blue</div>
+            <div>Black</div>
+            <div>Yellow</div>
+          </div>
+
+          <div name="price">
+            <p>Price</p>
+            <input
+              type="range"
+              class="graph"
+              name="points"
+              value="16"
+              min="0"
+              max="3999"
+            />
+          </div>
         </div>
       </div>
-      <select type="text">
-        <option>All</option>
-        <option>Marcos</option>
-        <option>Liddy</option>
-        <option>Ikea</option>
-        <option>Caressa</option>
-      </select>
       <div className="container !mt-[8rem]">
         <ul className="furniture-list">
           {products?.map((product, index) => (
@@ -60,7 +86,7 @@ function Products() {
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 }
 
