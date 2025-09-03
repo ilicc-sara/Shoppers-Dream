@@ -9,7 +9,11 @@ function HomeSection({ scrollToCoreValues, homeSectionRef }) {
       ref={homeSectionRef}
       className="flex flex-col w-full border-b-[2px] border-b-[#d5d5d5]"
     >
-      <section className="grid grid-cols-2 justify-center place-items-center !mx-auto !my-[30px] w-6xl desktop:bg-red-500 desktop:w-6xl laptop:w-4xl laptop:bg-blue-400 ">
+      <section
+        className="grid grid-cols-2 justify-center place-items-center 
+      !mx-auto !my-[30px] w-6xl 
+       "
+      >
         <div className="flex flex-col gap-[20px] justify-start ">
           <h1 className="text-[48px] leading-[67px] font-bold text-[#404040] text-left">
             Furniture design to <br></br> make you feel at home
