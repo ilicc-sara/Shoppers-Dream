@@ -38,6 +38,53 @@ function Products() {
     }
   }
 
+  function filterAvailableColors(color) {
+    const filteredProducts = products.filter(
+      (product) => product.category === activeCategory
+    );
+    if (activeCategory === "all" && activeColor === "all") {
+      setActiveProducts(products);
+      setActiveColor("all");
+    } else if (activeCategory !== "all" && activeColor === "all") {
+      setActiveProducts(filteredProducts);
+    } else if (activeCategory !== "all" && activeColor !== "all") {
+      if (color === "red") {
+        const filterRed = filteredProducts.filter((product) =>
+          product.colors.includes("#ff0000")
+        );
+        setActiveProducts(filterRed);
+        setActiveColor(color);
+      } else if (color === "blue") {
+        const filterBlue = filteredProducts.filter((product) =>
+          product.colors.includes("#0000ff")
+        );
+        setActiveProducts(filterBlue);
+        setActiveColor(color);
+      } else if (color === "green") {
+        const filterGreen = filteredProducts.filter((product) =>
+          product.colors.includes("#00ff00")
+        );
+        setActiveProducts(filterGreen);
+        setActiveColor(color);
+      } else if (color === "yellow") {
+        const filterYellow = filteredProducts.filter((product) =>
+          product.colors.includes("#ffb900")
+        );
+        setActiveProducts(filterYellow);
+        setActiveColor(color);
+      } else if (color === "gray") {
+        const filterBlack = filteredProducts.filter((product) =>
+          product.colors.includes("#000")
+        );
+        setActiveProducts(filterBlack);
+        setActiveColor(color);
+      }
+    }
+  }
+
+  // function getIsItemInCart(id) {
+  //   return cartItems.includes(cartItems.find((item) => item.id === id));
+  // }
   const categories = [
     "all",
     "office",
@@ -48,7 +95,7 @@ function Products() {
     "kids",
   ];
 
-  const colors = ["all", "red", "green", "blue", "black", "yellow"];
+  const colors = ["red", "green", "blue", "gray", "yellow"];
 
   return (
     <div className="!mt-[100px] flex gap-6 w-7xl !mx-auto">
@@ -90,12 +137,21 @@ function Products() {
         <div className="flex flex-col items-start">
           <p className="text-base font-medium">Color</p>
           <div className="flex items-center justify-between gap-3">
-            <div>All</div>
-            <div className="w-3 h-3 rounded rull bg-red-400"></div>
+            <div onClick={(e) => filterAvailableColors(e.target.textContent)}>
+              All
+            </div>
+            {colors.map((color, index) => (
+              <div
+                key={index}
+                className={`w-3 h-3 rounded rull bg-${color}-400`}
+                onClick={() => filterAvailableColors(color)}
+              ></div>
+            ))}
+            {/* <div className="w-3 h-3 rounded rull bg-red-400"></div>
             <div className="w-3 h-3 rounded rull bg-green-400"></div>
             <div className="w-3 h-3 rounded rull bg-blue-400"></div>
             <div className="w-3 h-3 rounded rull bg-gray-400"></div>
-            <div className="w-3 h-3 rounded rull bg-yellow-400"></div>
+            <div className="w-3 h-3 rounded rull bg-yellow-400"></div> */}
           </div>
         </div>
 
@@ -119,25 +175,43 @@ function Products() {
 
         <Button variation="clear">Clear Filters</Button>
       </div>
-      <div className="!mx-auto">
-        <ul className="furniture-list">
-          {activeProducts?.map((product, index) => (
-            <Link to={`/product/${product.id}`}>
-              <li key={index} className="furniture-item">
-                <img
-                  src={product.image}
-                  alt="Furniture-Picture"
-                  className="furniture-picture"
-                  style={{ display: "block" }}
-                />
-                <div className="furniture-item-info">
-                  <h3 className="furniture-name">{product.name}</h3>
-                  <h3 className="furniture-price">${+product.price / 100} $</h3>
-                </div>
-              </li>
-            </Link>
-          ))}
-        </ul>
+
+      <div>
+        <div className="flex justify-between gap-5 !mb-4">
+          <p>{activeProducts?.length} Products Found</p>
+          <hr className="self-center border-t border-brand-darker flex-1 mx-4" />
+          <select
+            type="text"
+            className="bg-none border-[1px] border-brand-darker !pl-[10px]"
+          >
+            <option>Price (Lowest)</option>
+            <option>Price (Highest)</option>
+            <option>Name (A-Z)</option>
+            <option>Name (Z-)</option>
+          </select>
+        </div>
+        <div className="!mx-auto">
+          <ul className="furniture-list">
+            {activeProducts?.map((product, index) => (
+              <Link to={`/product/${product.id}`}>
+                <li key={index} className="furniture-item">
+                  <img
+                    src={product.image}
+                    alt="Furniture-Picture"
+                    className="furniture-picture"
+                    style={{ display: "block" }}
+                  />
+                  <div className="furniture-item-info">
+                    <h3 className="furniture-name">{product.name}</h3>
+                    <h3 className="furniture-price">
+                      ${+product.price / 100} $
+                    </h3>
+                  </div>
+                </li>
+              </Link>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

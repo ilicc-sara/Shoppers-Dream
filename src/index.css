@@ -41,6 +41,16 @@ button {
   font-family: inherit;
 }
 
+/*   */
+.neka-klasa-da-ne-bi-bio-error-sa-bojama {
+  border-color: "#ff0000";
+  border-color: "#00ff00";
+  border-color: "#0000ff";
+  border-color: "#ffb900";
+  border-color: "#000";
+}
+
+/*  */
 a {
   text-decoration: none;
   color: inherit;
@@ -81,7 +91,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: 50px;
+  /* padding-right: 50px; */
 }
 
 .furniture-price {
