@@ -4,6 +4,8 @@ import Button from "../UI/Button";
 
 function Products() {
   const [products, setProducts] = useState(null);
+  const [activeProducts, setActiveProducts] = useState(null);
+
   useEffect(() => {
     const fetchPost = async () => {
       try {
@@ -12,6 +14,7 @@ function Products() {
         );
         const posts = await response.json();
         setProducts(posts);
+        setActiveProducts(posts);
       } catch (error) {
         console.log(error);
       }
@@ -19,9 +22,20 @@ function Products() {
 
     fetchPost();
   }, []);
+
+  function filterActiveCategoryProducts(category) {
+    if (category === "all") {
+      setActiveProducts(products);
+    } else {
+      const filteredProducts = products.filter(
+        (product) => product.category === category
+      );
+      setActiveProducts(filteredProducts);
+    }
+  }
   return (
-    <div className="!mt-[100px] flex gap-[20px] w-7xl !mx-auto">
-      <div className="flex flex-col gap-[20px]">
+    <div className="!mt-[100px] flex gap-6 w-7xl !mx-auto">
+      <div className="flex flex-col gap-5">
         <input
           type="text"
           placeholder="Search"
@@ -29,13 +43,48 @@ function Products() {
         />
         <div className="flex flex-col items-start">
           <p className="text-base font-medium">Category</p>
-          <p className="text-base">All</p>
-          <p className="text-base">Office</p>
-          <p className="text-base">Living Room</p>
-          <p className="text-base">Kitchen</p>
-          <p className="text-base">Bedroom</p>
-          <p className="text-base">Dining</p>
-          <p className="text-base">Kids</p>
+          <p
+            className={`text-base capitalize cursor-pointer`}
+            onClick={(e) => filterActiveCategoryProducts(e.target.textContent)}
+          >
+            all
+          </p>
+          <p
+            className={`text-base capitalize cursor-pointer`}
+            onClick={(e) => filterActiveCategoryProducts(e.target.textContent)}
+          >
+            office
+          </p>
+          <p
+            className={`text-base capitalize cursor-pointer`}
+            onClick={(e) => filterActiveCategoryProducts(e.target.textContent)}
+          >
+            living room
+          </p>
+          <p
+            className={`text-base capitalize cursor-pointer`}
+            onClick={(e) => filterActiveCategoryProducts(e.target.textContent)}
+          >
+            kitchen
+          </p>
+          <p
+            className={`text-base capitalize cursor-pointer`}
+            onClick={(e) => filterActiveCategoryProducts(e.target.textContent)}
+          >
+            bedroom
+          </p>
+          <p
+            className={`text-base capitalize cursor-pointer`}
+            onClick={(e) => filterActiveCategoryProducts(e.target.textContent)}
+          >
+            dining
+          </p>
+          <p
+            className={`text-base capitalize cursor-pointer`}
+            onClick={(e) => filterActiveCategoryProducts(e.target.textContent)}
+          >
+            kids
+          </p>
         </div>
 
         <div className="flex flex-col items-start">
@@ -54,7 +103,7 @@ function Products() {
 
         <div className="flex flex-col items-start">
           <p className="text-base font-medium">Color</p>
-          <div className="flex items-center justify-between gap-[10px]">
+          <div className="flex items-center justify-between gap-3">
             <div>All</div>
             <div className="w-3 h-3 rounded rull bg-red-400"></div>
             <div className="w-3 h-3 rounded rull bg-green-400"></div>
@@ -86,7 +135,7 @@ function Products() {
       </div>
       <div className="!mx-auto">
         <ul className="furniture-list">
-          {products?.map((product, index) => (
+          {activeProducts?.map((product, index) => (
             <Link to={`/product/${product.id}`}>
               <li key={index} className="furniture-item">
                 <img
