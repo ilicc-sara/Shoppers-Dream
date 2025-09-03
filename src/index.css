@@ -57,7 +57,7 @@ a {
 /* PRODUCTS PAGE */
 .container,
 .single-product {
-  margin: 100px auto;
+  margin: 0 auto;
   width: 80%;
   height: 100vh;
 }
