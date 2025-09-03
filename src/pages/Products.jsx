@@ -191,19 +191,19 @@ function Products() {
           </select>
         </div>
         <div className="!mx-auto">
-          <ul className="furniture-list">
+          <ul className="list-none grid grid-cols-3 gap-y-8 gap-x-5">
             {activeProducts?.map((product, index) => (
               <Link to={`/product/${product.id}`}>
                 <li key={index} className="furniture-item">
                   <img
                     src={product.image}
                     alt="Furniture-Picture"
-                    className="furniture-picture"
+                    className="h-48 w-87 rounded-lg"
                     style={{ display: "block" }}
                   />
-                  <div className="furniture-item-info">
+                  <div className="!mt-3 flex items-center justify-between">
                     <h3 className="furniture-name">{product.name}</h3>
-                    <h3 className="furniture-price">
+                    <h3 className="text-brand-pink font-medium">
                       ${+product.price / 100} $
                     </h3>
                   </div>
