@@ -28,6 +28,10 @@ function Button(props) {
     modifierClassName = "right-[5px]";
   }
 
+  if (variation === "clear") {
+    modifierClassName = "bg-red-500 text-white w-30 h-14";
+  }
+
   return (
     <button
       className={`${baseClassName} ${modifierClassName}`}

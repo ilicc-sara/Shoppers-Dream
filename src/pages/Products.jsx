@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Button from "../UI/Button";
 
 function Products() {
   const [products, setProducts] = useState(null);
@@ -19,7 +20,7 @@ function Products() {
     fetchPost();
   }, []);
   return (
-    <div className="!mt-[100px] flex w-7xl !mx-auto">
+    <div className="!mt-[100px] flex gap-[20px] w-7xl !mx-auto">
       <div className="flex flex-col gap-[20px]">
         <input
           type="text"
@@ -80,8 +81,10 @@ function Products() {
           <p className="text-base font-medium">Free Shipping</p>
           <input type="checkbox" />
         </div>
+
+        <Button variation="clear">Clear Filters</Button>
       </div>
-      <div className="container">
+      <div className="!mx-auto">
         <ul className="furniture-list">
           {products?.map((product, index) => (
             <Link to={`/product/${product.id}`}>
