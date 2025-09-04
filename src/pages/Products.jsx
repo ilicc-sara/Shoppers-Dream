@@ -5,8 +5,12 @@ import Button from "../UI/Button";
 function Products() {
   const [products, setProducts] = useState(null);
   const [activeProducts, setActiveProducts] = useState(null);
+  // filters
   const [activeCategory, setActiveCategory] = useState("all");
   const [activeColor, setActiveColor] = useState("all");
+  const [searchValue, setSearchValue] = useState("");
+  const [brandOptionValue, setBrandOptionValue] = useState("all");
+  console.log("brand option value", brandOptionValue);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -48,7 +52,13 @@ function Products() {
     "kids",
   ];
 
-  const colors = ["red", "green", "blue", "gray", "yellow"];
+  const colors = [
+    { colorName: "red", colorValue: "#ff0000" },
+    { colorName: "green", colorValue: "#00ff00" },
+    { colorName: "blue", colorValue: "#0000ff" },
+    { colorName: "gray", colorValue: "#000" },
+    { colorName: "yellow", colorValue: "#ffb900" },
+  ];
   console.log(activeColor);
 
   return (
@@ -58,6 +68,8 @@ function Products() {
           type="text"
           placeholder="Search"
           className="bg-none border-[1px] border-brand-darker !pl-[10px]"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
         />
         <div className="flex flex-col items-start">
           <p className="text-base font-medium">Category</p>
@@ -79,12 +91,14 @@ function Products() {
           <select
             type="text"
             className="bg-none border-[1px] border-brand-darker !pl-[10px]"
+            value={brandOptionValue}
+            onChange={(e) => setBrandOptionValue(e.target.value)}
           >
-            <option>All</option>
-            <option>Marcos</option>
-            <option>Liddy</option>
-            <option>Ikea</option>
-            <option>Caressa</option>
+            <option className="capitalize">all</option>
+            <option className="capitalize">marcos</option>
+            <option className="capitalize">liddy</option>
+            <option className="capitalize">ikea</option>
+            <option className="capitalize">caressa</option>
           </select>
         </div>
 
