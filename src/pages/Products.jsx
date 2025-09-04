@@ -5,20 +5,24 @@ import Button from "../UI/Button";
 function Products() {
   const [products, setProducts] = useState(null);
   const [activeProducts, setActiveProducts] = useState(null);
-  // filters
-  const [activeCategory, setActiveCategory] = useState("all");
-  const [activeColor, setActiveColor] = useState("all");
+  // Search Value
   const [searchValue, setSearchValue] = useState("");
-  const [brandOptionValue, setBrandOptionValue] = useState("all");
   const [priceRangeValue, setPriceRangeValule] = useState("3999");
+  // filters
+  const [activeCategory, setActiveCategory] = useState(null);
+  const [activeColor, setActiveColor] = useState(null);
+  const [brandOptionValue, setBrandOptionValue] = useState(null);
   const [freeShipppingValue, setFreeShippingValue] = useState(false);
+  // sort Products
   const [sortValue, setSortValue] = useState();
 
   const filteredProducts = useMemo(() => {
-    return activeProducts?.filter((product) =>
-      product.name.toLowerCase().includes(searchValue.toLowerCase())
+    return activeProducts?.filter(
+      (product) =>
+        product.name.toLowerCase().includes(searchValue.toLowerCase()) &&
+        +product.price / 100 <= Number(priceRangeValue)
     );
-  }, [activeProducts, searchValue]);
+  }, [activeProducts, searchValue, priceRangeValue]);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -38,9 +42,9 @@ function Products() {
   }, []);
 
   function filterActiveCategoryProducts(category) {
-    if (category === "all") {
+    if (!category) {
       setActiveProducts(products);
-      setActiveCategory("all");
+      setActiveCategory(null);
     } else {
       const filteredProducts = products.filter(
         (product) => product.category === category
@@ -51,13 +55,13 @@ function Products() {
   }
 
   const categories = [
-    "all",
-    "office",
-    "living room",
-    "kitchen",
-    "bedroom",
-    "dining",
-    "kids",
+    { categoryName: "all", value: null },
+    { categoryName: "office", value: "office" },
+    { categoryName: "living room", value: "living room" },
+    { categoryName: "kitchen", value: "kitchen" },
+    { categoryName: "bedroom", value: "bedroom" },
+    { categoryName: "dining", value: "dining" },
+    { categoryName: "kids", value: "kids" },
   ];
 
   const colors = [
@@ -72,7 +76,7 @@ function Products() {
     <div className="!mt-[100px] flex gap-8 w-7xl !mx-auto">
       <div className="flex flex-col gap-5">
         <input
-          type="text"
+          type="search"
           placeholder="Search"
           className="bg-none border-[1px] border-brand-darker !pl-[10px]"
           value={searchValue}
@@ -84,11 +88,11 @@ function Products() {
             <p
               key={index}
               className={`text-base capitalize cursor-pointer ${
-                activeCategory === category ? "active" : ""
+                activeCategory === category.value ? "active" : ""
               }`}
-              onClick={() => filterActiveCategoryProducts(category)}
+              onClick={() => filterActiveCategoryProducts(category.value)}
             >
-              {category}
+              {category.categoryName}
             </p>
           ))}
         </div>
@@ -114,14 +118,14 @@ function Products() {
           <div className="flex items-center justify-between gap-3">
             <div
               className={`${
-                activeColor === "all" ? "active" : ""
+                !activeColor ? "active" : ""
               } capitalize cursor-pointer`}
-              onClick={(e) => setActiveColor(e.target.textContent)}
+              onClick={() => setActiveColor(null)}
             >
               all
             </div>
             {colors.map((color, index) => {
-              const isActive = activeColor.colorName === color.colorName;
+              const isActive = activeColor == color.colorValue;
               return (
                 <div
                   key={index}
@@ -131,7 +135,7 @@ function Products() {
                     opacity: `${isActive ? 1 : 0.5}`,
                     scale: `${isActive ? 1.25 : 1}`,
                   }}
-                  onClick={() => setActiveColor(color)}
+                  onClick={() => setActiveColor(color.colorValue)}
                 ></div>
               );
             })}
@@ -192,8 +196,8 @@ function Products() {
                   />
                   <div className="!mt-3 flex items-center justify-between">
                     <h3 className="capitalize">{product.name}</h3>
-                    <h3 className="text-brand-pink font-medium">
-                      ${+product.price / 100} $
+                    <h3 className="text-brand-darker font-medium">
+                      $ {+product.price / 100}
                     </h3>
                   </div>
                 </li>
