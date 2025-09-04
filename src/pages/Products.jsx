@@ -14,15 +14,26 @@ function Products() {
   const [brandOptionValue, setBrandOptionValue] = useState(null);
   const [freeShipppingValue, setFreeShippingValue] = useState(false);
   // sort Products
-  const [sortValue, setSortValue] = useState();
+  const [sortValue, setSortValue] = useState("price-lowest");
 
   const filteredProducts = useMemo(() => {
-    return activeProducts?.filter(
-      (product) =>
-        product.name.toLowerCase().includes(searchValue.toLowerCase()) &&
-        +product.price / 100 <= Number(priceRangeValue)
-    );
-  }, [activeProducts, searchValue, priceRangeValue]);
+    return activeProducts
+      ?.filter(
+        (product) =>
+          product.name.toLowerCase().includes(searchValue.toLowerCase()) &&
+          +product.price / 100 <= Number(priceRangeValue)
+      )
+      .sort((a, b) => {
+        // prettier-ignore
+        if (sortValue === "a-b") return a.name.localeCompare(b.name);
+        // prettier-ignore
+        if (sortValue === "b-a") return b.name.localeCompare(a.name);
+        // prettier-ignore
+        if (sortValue === "price-highest") return a.price - b.price ;
+        //prettier-ignore
+        if (sortValue === "price-lowest") return b.price - a.price ;
+      });
+  }, [activeProducts, searchValue, priceRangeValue, sortValue]);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -70,6 +81,13 @@ function Products() {
     { colorName: "blue", colorValue: "#0000ff" },
     { colorName: "gray", colorValue: "#000" },
     { colorName: "yellow", colorValue: "#ffb900" },
+  ];
+
+  const sortValues = [
+    { name: "Price (Lowest)", value: "price-lowest" },
+    { name: "Price (Highest)", value: "price-highest" },
+    { name: "Name (A-Z)", value: "a-b" },
+    { name: "Name (Z-A)", value: "b-a" },
   ];
 
   return (
@@ -176,11 +194,14 @@ function Products() {
           <select
             type="text"
             className="bg-none border-[1px] border-brand-darker !pl-[10px]"
+            value={sortValue}
+            onChange={(e) => setSortValue(e.target.value)}
           >
-            <option>Price (Lowest)</option>
-            <option>Price (Highest)</option>
-            <option>Name (A-Z)</option>
-            <option>Name (Z-)</option>
+            {sortValues.map((sortValue, index) => (
+              <option key={index} value={sortValue.value}>
+                {sortValue.name}
+              </option>
+            ))}
           </select>
         </div>
         <div className="!mx-auto">
