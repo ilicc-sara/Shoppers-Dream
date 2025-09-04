@@ -38,53 +38,6 @@ function Products() {
     }
   }
 
-  function filterAvailableColors(color) {
-    const filteredProducts = products.filter(
-      (product) => product.category === activeCategory
-    );
-    if (activeCategory === "all" && activeColor === "all") {
-      setActiveProducts(products);
-      setActiveColor("all");
-    } else if (activeCategory !== "all" && activeColor === "all") {
-      setActiveProducts(filteredProducts);
-    } else if (activeCategory !== "all" && activeColor !== "all") {
-      if (color === "red") {
-        const filterRed = filteredProducts.filter((product) =>
-          product.colors.includes("#ff0000")
-        );
-        setActiveProducts(filterRed);
-        setActiveColor(color);
-      } else if (color === "blue") {
-        const filterBlue = filteredProducts.filter((product) =>
-          product.colors.includes("#0000ff")
-        );
-        setActiveProducts(filterBlue);
-        setActiveColor(color);
-      } else if (color === "green") {
-        const filterGreen = filteredProducts.filter((product) =>
-          product.colors.includes("#00ff00")
-        );
-        setActiveProducts(filterGreen);
-        setActiveColor(color);
-      } else if (color === "yellow") {
-        const filterYellow = filteredProducts.filter((product) =>
-          product.colors.includes("#ffb900")
-        );
-        setActiveProducts(filterYellow);
-        setActiveColor(color);
-      } else if (color === "gray") {
-        const filterBlack = filteredProducts.filter((product) =>
-          product.colors.includes("#000")
-        );
-        setActiveProducts(filterBlack);
-        setActiveColor(color);
-      }
-    }
-  }
-
-  // function getIsItemInCart(id) {
-  //   return cartItems.includes(cartItems.find((item) => item.id === id));
-  // }
   const categories = [
     "all",
     "office",
@@ -96,6 +49,7 @@ function Products() {
   ];
 
   const colors = ["red", "green", "blue", "gray", "yellow"];
+  console.log(activeColor);
 
   return (
     <div className="!mt-[100px] flex gap-6 w-7xl !mx-auto">
@@ -137,16 +91,32 @@ function Products() {
         <div className="flex flex-col items-start">
           <p className="text-base font-medium">Color</p>
           <div className="flex items-center justify-between gap-3">
-            <div onClick={(e) => filterAvailableColors(e.target.textContent)}>
-              All
+            <div
+              className={`${
+                activeColor === "all" ? "active" : ""
+              } capitalize cursor-pointer`}
+              onClick={(e) => setActiveColor(e.target.textContent)}
+            >
+              all
             </div>
-            {colors.map((color, index) => (
-              <div
-                key={index}
-                className={`w-3 h-3 rounded rull bg-${color}-400`}
-                onClick={() => filterAvailableColors(color)}
-              ></div>
-            ))}
+            {colors.map((color, index) => {
+              const isActive = activeColor === color;
+              return (
+                <div
+                  key={index}
+                  className={`w-3 h-3 rounded-full cursor-pointer ${
+                    isActive ? `bg-${color}-500 scale-125` : `bg-${color}-400`
+                  }`}
+                  onClick={(e) => {
+                    console.log(
+                      "background-color",
+                      e.target.style.backgroundColor
+                    );
+                    setActiveColor(color);
+                  }}
+                ></div>
+              );
+            })}
             {/* <div className="w-3 h-3 rounded rull bg-red-400"></div>
             <div className="w-3 h-3 rounded rull bg-green-400"></div>
             <div className="w-3 h-3 rounded rull bg-blue-400"></div>
