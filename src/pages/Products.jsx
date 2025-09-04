@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Button from "../UI/Button";
 
@@ -13,6 +13,12 @@ function Products() {
   const [priceRangeValue, setPriceRangeValule] = useState("3999");
   const [freeShipppingValue, setFreeShippingValue] = useState(false);
   const [sortValue, setSortValue] = useState();
+
+  const filteredProducts = useMemo(() => {
+    return activeProducts?.filter((product) =>
+      product.name.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  }, [activeProducts, searchValue]);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -161,7 +167,7 @@ function Products() {
 
       <div>
         <div className="flex justify-between gap-5 !mb-4">
-          <p>{activeProducts?.length} Products Found</p>
+          <p>{filteredProducts?.length} Products Found</p>
           <hr className="self-center border-t border-brand-darker flex-1 mx-4" />
           <select
             type="text"
@@ -175,7 +181,7 @@ function Products() {
         </div>
         <div className="!mx-auto">
           <ul className="list-none grid grid-cols-3 gap-y-8 gap-x-5">
-            {activeProducts?.map((product, index) => (
+            {filteredProducts?.map((product, index) => (
               <Link to={`/product/${product.id}`}>
                 <li key={index} className="furniture-item">
                   <img

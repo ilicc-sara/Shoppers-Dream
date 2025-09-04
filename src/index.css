@@ -63,35 +63,6 @@ a {
   text-underline-offset: 2px;
 }
 
-/* PRODUCTS PAGE */
-/* .container,
-.single-product {
-  margin: 0 auto;
-  width: 80%;
-  height: 100vh;
-} */
-
-/* .furniture-list {
-  list-style: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  row-gap: 30px;
-  column-gap: 20px;
-} */
-
-/* .furniture-picture {
-  height: 200px;
-  width: 350px;
-  border-radius: 10px;
-} */
-
-/* .furniture-item-info {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-} */
-
 /* ///////////////////////////////////////////////////// */
 .single-product-item {
   display: grid;
