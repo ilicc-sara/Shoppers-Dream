@@ -1,20 +1,20 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Button from "../UI/Button";
+import { act } from "react";
 
 function Products() {
   const [products, setProducts] = useState(null);
   const [activeProducts, setActiveProducts] = useState(null);
-  // Search Value
+  // input values
   const [searchValue, setSearchValue] = useState("");
   const [priceRangeValue, setPriceRangeValule] = useState("3999");
+  const [sortValue, setSortValue] = useState("price-lowest");
   // filters
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeColor, setActiveColor] = useState(null);
   const [brandOptionValue, setBrandOptionValue] = useState(null);
   const [freeShipppingValue, setFreeShippingValue] = useState(false);
-  // sort Products
-  const [sortValue, setSortValue] = useState("price-lowest");
 
   const filteredProducts = useMemo(() => {
     return activeProducts
@@ -29,11 +29,29 @@ function Products() {
         // prettier-ignore
         if (sortValue === "b-a") return b.name.localeCompare(a.name);
         // prettier-ignore
-        if (sortValue === "price-highest") return a.price - b.price ;
+        if (sortValue === "price-highest") return b.price - a.price ;
         //prettier-ignore
-        if (sortValue === "price-lowest") return b.price - a.price ;
+        if (sortValue === "price-lowest") return a.price - b.price ;
       });
   }, [activeProducts, searchValue, priceRangeValue, sortValue]);
+
+  // function productsFiltered(
+  //   products,
+  //   activeCategory,
+  //   activeColor,
+  //   brandOptionValue,
+  //   freeShipppingValue
+  // ) {
+  //   let result;
+  //   return (result = products?.filter(
+  //     ({ category, colors, company, shipping }) => {
+  //       category === activeCategory ||
+  //         colors.includes(activeColor) ||
+  //         company === brandOptionValue ||
+  //         shipping === freeShipppingValue;
+  //     }
+  //   ));
+  // }
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -74,6 +92,8 @@ function Products() {
     { categoryName: "dining", value: "dining" },
     { categoryName: "kids", value: "kids" },
   ];
+
+  const brands = ["all", "marcos", "liddy", "ikea", "caressa"];
 
   const colors = [
     { colorName: "red", colorValue: "#ff0000" },
@@ -119,15 +139,21 @@ function Products() {
           <p className="text-base font-medium">Company</p>
           <select
             type="text"
-            className="bg-none border-[1px] border-brand-darker !pl-[10px]"
+            className="bg-none border-[1px] border-brand-darker !pl-[10px] capitalize"
             value={brandOptionValue}
-            onChange={(e) => setBrandOptionValue(e.target.value)}
+            onChange={(e) => {
+              if (e.target.value === "all") {
+                setBrandOptionValue(null);
+              } else {
+                setBrandOptionValue(e.target.value);
+              }
+            }}
           >
-            <option value="all">All</option>
-            <option value="marcos">Marcos</option>
-            <option value="liddy">Liddy</option>
-            <option value="ikea">Ikea</option>
-            <option value="caressa">Caressa</option>
+            {brands.map((brand, index) => (
+              <option className="capitalize" key={index} value={brand}>
+                {brand}
+              </option>
+            ))}
           </select>
         </div>
 
