@@ -10,7 +10,9 @@ function Products() {
   const [activeColor, setActiveColor] = useState("all");
   const [searchValue, setSearchValue] = useState("");
   const [brandOptionValue, setBrandOptionValue] = useState("all");
-  console.log("brand option value", brandOptionValue);
+  const [priceRangeValue, setPriceRangeValule] = useState("3999");
+  const [freeShipppingValue, setFreeShippingValue] = useState(false);
+  const [sortValue, setSortValue] = useState();
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -59,10 +61,9 @@ function Products() {
     { colorName: "gray", colorValue: "#000" },
     { colorName: "yellow", colorValue: "#ffb900" },
   ];
-  console.log(activeColor);
 
   return (
-    <div className="!mt-[100px] flex gap-6 w-7xl !mx-auto">
+    <div className="!mt-[100px] flex gap-8 w-7xl !mx-auto">
       <div className="flex flex-col gap-5">
         <input
           type="text"
@@ -94,11 +95,11 @@ function Products() {
             value={brandOptionValue}
             onChange={(e) => setBrandOptionValue(e.target.value)}
           >
-            <option className="capitalize">all</option>
-            <option className="capitalize">marcos</option>
-            <option className="capitalize">liddy</option>
-            <option className="capitalize">ikea</option>
-            <option className="capitalize">caressa</option>
+            <option value="all">All</option>
+            <option value="marcos">Marcos</option>
+            <option value="liddy">Liddy</option>
+            <option value="ikea">Ikea</option>
+            <option value="caressa">Caressa</option>
           </select>
         </div>
 
@@ -114,47 +115,45 @@ function Products() {
               all
             </div>
             {colors.map((color, index) => {
-              const isActive = activeColor === color;
+              const isActive = activeColor.colorName === color.colorName;
               return (
                 <div
                   key={index}
-                  className={`w-3 h-3 rounded-full cursor-pointer ${
-                    isActive ? `bg-${color}-500 scale-125` : `bg-${color}-400`
-                  }`}
-                  onClick={(e) => {
-                    console.log(
-                      "background-color",
-                      e.target.style.backgroundColor
-                    );
-                    setActiveColor(color);
+                  className={`w-3 h-3 rounded-full cursor-pointer`}
+                  style={{
+                    backgroundColor: color.colorValue,
+                    opacity: `${isActive ? 1 : 0.5}`,
+                    scale: `${isActive ? 1.25 : 1}`,
                   }}
+                  onClick={() => setActiveColor(color)}
                 ></div>
               );
             })}
-            {/* <div className="w-3 h-3 rounded rull bg-red-400"></div>
-            <div className="w-3 h-3 rounded rull bg-green-400"></div>
-            <div className="w-3 h-3 rounded rull bg-blue-400"></div>
-            <div className="w-3 h-3 rounded rull bg-gray-400"></div>
-            <div className="w-3 h-3 rounded rull bg-yellow-400"></div> */}
           </div>
         </div>
 
         <div className="flex flex-col items-start">
           <p className="text-base font-medium">Price</p>
-          <p className="text-base font-medium text-brand-darker">$3999</p>
+          <p className="text-base font-medium text-brand-darker">
+            ${priceRangeValue}
+          </p>
           <input
             type="range"
-            class="graph"
-            name="points"
-            value="16"
+            value={priceRangeValue}
             min="0"
             max="3999"
+            onChange={(e) => setPriceRangeValule(e.target.value)}
+            className="w-[100%]"
           />
         </div>
 
         <div className="flex gap-[10px]">
           <p className="text-base font-medium">Free Shipping</p>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            checked={freeShipppingValue}
+            onChange={(e) => setFreeShippingValue(e.target.checked)}
+          />
         </div>
 
         <Button variation="clear">Clear Filters</Button>
@@ -186,7 +185,7 @@ function Products() {
                     style={{ display: "block" }}
                   />
                   <div className="!mt-3 flex items-center justify-between">
-                    <h3 className="furniture-name">{product.name}</h3>
+                    <h3 className="capitalize">{product.name}</h3>
                     <h3 className="text-brand-pink font-medium">
                       ${+product.price / 100} $
                     </h3>
