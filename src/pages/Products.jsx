@@ -194,8 +194,8 @@ function Products() {
                   className={`w-3 h-3 rounded-full cursor-pointer`}
                   style={{
                     backgroundColor: color.colorValue,
-                    opacity: `${isActive ? 1 : 0.5}`,
-                    scale: `${isActive ? 1.25 : 1}`,
+                    opacity: `${isActive ? 1 : 0.4}`,
+                    scale: `${isActive ? 1.5 : 1}`,
                   }}
                   onClick={() => setActiveColor(color.colorValue)}
                 ></div>
