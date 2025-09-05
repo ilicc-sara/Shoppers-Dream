@@ -53,29 +53,6 @@ function Products() {
   }, [activeProducts, searchValue, priceRangeValue, sortValue]);
 
   useEffect(() => {
-    // function filterProducts(category, color) {
-    //   if (!category && !color) {
-    //     setActiveProducts(products);
-    //   } else if (category && !color) {
-    //     const filteredProducts = products.filter(
-    //       (product) => product.category === category
-    //     );
-    //     setActiveProducts(filteredProducts);
-    //   } else if (!category && color) {
-    //     const filteredProducts = products.filter((product) =>
-    //       product.colors.includes(color)
-    //     );
-    //     setActiveProducts(filteredProducts);
-    //   } else if (category && color) {
-    //     const filteredProducts = products.filter(
-    //       (product) =>
-    //         product.colors.includes(color) && product.category === category
-    //     );
-    //     setActiveProducts(filteredProducts);
-    //   }
-    // }
-    // return filterProducts(activeCategory, activeColor);
-
     function filterProducts(category, color, brand, shipping) {
       const result = products?.filter((product) => {
         const matchesCategory = category
@@ -100,6 +77,16 @@ function Products() {
       freeShipppingValue
     );
   }, [activeCategory, activeColor, brandOptionValue, freeShipppingValue]);
+
+  function clearFilters() {
+    setSearchValue("");
+    setPriceRangeValule("3999");
+    setSortValue("price-lowest");
+    setActiveCategory(null);
+    setActiveColor(null);
+    setBrandOptionValue(null);
+    setFreeShippingValue(null);
+  }
 
   const categories = [
     { categoryName: "all", value: null },
@@ -215,7 +202,7 @@ function Products() {
             min="0"
             max="3999"
             onChange={(e) => setPriceRangeValule(e.target.value)}
-            className="w-[100%]"
+            className="w-[100%] cursor-pointer"
           />
         </div>
 
@@ -228,7 +215,9 @@ function Products() {
           />
         </div>
 
-        <Button variation="clear">Clear Filters</Button>
+        <Button variation="clear" handleClick={() => clearFilters()}>
+          Clear Filters
+        </Button>
       </div>
 
       <div>
