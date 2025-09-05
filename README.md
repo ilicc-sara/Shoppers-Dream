@@ -72,6 +72,63 @@ setActiveColor(color);
 // }
 // }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// useEffect(() => {
+// console.log(
+// "in use effect",
+// activeCategory,
+// activeColor,
+// brandOptionValue,
+// freeShipppingValue
+// );
+
+// return () =>
+// console.log(
+// "returned from use effect",
+// activeCategory,
+// activeColor,
+// brandOptionValue,
+// freeShipppingValue
+// );
+// }, [activeCategory, activeColor, brandOptionValue, freeShipppingValue]);
+
+// function productsFiltered() {
+// if (
+// freeShipppingValue ||
+// activeCategory ||
+// activeColor ||
+// brandOptionValue
+// ) {
+// return filteredProducts.filter(
+// ({ category, colors, company, shipping }) => {
+// category === activeCategory ||
+// colors.includes(activeColor) ||
+// company === brandOptionValue ||
+// shipping === true;
+// }
+// );
+// } else return filteredProducts;
+// }
+
+// function productsFiltered(
+// products,
+// activeCategory,
+// activeColor,
+// brandOptionValue,
+// freeShipppingValue
+// ) {
+// let result;
+// return (result = products?.filter(
+// ({ category, colors, company, shipping }) => {
+// category === activeCategory ||
+// colors.includes(activeColor) ||
+// company === brandOptionValue ||
+// shipping === freeShipppingValue;
+// }
+// ));
+// }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 <!-- pogledaj u taiwind config dodati pink custom boju i okrenuti media query-->
 <!-- koristiti tailwind design sistem kad god je moguce -->
 <!-- home.jsx  -> index.jsx -->

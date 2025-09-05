@@ -4,17 +4,34 @@ import Button from "../UI/Button";
 import { act } from "react";
 
 function Products() {
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await fetch(
+          "https://www.course-api.com/react-store-products"
+        );
+        const posts = await response.json();
+        setProducts(posts);
+        setActiveProducts(posts);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchPost();
+  }, []);
   const [products, setProducts] = useState(null);
   const [activeProducts, setActiveProducts] = useState(null);
   // input values
   const [searchValue, setSearchValue] = useState("");
   const [priceRangeValue, setPriceRangeValule] = useState("3999");
   const [sortValue, setSortValue] = useState("price-lowest");
+  const [freeShipppingValue, setFreeShippingValue] = useState(false);
+
   // filters
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeColor, setActiveColor] = useState(null);
   const [brandOptionValue, setBrandOptionValue] = useState(null);
-  const [freeShipppingValue, setFreeShippingValue] = useState(false);
 
   const filteredProducts = useMemo(() => {
     return activeProducts
@@ -35,58 +52,21 @@ function Products() {
       });
   }, [activeProducts, searchValue, priceRangeValue, sortValue]);
 
-  // function productsFiltered() {
-  //   if (
-  //     freeShipppingValue ||
-  //     activeCategory ||
-  //     activeColor ||
-  //     brandOptionValue
-  //   ) {
-  //     return filteredProducts.filter(
-  //       ({ category, colors, company, shipping }) => {
-  //         category === activeCategory ||
-  //           colors.includes(activeColor) ||
-  //           company === brandOptionValue ||
-  //           shipping === true;
-  //       }
-  //     );
-  //   } else return filteredProducts;
-  // }
-
-  // function productsFiltered(
-  //   products,
-  //   activeCategory,
-  //   activeColor,
-  //   brandOptionValue,
-  //   freeShipppingValue
-  // ) {
-  //   let result;
-  //   return (result = products?.filter(
-  //     ({ category, colors, company, shipping }) => {
-  //       category === activeCategory ||
-  //         colors.includes(activeColor) ||
-  //         company === brandOptionValue ||
-  //         shipping === freeShipppingValue;
-  //     }
-  //   ));
-  // }
-
   useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const response = await fetch(
-          "https://www.course-api.com/react-store-products"
+    function filterActiveCategoryProducts(category) {
+      if (!category) {
+        setActiveProducts(products);
+        setActiveCategory(null);
+      } else {
+        const filteredProducts = products.filter(
+          (product) => product.category === category
         );
-        const posts = await response.json();
-        setProducts(posts);
-        setActiveProducts(posts);
-      } catch (error) {
-        console.log(error);
+        setActiveProducts(filteredProducts);
+        setActiveCategory(category);
       }
-    };
-
-    fetchPost();
-  }, []);
+    }
+    return filterActiveCategoryProducts(activeCategory);
+  }, [activeCategory]);
 
   const categories = [
     { categoryName: "all", value: null },
