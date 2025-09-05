@@ -35,6 +35,24 @@ function Products() {
       });
   }, [activeProducts, searchValue, priceRangeValue, sortValue]);
 
+  // function productsFiltered() {
+  //   if (
+  //     freeShipppingValue ||
+  //     activeCategory ||
+  //     activeColor ||
+  //     brandOptionValue
+  //   ) {
+  //     return filteredProducts.filter(
+  //       ({ category, colors, company, shipping }) => {
+  //         category === activeCategory ||
+  //           colors.includes(activeColor) ||
+  //           company === brandOptionValue ||
+  //           shipping === true;
+  //       }
+  //     );
+  //   } else return filteredProducts;
+  // }
+
   // function productsFiltered(
   //   products,
   //   activeCategory,
@@ -69,19 +87,6 @@ function Products() {
 
     fetchPost();
   }, []);
-
-  function filterActiveCategoryProducts(category) {
-    if (!category) {
-      setActiveProducts(products);
-      setActiveCategory(null);
-    } else {
-      const filteredProducts = products.filter(
-        (product) => product.category === category
-      );
-      setActiveProducts(filteredProducts);
-      setActiveCategory(category);
-    }
-  }
 
   const categories = [
     { categoryName: "all", value: null },
@@ -128,7 +133,7 @@ function Products() {
               className={`text-base capitalize cursor-pointer ${
                 activeCategory === category.value ? "active" : ""
               }`}
-              onClick={() => filterActiveCategoryProducts(category.value)}
+              onClick={() => setActiveCategory(category.value)}
             >
               {category.categoryName}
             </p>
@@ -238,7 +243,7 @@ function Products() {
                   <img
                     src={product.image}
                     alt="Furniture-Picture"
-                    className="h-48 w-87 rounded-lg"
+                    className="h-48 w-87 rounded-lg object-cover"
                     style={{ display: "block" }}
                   />
                   <div className="!mt-3 flex items-center justify-between">

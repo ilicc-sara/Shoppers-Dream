@@ -59,6 +59,19 @@ setActiveColor(color);
 // return cartItems.includes(cartItems.find((item) => item.id === id));
 // }
 
+// function filterActiveCategoryProducts(category) {
+// if (!category) {
+// setActiveProducts(products);
+// setActiveCategory(null);
+// } else {
+// const filteredProducts = products.filter(
+// (product) => product.category === category
+// );
+// setActiveProducts(filteredProducts);
+// setActiveCategory(category);
+// }
+// }
+
 <!-- pogledaj u taiwind config dodati pink custom boju i okrenuti media query-->
 <!-- koristiti tailwind design sistem kad god je moguce -->
 <!-- home.jsx  -> index.jsx -->
