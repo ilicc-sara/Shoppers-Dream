@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { Link } from "react-router-dom";
-import Button from "../UI/Button";
-import { act } from "react";
+import Button from "../../UI/Button";
+import { categories, brands, colors, sortValues } from "./helpers";
 
 function Products() {
   useEffect(() => {
@@ -41,14 +41,10 @@ function Products() {
           +product.price / 100 <= Number(priceRangeValue)
       )
       .sort((a, b) => {
-        // prettier-ignore
         if (sortValue === "a-b") return a.name.localeCompare(b.name);
-        // prettier-ignore
         if (sortValue === "b-a") return b.name.localeCompare(a.name);
-        // prettier-ignore
-        if (sortValue === "price-highest") return b.price - a.price ;
-        //prettier-ignore
-        if (sortValue === "price-lowest") return a.price - b.price ;
+        if (sortValue === "price-highest") return b.price - a.price;
+        if (sortValue === "price-lowest") return a.price - b.price;
       });
   }, [activeProducts, searchValue, priceRangeValue, sortValue]);
 
@@ -87,33 +83,6 @@ function Products() {
     setBrandOptionValue(null);
     setFreeShippingValue(null);
   }
-
-  const categories = [
-    { categoryName: "all", value: null },
-    { categoryName: "office", value: "office" },
-    { categoryName: "living room", value: "living room" },
-    { categoryName: "kitchen", value: "kitchen" },
-    { categoryName: "bedroom", value: "bedroom" },
-    { categoryName: "dining", value: "dining" },
-    { categoryName: "kids", value: "kids" },
-  ];
-
-  const brands = ["all", "marcos", "liddy", "ikea", "caressa"];
-
-  const colors = [
-    { colorName: "red", colorValue: "#ff0000" },
-    { colorName: "green", colorValue: "#00ff00" },
-    { colorName: "blue", colorValue: "#0000ff" },
-    { colorName: "gray", colorValue: "#000" },
-    { colorName: "yellow", colorValue: "#ffb900" },
-  ];
-
-  const sortValues = [
-    { name: "Price (Lowest)", value: "price-lowest" },
-    { name: "Price (Highest)", value: "price-highest" },
-    { name: "Name (A-Z)", value: "a-b" },
-    { name: "Name (Z-A)", value: "b-a" },
-  ];
 
   return (
     <div className="!mt-[100px] flex gap-8 w-7xl !mx-auto">
