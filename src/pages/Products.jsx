@@ -53,20 +53,29 @@ function Products() {
   }, [activeProducts, searchValue, priceRangeValue, sortValue]);
 
   useEffect(() => {
-    function filterActiveCategoryProducts(category) {
-      if (!category) {
+    function filterProducts(category, color) {
+      if (!category && !color) {
         setActiveProducts(products);
-        setActiveCategory(null);
-      } else {
+      } else if (category && !color) {
         const filteredProducts = products.filter(
           (product) => product.category === category
         );
         setActiveProducts(filteredProducts);
-        setActiveCategory(category);
+      } else if (!category && color) {
+        const filteredProducts = products.filter((product) =>
+          product.colors.includes(color)
+        );
+        setActiveProducts(filteredProducts);
+      } else if (category && color) {
+        const filteredProducts = products.filter(
+          (product) =>
+            product.colors.includes(color) && product.category === category
+        );
+        setActiveProducts(filteredProducts);
       }
     }
-    return filterActiveCategoryProducts(activeCategory);
-  }, [activeCategory]);
+    return filterProducts(activeCategory, activeColor);
+  }, [activeCategory, activeColor]);
 
   const categories = [
     { categoryName: "all", value: null },
