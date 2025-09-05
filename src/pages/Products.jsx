@@ -26,12 +26,12 @@ function Products() {
   const [searchValue, setSearchValue] = useState("");
   const [priceRangeValue, setPriceRangeValule] = useState("3999");
   const [sortValue, setSortValue] = useState("price-lowest");
-  const [freeShipppingValue, setFreeShippingValue] = useState(false);
 
   // filters
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeColor, setActiveColor] = useState(null);
   const [brandOptionValue, setBrandOptionValue] = useState(null);
+  const [freeShipppingValue, setFreeShippingValue] = useState(false);
 
   const filteredProducts = useMemo(() => {
     return activeProducts
