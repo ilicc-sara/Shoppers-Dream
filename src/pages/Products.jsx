@@ -53,29 +53,53 @@ function Products() {
   }, [activeProducts, searchValue, priceRangeValue, sortValue]);
 
   useEffect(() => {
-    function filterProducts(category, color) {
-      if (!category && !color) {
-        setActiveProducts(products);
-      } else if (category && !color) {
-        const filteredProducts = products.filter(
-          (product) => product.category === category
+    // function filterProducts(category, color) {
+    //   if (!category && !color) {
+    //     setActiveProducts(products);
+    //   } else if (category && !color) {
+    //     const filteredProducts = products.filter(
+    //       (product) => product.category === category
+    //     );
+    //     setActiveProducts(filteredProducts);
+    //   } else if (!category && color) {
+    //     const filteredProducts = products.filter((product) =>
+    //       product.colors.includes(color)
+    //     );
+    //     setActiveProducts(filteredProducts);
+    //   } else if (category && color) {
+    //     const filteredProducts = products.filter(
+    //       (product) =>
+    //         product.colors.includes(color) && product.category === category
+    //     );
+    //     setActiveProducts(filteredProducts);
+    //   }
+    // }
+    // return filterProducts(activeCategory, activeColor);
+
+    function filterProducts(category, color, brand, shipping) {
+      const result = products?.filter((product) => {
+        const matchesCategory = category
+          ? product.category === category
+          : product;
+        const matchesColor = color ? product.colors.includes(color) : product;
+        const matchesBrand = brand ? product.company === brand : product;
+        const matchesShipping = shipping ? product.shipping === true : product;
+
+        return (
+          matchesCategory && matchesColor && matchesBrand && matchesShipping
         );
-        setActiveProducts(filteredProducts);
-      } else if (!category && color) {
-        const filteredProducts = products.filter((product) =>
-          product.colors.includes(color)
-        );
-        setActiveProducts(filteredProducts);
-      } else if (category && color) {
-        const filteredProducts = products.filter(
-          (product) =>
-            product.colors.includes(color) && product.category === category
-        );
-        setActiveProducts(filteredProducts);
-      }
+      });
+
+      setActiveProducts(result);
     }
-    return filterProducts(activeCategory, activeColor);
-  }, [activeCategory, activeColor]);
+
+    return filterProducts(
+      activeCategory,
+      activeColor,
+      brandOptionValue,
+      freeShipppingValue
+    );
+  }, [activeCategory, activeColor, brandOptionValue, freeShipppingValue]);
 
   const categories = [
     { categoryName: "all", value: null },

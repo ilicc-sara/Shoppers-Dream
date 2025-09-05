@@ -136,3 +136,28 @@ setActiveColor(color);
 <!-- reusable components - UI -->
 
 // requestAnimationFrame
+
+useEffect(() => {
+function filterProducts(category, color) {
+if (!category && !color) {
+setActiveProducts(products);
+} else if (category && !color) {
+const filteredProducts = products.filter(
+(product) => product.category === category
+);
+setActiveProducts(filteredProducts);
+} else if (!category && color) {
+const filteredProducts = products.filter((product) =>
+product.colors.includes(color)
+);
+setActiveProducts(filteredProducts);
+} else if (category && color) {
+const filteredProducts = products.filter(
+(product) =>
+product.colors.includes(color) && product.category === category
+);
+setActiveProducts(filteredProducts);
+}
+}
+return filterProducts(activeCategory, activeColor);
+}, [activeCategory, activeColor]);
