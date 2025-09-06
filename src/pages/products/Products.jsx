@@ -14,7 +14,7 @@ function Products() {
         setProducts(posts);
         setActiveProducts(posts);
       } catch (error) {
-        console.log(error);
+        console.error("Could not fetch products");
       }
     };
 

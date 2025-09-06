@@ -7,7 +7,7 @@ function Nav() {
     <nav
       className={`w-full !py-5  ${
         !sectionIsInView
-          ? "fixed top-0 left-0 w-full z-50 bg-white shadow-[0px_4px_6px_-2px_rgba(0,0,0,0.1)] sticky-nav"
+          ? "fixed top-0 left-0 w-full z-50 bg-white shadow-[0px_4px_6px_-2px_rgba(0,0,0,0.1)] sticky-nav opacity-[0.9]"
           : ""
       } `}
     >
