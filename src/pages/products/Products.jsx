@@ -3,23 +3,9 @@ import { Link } from "react-router-dom";
 import Button from "../../UI/Button";
 import { categories, brands, colors, sortValues } from "./helpers";
 
-function Products() {
-  useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const response = await fetch(
-          "https://www.course-api.com/react-store-products"
-        );
-        const posts = await response.json();
-        setProducts(posts);
-        setActiveProducts(posts);
-      } catch (error) {
-        console.error("Could not fetch products");
-      }
-    };
+const URL = "https://www.course-api.com";
 
-    fetchPost();
-  }, []);
+function Products() {
   const [products, setProducts] = useState(null);
   const [activeProducts, setActiveProducts] = useState(null);
   // input values
@@ -32,6 +18,31 @@ function Products() {
   const [activeColor, setActiveColor] = useState(null);
   const [brandOptionValue, setBrandOptionValue] = useState(null);
   const [freeShipppingValue, setFreeShippingValue] = useState(false);
+
+  const [filters, setFilters] = useState({
+    name: "",
+    currentCategory: "All",
+    currentCompany: "All",
+    currentColor: "All",
+    price: 0,
+    maxPrice: 0,
+    shipping: false,
+  });
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await fetch(`${URL}/react-store-products`);
+        const posts = await response.json();
+        setProducts(posts);
+        setActiveProducts(posts);
+      } catch (error) {
+        console.error("Could not fetch products");
+      }
+    };
+
+    fetchPost();
+  }, []);
 
   const filteredProducts = useMemo(() => {
     return activeProducts
