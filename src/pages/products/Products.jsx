@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../UI/Button";
-import { categories, brands, colors, sortValues } from "./helpers";
+import { categories, brands, colors, sortValues } from "./components/helpers";
+import Product from "./components/Product";
 
 const URL = "https://www.course-api.com";
 
@@ -221,20 +222,12 @@ function Products() {
           <ul className="list-none grid grid-cols-3 gap-y-8 gap-x-5">
             {filteredProducts?.map((product, index) => (
               <Link to={`/product/${product.id}`}>
-                <li key={index} className="furniture-item">
-                  <img
-                    src={product.image}
-                    alt="Furniture-Picture"
-                    className="h-48 w-87 rounded-lg object-cover"
-                    style={{ display: "block" }}
-                  />
-                  <div className="!mt-3 flex items-center justify-between">
-                    <h3 className="capitalize">{product.name}</h3>
-                    <h3 className="text-brand-darker font-medium">
-                      $ {+product.price / 100}
-                    </h3>
-                  </div>
-                </li>
+                <Product
+                  key={index}
+                  image={product.image}
+                  name={product.name}
+                  price={product.price}
+                />
               </Link>
             ))}
           </ul>
