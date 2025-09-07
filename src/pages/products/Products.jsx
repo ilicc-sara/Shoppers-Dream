@@ -91,6 +91,8 @@ function Products() {
       brandOptionValue: null,
       freeShipppingValue: false,
     });
+    // Moram postaviti i setActive produsts od kada mi filters nisu u useEffect
+    setActiveProducts(products);
   }
 
   return (
@@ -126,6 +128,9 @@ function Products() {
             value={filters.brandOptionValue}
             onChange={(e) => {
               if (e.target.value === "all") {
+                setFilters((prev) => {
+                  return { ...prev, brandOptionValue: null };
+                });
                 handleChangeFIlter({ brand: null });
               } else {
                 handleChangeFIlter({ brand: e.target.value });
