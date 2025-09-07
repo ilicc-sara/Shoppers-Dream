@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../UI/Button";
 import { categories, brands, colors, sortValues } from "./components/helpers";
@@ -85,11 +85,11 @@ function Products() {
     setSearchValue("");
     setPriceRangeValule("3999");
     setSortValue("price-lowest");
-    setFilters({
-      activeCategory: null,
-      activeColor: null,
-      brandOptionValue: null,
-      freeShipppingValue: false,
+    handleChangeFIlter({
+      category: null,
+      color: null,
+      brand: null,
+      shipping: false,
     });
   }
 
@@ -195,17 +195,7 @@ function Products() {
           />
         </div>
 
-        <Button
-          variation="clear"
-          handleClick={() =>
-            handleChangeFIlter({
-              category: null,
-              color: null,
-              brand: null,
-              shipping: false,
-            })
-          }
-        >
+        <Button variation="clear" handleClick={() => clearFilters()}>
           Clear Filters
         </Button>
       </div>
