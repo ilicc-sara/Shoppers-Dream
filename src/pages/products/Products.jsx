@@ -1,8 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import Button from "../../UI/Button";
-import { categories, brands, colors, sortValues } from "./components/helpers";
+import { sortValues } from "./components/helpers";
 import Product from "./components/Product";
+import Sidebar from "./components/Sidebar";
+import { ToastContainer, toast } from "react-toastify";
 
 const URL = "https://www.course-api.com";
 
@@ -29,7 +30,7 @@ function Products() {
         setProducts(posts);
         setActiveProducts(posts);
       } catch (error) {
-        console.error("Could not fetch products");
+        toast.error("Ups, something went wrong...");
       }
     };
 
@@ -95,110 +96,16 @@ function Products() {
 
   return (
     <div className="!mt-[100px] flex gap-8 w-7xl !mx-auto">
-      <div className="flex flex-col gap-5">
-        <input
-          type="search"
-          placeholder="Search"
-          className="bg-none border-[1px] border-brand-darker !pl-[10px]"
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-        />
-        <div className="flex flex-col items-start">
-          <p className="text-base font-medium">Category</p>
-          {categories.map((category, index) => (
-            <p
-              key={index}
-              className={`text-base capitalize cursor-pointer ${
-                filters.activeCategory === category.value ? "active" : ""
-              }`}
-              onClick={() => handleChangeFIlter({ category: category.value })}
-            >
-              {category.categoryName}
-            </p>
-          ))}
-        </div>
-
-        <div className="flex flex-col items-start">
-          <p className="text-base font-medium">Company</p>
-          <select
-            type="text"
-            className="bg-none border-[1px] border-brand-darker !pl-[10px] capitalize"
-            value={filters.brandOptionValue ? filters.brandOptionValue : "all"}
-            onChange={(e) => {
-              if (e.target.value === "all") {
-                handleChangeFIlter({ brand: null });
-              } else {
-                handleChangeFIlter({ brand: e.target.value });
-              }
-            }}
-          >
-            {brands.map((brand, index) => (
-              <option className="capitalize" key={index} value={brand}>
-                {brand}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="flex flex-col items-start">
-          <p className="text-base font-medium">Color</p>
-          <div className="flex items-center justify-between gap-3">
-            <div
-              className={`${
-                !filters.activeColor ? "active" : ""
-              } capitalize cursor-pointer`}
-              onClick={() => handleChangeFIlter({ color: null })}
-            >
-              all
-            </div>
-            {colors.map((color, index) => {
-              const isActive = filters.activeColor == color.colorValue;
-              return (
-                <div
-                  key={index}
-                  className={`w-3 h-3 rounded-full cursor-pointer`}
-                  style={{
-                    backgroundColor: color.colorValue,
-                    opacity: `${isActive ? 1 : 0.4}`,
-                    scale: `${isActive ? 1.5 : 1}`,
-                  }}
-                  onClick={() =>
-                    handleChangeFIlter({ color: color.colorValue })
-                  }
-                ></div>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="flex flex-col items-start">
-          <p className="text-base font-medium">Price</p>
-          <p className="text-base font-medium text-brand-darker">
-            ${priceRangeValue}
-          </p>
-          <input
-            type="range"
-            value={priceRangeValue}
-            min="0"
-            max="3999"
-            onChange={(e) => setPriceRangeValule(e.target.value)}
-            className="w-[100%] cursor-pointer"
-          />
-        </div>
-
-        <div className="flex gap-[10px]">
-          <p className="text-base font-medium">Free Shipping</p>
-          <input
-            type="checkbox"
-            checked={filters.freeShipppingValue}
-            onChange={(e) => handleChangeFIlter({ shipping: e.target.checked })}
-          />
-        </div>
-
-        <Button variation="clear" handleClick={() => clearFilters()}>
-          Clear Filters
-        </Button>
-      </div>
+      <ToastContainer position="top-center" />
+      <Sidebar
+        filters={filters}
+        searchValue={searchValue}
+        priceRangeValue={priceRangeValue}
+        setPriceRangeValule={setPriceRangeValule}
+        handleChangeFIlter={handleChangeFIlter}
+        setSearchValue={setSearchValue}
+        clearFilters={clearFilters}
+      />
 
       <div>
         <div className="flex justify-between gap-5 !mb-4">
