@@ -14,21 +14,42 @@ function Products() {
   const [priceRangeValue, setPriceRangeValule] = useState("3999");
   const [sortValue, setSortValue] = useState("price-lowest");
 
-  // filters
-  const [activeCategory, setActiveCategory] = useState(null);
-  const [activeColor, setActiveColor] = useState(null);
-  const [brandOptionValue, setBrandOptionValue] = useState(null);
-  const [freeShipppingValue, setFreeShippingValue] = useState(false);
-
   const [filters, setFilters] = useState({
-    name: "",
-    currentCategory: "All",
-    currentCompany: "All",
-    currentColor: "All",
-    price: 0,
-    maxPrice: 0,
-    shipping: false,
+    activeCategory: null,
+    activeColor: null,
+    brandOptionValue: null,
+    freeShipppingValue: false,
   });
+
+  function handleChangeFIlter({
+    category = filters.activeCategory,
+    color = filters.activeColor,
+    brand = filters.brandOptionValue,
+    shipping = filters.freeShipppingValue,
+  }) {
+    setFilters((prev) => {
+      return {
+        ...prev,
+        activeCategory: category,
+        activeColor: color,
+        brandOptionValue: brand,
+        freeShipppingValue: shipping,
+      };
+    });
+
+    const result = products.filter((product) => {
+      const matchesCategory = category
+        ? product.category === category
+        : product;
+      const matchesColor = color ? product.colors.includes(color) : product;
+      const matchesBrand = brand ? product.company === brand : product;
+      const matchesShipping = shipping ? product.shipping === true : product;
+
+      return matchesCategory && matchesColor && matchesBrand && matchesShipping;
+    });
+
+    setActiveProducts(result);
+  }
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -60,40 +81,16 @@ function Products() {
       });
   }, [activeProducts, searchValue, priceRangeValue, sortValue]);
 
-  useEffect(() => {
-    function filterProducts(category, color, brand, shipping) {
-      const result = products?.filter((product) => {
-        const matchesCategory = category
-          ? product.category === category
-          : product;
-        const matchesColor = color ? product.colors.includes(color) : product;
-        const matchesBrand = brand ? product.company === brand : product;
-        const matchesShipping = shipping ? product.shipping === true : product;
-
-        return (
-          matchesCategory && matchesColor && matchesBrand && matchesShipping
-        );
-      });
-
-      setActiveProducts(result);
-    }
-
-    return filterProducts(
-      activeCategory,
-      activeColor,
-      brandOptionValue,
-      freeShipppingValue
-    );
-  }, [activeCategory, activeColor, brandOptionValue, freeShipppingValue]);
-
   function clearFilters() {
     setSearchValue("");
     setPriceRangeValule("3999");
     setSortValue("price-lowest");
-    setActiveCategory(null);
-    setActiveColor(null);
-    setBrandOptionValue(null);
-    setFreeShippingValue(null);
+    setFilters({
+      activeCategory: null,
+      activeColor: null,
+      brandOptionValue: null,
+      freeShipppingValue: false,
+    });
   }
 
   return (
@@ -112,9 +109,10 @@ function Products() {
             <p
               key={index}
               className={`text-base capitalize cursor-pointer ${
-                activeCategory === category.value ? "active" : ""
+                filters.activeCategory === category.value ? "active" : ""
               }`}
-              onClick={() => setActiveCategory(category.value)}
+              // onClick={() => setActiveCategory(category1.value)}
+              onClick={() => handleChangeFIlter({ category: category.value })}
             >
               {category.categoryName}
             </p>
@@ -126,12 +124,14 @@ function Products() {
           <select
             type="text"
             className="bg-none border-[1px] border-brand-darker !pl-[10px] capitalize"
-            value={brandOptionValue}
+            value={filters.brandOptionValue}
             onChange={(e) => {
               if (e.target.value === "all") {
-                setBrandOptionValue(null);
+                // setBrandOptionValue(null);
+                handleChangeFIlter({ brand: null });
               } else {
-                setBrandOptionValue(e.target.value);
+                // setBrandOptionValue(e.target.value);
+                handleChangeFIlter({ brand: e.target.value });
               }
             }}
           >
@@ -148,14 +148,15 @@ function Products() {
           <div className="flex items-center justify-between gap-3">
             <div
               className={`${
-                !activeColor ? "active" : ""
+                !filters.activeColor ? "active" : ""
               } capitalize cursor-pointer`}
-              onClick={() => setActiveColor(null)}
+              // onClick={() => setActiveColor(null)}
+              onClick={() => handleChangeFIlter({ color: null })}
             >
               all
             </div>
             {colors.map((color, index) => {
-              const isActive = activeColor == color.colorValue;
+              const isActive = filters.activeColor == color.colorValue;
               return (
                 <div
                   key={index}
@@ -165,7 +166,10 @@ function Products() {
                     opacity: `${isActive ? 1 : 0.4}`,
                     scale: `${isActive ? 1.5 : 1}`,
                   }}
-                  onClick={() => setActiveColor(color.colorValue)}
+                  // onClick={() => setActiveColor(color.colorValue)}
+                  onClick={() =>
+                    handleChangeFIlter({ color: color.colorValue })
+                  }
                 ></div>
               );
             })}
@@ -191,8 +195,9 @@ function Products() {
           <p className="text-base font-medium">Free Shipping</p>
           <input
             type="checkbox"
-            checked={freeShipppingValue}
-            onChange={(e) => setFreeShippingValue(e.target.checked)}
+            checked={filters.freeShipppingValue}
+            // onChange={(e) => setFreeShippingValue(e.target.checked)}
+            onChange={(e) => handleChangeFIlter({ shipping: e.target.checked })}
           />
         </div>
 
