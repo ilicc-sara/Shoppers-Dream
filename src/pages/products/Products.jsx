@@ -91,8 +91,6 @@ function Products() {
       brandOptionValue: null,
       freeShipppingValue: false,
     });
-    // Moram postaviti i setActive produsts od kada mi filters nisu u useEffect
-    setActiveProducts(products);
   }
 
   return (
@@ -125,12 +123,9 @@ function Products() {
           <select
             type="text"
             className="bg-none border-[1px] border-brand-darker !pl-[10px] capitalize"
-            value={filters.brandOptionValue}
+            value={filters.brandOptionValue ? filters.brandOptionValue : "all"}
             onChange={(e) => {
               if (e.target.value === "all") {
-                setFilters((prev) => {
-                  return { ...prev, brandOptionValue: null };
-                });
                 handleChangeFIlter({ brand: null });
               } else {
                 handleChangeFIlter({ brand: e.target.value });
@@ -200,7 +195,17 @@ function Products() {
           />
         </div>
 
-        <Button variation="clear" handleClick={() => clearFilters()}>
+        <Button
+          variation="clear"
+          handleClick={() =>
+            handleChangeFIlter({
+              category: null,
+              color: null,
+              brand: null,
+              shipping: false,
+            })
+          }
+        >
           Clear Filters
         </Button>
       </div>
