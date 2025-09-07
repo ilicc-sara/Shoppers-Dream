@@ -21,36 +21,6 @@ function Products() {
     freeShipppingValue: false,
   });
 
-  function handleChangeFIlter({
-    category = filters.activeCategory,
-    color = filters.activeColor,
-    brand = filters.brandOptionValue,
-    shipping = filters.freeShipppingValue,
-  }) {
-    setFilters((prev) => {
-      return {
-        ...prev,
-        activeCategory: category,
-        activeColor: color,
-        brandOptionValue: brand,
-        freeShipppingValue: shipping,
-      };
-    });
-
-    const result = products.filter((product) => {
-      const matchesCategory = category
-        ? product.category === category
-        : product;
-      const matchesColor = color ? product.colors.includes(color) : product;
-      const matchesBrand = brand ? product.company === brand : product;
-      const matchesShipping = shipping ? product.shipping === true : product;
-
-      return matchesCategory && matchesColor && matchesBrand && matchesShipping;
-    });
-
-    setActiveProducts(result);
-  }
-
   useEffect(() => {
     const fetchPost = async () => {
       try {
@@ -80,6 +50,36 @@ function Products() {
         if (sortValue === "price-lowest") return a.price - b.price;
       });
   }, [activeProducts, searchValue, priceRangeValue, sortValue]);
+
+  function handleChangeFIlter({
+    category = filters.activeCategory,
+    color = filters.activeColor,
+    brand = filters.brandOptionValue,
+    shipping = filters.freeShipppingValue,
+  }) {
+    setFilters((prev) => {
+      return {
+        ...prev,
+        activeCategory: category,
+        activeColor: color,
+        brandOptionValue: brand,
+        freeShipppingValue: shipping,
+      };
+    });
+
+    const result = products.filter((product) => {
+      const matchesCategory = category
+        ? product.category === category
+        : product;
+      const matchesColor = color ? product.colors.includes(color) : product;
+      const matchesBrand = brand ? product.company === brand : product;
+      const matchesShipping = shipping ? product.shipping === true : product;
+
+      return matchesCategory && matchesColor && matchesBrand && matchesShipping;
+    });
+
+    setActiveProducts(result);
+  }
 
   function clearFilters() {
     setSearchValue("");
@@ -111,7 +111,6 @@ function Products() {
               className={`text-base capitalize cursor-pointer ${
                 filters.activeCategory === category.value ? "active" : ""
               }`}
-              // onClick={() => setActiveCategory(category1.value)}
               onClick={() => handleChangeFIlter({ category: category.value })}
             >
               {category.categoryName}
@@ -127,10 +126,8 @@ function Products() {
             value={filters.brandOptionValue}
             onChange={(e) => {
               if (e.target.value === "all") {
-                // setBrandOptionValue(null);
                 handleChangeFIlter({ brand: null });
               } else {
-                // setBrandOptionValue(e.target.value);
                 handleChangeFIlter({ brand: e.target.value });
               }
             }}
@@ -150,7 +147,6 @@ function Products() {
               className={`${
                 !filters.activeColor ? "active" : ""
               } capitalize cursor-pointer`}
-              // onClick={() => setActiveColor(null)}
               onClick={() => handleChangeFIlter({ color: null })}
             >
               all
@@ -166,7 +162,6 @@ function Products() {
                     opacity: `${isActive ? 1 : 0.4}`,
                     scale: `${isActive ? 1.5 : 1}`,
                   }}
-                  // onClick={() => setActiveColor(color.colorValue)}
                   onClick={() =>
                     handleChangeFIlter({ color: color.colorValue })
                   }
@@ -196,7 +191,6 @@ function Products() {
           <input
             type="checkbox"
             checked={filters.freeShipppingValue}
-            // onChange={(e) => setFreeShippingValue(e.target.checked)}
             onChange={(e) => handleChangeFIlter({ shipping: e.target.checked })}
           />
         </div>
