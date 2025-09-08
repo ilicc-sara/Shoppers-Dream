@@ -11,12 +11,12 @@ function Nav() {
           : ""
       } `}
     >
-      <div className="flex justify-between !mx-auto w-7xl">
+      <div className="flex justify-between !mx-auto desktop:w-7xl desktop:bg-green-300 laptop:w-6xl laptop:bg-blue-400 smallLT:w-5xl smallLT:bg-red-300 tablet:w-4xl tablet:bg-pink-400 mobile:w-[90%] mobile:bg-yellow-400 smallmobile:w-[90%] smallmobile:bg-purple-300">
         <div className="text-2xl font-medium flex items-center justify-center gap-[15px]">
           <ion-icon name="bag-outline" class="w-[24px] h-[24px]"></ion-icon>
           <span>X Shopper's Dream</span>
         </div>
-        <div className="flex align-center justify-center gap-[15px]">
+        <div className="flex align-center justify-center gap-[15px] max-mobile:hidden">
           <NavLink to="/" className="text-[16px] ">
             Home
           </NavLink>
@@ -25,7 +25,7 @@ function Nav() {
           </NavLink>
         </div>
         <Link to="/cart">
-          <div className="relative text-[20px] flex justify-center items-start gap-[5px]">
+          <div className="relative text-[20px] flex justify-center items-start gap-[5px] max-mobile:hidden">
             <span className="text-[18px]">Cart</span>
             <ion-icon
               name="bag-outline"
@@ -36,6 +36,12 @@ function Nav() {
             </div>
           </div>
         </Link>
+        <div className="flex items-center !px-2 mobile:hidden">
+          <ion-icon
+            name="menu-outline"
+            className="w-[24px] h-[24px]"
+          ></ion-icon>
+        </div>
       </div>
     </nav>
   );

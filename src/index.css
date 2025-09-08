@@ -7,9 +7,11 @@
 }
 
 @theme {
-  --breakpoint-*: initial;
-  --breakpoint-tablet: 640px;
-  --breakpoint-laptop: 1024px;
+  --breakpoint-smallmobile: 400px;
+  --breakpoint-mobile: 800px;
+  --breakpoint-tablet: 940px;
+  --breakpoint-smallLT: 1070px;
+  --breakpoint-laptop: 1220px;
   --breakpoint-desktop: 1360px;
   --breakpoint-xl: 1515px;
 }
