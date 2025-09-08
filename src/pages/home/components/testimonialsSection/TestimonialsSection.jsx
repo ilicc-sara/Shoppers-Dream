@@ -27,16 +27,16 @@ function TestimonialsSection() {
   }
   return (
     <section className="border-b-[2px] border-b-[#d5d5d5] !py-[140px]">
-      <div className="max-w-4xl !mx-auto">
+      <div className="!mx-auto desktop:w-6xl  laptop:w-5xl  smallLT:w-4xl  tablet:w-3xl mobile:w-2xl smallmobile:w-[90%]">
         <p className="text-left uppercase text-[14px] text-brand-pink font-medium">
           Testimonials
         </p>
-        <h1 className="text-[37px] font-medium text-left text-[#444]">
+        <h1 className="font-medium text-left text-[#444] laptop:!text-[37px] smallLT:!text-[32px] tablet:!text-[28px] max-tablet:!text-[26px]">
           Discover the stories of our delighted customers - thousands and
           counting!
         </h1>
 
-        <div className="flex w-[750px] !mx-auto items-center relative h-[400px] !my-[40px] overflow-x-hidden">
+        <div className="flex desktop:w-3xl laptop:w-3xl smallLT:w-2xl tablet:w-2xl mobile:w-xl smallmobile:w-[100%] !mx-auto items-center relative h-[500px] !my-[40px] overflow-x-hidden">
           <Button
             variation="arrow-left"
             handleClick={() => changeCurrentSlideLeft()}
@@ -46,12 +46,12 @@ function TestimonialsSection() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="absolute top-10 !py-[10px] !px-[80px] flex flex-col gap-[20px] ransition-transform duration-1000"
+              className="absolute top-10 !py-[10px] !px-[80px] flex flex-col tablet:gap-5 max-tablet:gap-4 transition-transform duration-1000"
               style={{
                 transform: `translateX(${(index - currentSlide) * 100}%)`,
               }}
             >
-              <p className=" text-left text-[27px] leading-[19px] font-semibold">
+              <p className=" text-left tablet:text-[27px] max-tablet:text-[23px] leading-[28px] font-semibold">
                 {testimonial.header}
               </p>
               {currentSlide === index ? (
@@ -71,7 +71,7 @@ function TestimonialsSection() {
                 ></div>
               )}
 
-              <p className="text-left text-[15px] leading-[28px]">
+              <p className="text-left tablet:text-[15px] tablet:leading-[28px]  max-tablet:text-[12px] max-tablet:leading-[24px]">
                 {testimonial.text}
               </p>
 
