@@ -6,15 +6,15 @@ import { Link } from "react-router-dom";
 function ProductsSection() {
   return (
     <section className="border-b-[2px] border-b-[#d5d5d5] !py-[140px]">
-      <div className="max-w-6xl !mx-auto">
-        <p className="text-left uppercase text-[14px] text-brand-pink font-medium ">
+      <div className="!mx-auto desktop:w-6xl  laptop:w-5xl  smallLT:w-4xl  tablet:w-3xl mobile:w-2xl smallmobile:w-[90%]">
+        <p className="text-left uppercase text-brand-pink font-medium text-[14px] ">
           Featured products
         </p>
-        <h1 className="text-[37px] font-medium text-left text-[#444]">
+        <h1 className="font-medium text-left text-[#444]  laptop:!text-[37px] smallLT:!text-[32px] tablet:!text-[28px] max-tablet:!text-[26px]">
           The art of modern living unlocked.
         </h1>
 
-        <div className="flex justify-between !pt-[70px] !pb-[40px]">
+        <div className="flex justify-between !pt-[70px] !pb-[40px] max-mobile:flex-col max-mobile:w-[70%] max-mobile:!mx-auto max-mobile:gap-6">
           {exampleProductsImg.map((img, index) => (
             <ExampleProducts key={index} image={img} />
           ))}
