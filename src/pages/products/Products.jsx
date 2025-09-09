@@ -125,7 +125,7 @@ function Products() {
           </select>
         </div>
         <div className="!mx-auto">
-          <ul className="list-none grid grid-cols-3 gap-y-8 gap-x-5">
+          <ul className="list-none grid smallLT:grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-2 gap-y-8 gap-x-5">
             {filteredProducts?.map((product, index) => (
               <Link to={`/product/${product.id}`}>
                 <Product

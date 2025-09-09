@@ -7,7 +7,7 @@ function Product(props) {
       <img
         src={image}
         alt="Furniture-Picture"
-        className="h-48 w-87 rounded-lg object-cover"
+        className="desktop:h-48 desktop:w-87 laptop:h-45 laptop:w-82 smallLT:h-42 smallLT:w-80 tablet:h-45 tablet:w-82 rounded-lg object-cover"
         style={{ display: "block" }}
       />
       <div className="!mt-3 flex items-center justify-between">

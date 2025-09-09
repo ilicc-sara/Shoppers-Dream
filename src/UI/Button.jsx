@@ -4,7 +4,7 @@ import React from "react";
 function Button(props) {
   const { variation, children, handleClick } = props;
   let baseClassName =
-    "!px-5 !py-3 tablet:text-base max-tablet:text-sm rounded-md font-semibold border-0";
+    "!px-4 !py-3 tablet:text-base max-tablet:text-sm rounded-md font-semibold border-0";
   let operationsBase =
     "!py-3 tablet:!px-5 mobile:!px-5 smallmobile:!px-2  tablet:text-base mobile:text-sm smallmobile:text-xs rounded-md font-semibold border-0";
   let arrBaseClassName =
@@ -45,7 +45,7 @@ function Button(props) {
   }
 
   if (variation === "clear") {
-    modifierClassName = "bg-red-500 text-white w-30 h-14";
+    modifierClassName = "bg-red-500 text-white w-[70%]";
   }
 
   return (
