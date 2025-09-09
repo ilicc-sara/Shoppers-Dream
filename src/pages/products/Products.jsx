@@ -95,7 +95,7 @@ function Products() {
   }
 
   return (
-    <div className="!mt-[100px] flex gap-8 w-7xl !mx-auto">
+    <div className="!mt-[100px] flex gap-8 !mx-auto desktop:w-7xl laptop:w-6xl smallLT:w-5xl tablet:w-4xl">
       <ToastContainer position="top-center" />
       <Sidebar
         filters={filters}
