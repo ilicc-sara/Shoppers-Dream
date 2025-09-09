@@ -13,7 +13,7 @@ function Sidebar(props) {
     clearFilters,
   } = props;
   return (
-    <div className="flex flex-col gap-5 max-mobile:hidden">
+    <div className="flex flex-col gap-5 max-mobile:w-[70%] max-mobile:!mx-auto">
       <input
         type="search"
         placeholder="Search"

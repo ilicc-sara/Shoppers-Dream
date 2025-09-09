@@ -8,6 +8,8 @@ import { ToastContainer, toast } from "react-toastify";
 const URL = "https://www.course-api.com";
 
 function Products() {
+  const [showMobileFIlters, setShowMobileFIlters] = useState(false);
+
   const [products, setProducts] = useState(null);
   const [activeProducts, setActiveProducts] = useState(null);
   // input values
@@ -97,19 +99,24 @@ function Products() {
   return (
     <div className="!mt-[100px] flex gap-8 !mx-auto desktop:w-7xl laptop:w-6xl smallLT:w-5xl tablet:w-4xl mobile:w-3xl smallmobile:w-[90%] ">
       <ToastContainer position="top-center" />
-      <Sidebar
-        filters={filters}
-        searchValue={searchValue}
-        priceRangeValue={priceRangeValue}
-        setPriceRangeValule={setPriceRangeValule}
-        handleChangeFIlter={handleChangeFIlter}
-        setSearchValue={setSearchValue}
-        clearFilters={clearFilters}
-      />
+      <div className="max-mobile:hidden">
+        <Sidebar
+          filters={filters}
+          searchValue={searchValue}
+          priceRangeValue={priceRangeValue}
+          setPriceRangeValule={setPriceRangeValule}
+          handleChangeFIlter={handleChangeFIlter}
+          setSearchValue={setSearchValue}
+          clearFilters={clearFilters}
+        />
+      </div>
 
       <div>
         <div className="flex justify-between items-center gap-5 !mb-4">
-          <div className="mobile:hidden">
+          <div
+            className="mobile:hidden"
+            onClick={() => setShowMobileFIlters(true)}
+          >
             <i class="bxr  bx-clipboard-detail  text-brand-darker text-4xl"></i>
           </div>
           <p>{filteredProducts?.length} Products Found</p>
@@ -141,6 +148,29 @@ function Products() {
             ))}
           </ul>
         </div>
+      </div>
+
+      <div
+        className={`fixed top-0 left-0 right-0 bg-white z-50 w-full h-screen !p-[100px] transition-all duration-500 ease-in ${
+          !showMobileFIlters
+            ? "-translate-x-full  opacity-0 pointer-events-none invisible"
+            : "opacity-100 pointer-events-auto visible translate-x-0"
+        }`}
+      >
+        <ion-icon
+          name="close"
+          className="w-[36px] h-[36px] absolute top-[30px] right-[30px]"
+          onClick={() => setShowMobileFIlters(false)}
+        ></ion-icon>
+        <Sidebar
+          filters={filters}
+          searchValue={searchValue}
+          priceRangeValue={priceRangeValue}
+          setPriceRangeValule={setPriceRangeValule}
+          handleChangeFIlter={handleChangeFIlter}
+          setSearchValue={setSearchValue}
+          clearFilters={clearFilters}
+        />
       </div>
     </div>
   );
