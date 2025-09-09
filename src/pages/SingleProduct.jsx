@@ -26,55 +26,49 @@ function SingleProduct() {
   return (
     <>
       {product && (
-        <div className="w-[80%] !py-[5rem] flex !mx-auto gap-[3rem] !mt-[8rem]">
+        <div className="w-4/5 grid grid-cols-2 !mx-auto gap-10 !mt-28">
           <div class="pictures-cont">
             <img
               src={displayImage}
               alt="Furniture-Picture"
-              class="product-img"
-              style={{ display: "block" }}
+              class="w-[550px] h-[500px] rounded-lg object-cover"
             />
 
-            <div class="side-pictures">
+            <div class="!mt-5 flex w-[550px] justify-between">
               <img
                 src={product.images[0].url}
                 alt="Furniture-Picture"
-                class="side-img"
-                style={{ display: "block" }}
+                class="w-24 h-18 rounded-sm object-cover"
                 onClick={(e) => setDisplayImage(e.target.src)}
               />
               <img
                 src={product.images[1].url}
                 alt="Furniture-Picture"
-                class="side-img"
-                style={{ display: "block" }}
+                class="w-24 h-18 rounded-sm object-cover"
                 onClick={(e) => setDisplayImage(e.target.src)}
               />
               <img
                 src={product.images[2].url}
                 alt="Furniture-Picture"
-                class="side-img"
-                style={{ display: "block" }}
+                class="w-24 h-18 rounded-sm object-cover"
                 onClick={(e) => setDisplayImage(e.target.src)}
               />
               <img
                 src={product.images[3].url}
                 alt="Furniture-Picture"
-                class="side-img"
-                style={{ display: "block" }}
+                class="w-24 h-18 rounded-sm object-cover"
                 onClick={(e) => setDisplayImage(e.target.src)}
               />
               <img
                 src={product.images[4].url}
                 alt="Furniture-Picture"
-                class="side-img"
-                style={{ display: "block" }}
+                class="w-24 h-18 rounded-sm object-cover"
                 onClick={(e) => setDisplayImage(e.target.src)}
               />
             </div>
           </div>
 
-          <div class="info-cont">
+          <div class="flex flex-col gap-[70px]">
             <h1 class="single-product-name">{product.name}</h1>
 
             <p class="description text">${product.description}</p>

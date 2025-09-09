@@ -56,36 +56,6 @@ a {
 }
 
 /* ///////////////////////////////////////////////////// */
-.single-product-item {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  row-gap: 30px;
-}
-
-.product-img {
-  width: 550px;
-  height: 500px;
-  border-radius: 10px;
-}
-
-.side-pictures {
-  margin-top: 20px;
-  display: flex;
-  width: 550px;
-  justify-content: space-between;
-}
-
-.side-img {
-  width: 100px;
-  height: 70px;
-  border-radius: 5px;
-}
-
-.info-cont {
-  display: flex;
-  flex-direction: column;
-  gap: 70px;
-}
 
 .back-btn {
   background-color: #d22dc1;
