@@ -95,7 +95,7 @@ function Products() {
   }
 
   return (
-    <div className="!mt-[100px] flex gap-8 !mx-auto desktop:w-7xl laptop:w-6xl smallLT:w-5xl tablet:w-4xl">
+    <div className="!mt-[100px] flex gap-8 !mx-auto desktop:w-7xl laptop:w-6xl smallLT:w-5xl tablet:w-4xl mobile:w-3xl smallmobile:w-[90%] ">
       <ToastContainer position="top-center" />
       <Sidebar
         filters={filters}
@@ -108,7 +108,10 @@ function Products() {
       />
 
       <div>
-        <div className="flex justify-between gap-5 !mb-4">
+        <div className="flex justify-between items-center gap-5 !mb-4">
+          <div className="mobile:hidden">
+            <i class="bxr  bx-clipboard-detail  text-brand-darker text-4xl"></i>
+          </div>
           <p>{filteredProducts?.length} Products Found</p>
           <hr className="self-center border-t border-brand-darker flex-1 mx-4" />
           <select
@@ -125,7 +128,7 @@ function Products() {
           </select>
         </div>
         <div className="!mx-auto">
-          <ul className="list-none grid smallLT:grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-2 gap-y-8 gap-x-5">
+          <ul className="list-none grid smallLT:grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-2 smallmobile:grid-cols-2 gap-y-8 gap-x-5">
             {filteredProducts?.map((product, index) => (
               <Link to={`/product/${product.id}`}>
                 <Product
