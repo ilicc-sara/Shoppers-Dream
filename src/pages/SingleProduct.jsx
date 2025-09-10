@@ -7,6 +7,7 @@ function SingleProduct() {
   const params = useParams();
   const [product, setProduct] = useState(null);
   const [displayImage, setDisplayImage] = useState(null);
+  const [activeColor, setActiveColor] = useState(null);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -17,6 +18,7 @@ function SingleProduct() {
         const post = await response.json();
         setProduct(post);
         setDisplayImage(post.images[0].url);
+        setActiveColor(post.colors[0]);
       } catch (error) {
         toast.error("Ups, something went wrong...");
       }
@@ -56,18 +58,60 @@ function SingleProduct() {
             </div>
           </div>
 
-          <div class="flex flex-col gap-[70px]">
+          <div class="flex flex-col gap-5">
             <h1 class="single-product-name capitalize">{product.name}</h1>
+            <div className="flex gap-2 items-center justify-center w-[fit-content]">
+              <span className="text-yellow-600">{product.stars}</span>
+              <div>
+                <i class="bxr  bxs-star text-yellow-600"></i>
+                <i class="bxr  bxs-star text-yellow-600"></i>
+                <i class="bxr  bxs-star text-yellow-600"></i>
+                <i class="bxr  bxs-star text-yellow-600"></i>
+                <i class="bxr  bxs-star text-yellow-600"></i>
+              </div>
+              <p> ({product.reviews} customers rating) </p>
+            </div>
+            <p className="font-medium text-brand-darker">
+              $ {product.price / 100}
+            </p>
 
             <p class="description text">{product.description}</p>
 
             <p>
-              Available: <span class="available-number">{product.stock}</span>
+              <span className="font-semibold">Available:</span> {product.stock}
             </p>
 
             <p>
-              Brand: <span class="brand-name">{product.company}</span>
+              <span className="font-semibold">SKU:</span> {product.id}
             </p>
+
+            <p>
+              <span className="font-semibold">Available Brand:</span>
+              {product.company}
+            </p>
+
+            <hr className="border-t border-brand-darker" />
+
+            <div>
+              <span className="font-semibold">Colors:</span>
+              <div>
+                {product.colors.map((color, index) => {
+                  const isActive = activeColor == color;
+                  return (
+                    <div
+                      key={index}
+                      className={`w-3 h-3 rounded-full cursor-pointer`}
+                      style={{
+                        backgroundColor: color,
+                        opacity: `${isActive ? 1 : 0.4}`,
+                        scale: `${isActive ? 1.5 : 1}`,
+                      }}
+                      onClick={() => setActiveColor(color)}
+                    ></div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       )}

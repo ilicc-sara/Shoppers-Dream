@@ -74,7 +74,7 @@ function Sidebar(props) {
             return (
               <div
                 key={index}
-                className={`w-3 h-3 rounded-full cursor-pointer`}
+                className="w-3 h-3 rounded-full cursor-pointer"
                 style={{
                   backgroundColor: color.colorValue,
                   opacity: `${isActive ? 1 : 0.4}`,
