@@ -231,6 +231,7 @@ setFreeShippingValue(null);
 }
 
 return (
+
 <div className="!mt-[100px] flex gap-8 w-7xl !mx-auto">
 <div className="flex flex-col gap-5">
 <input
@@ -409,3 +410,13 @@ setActiveProducts(filteredProducts);
 }
 return filterProducts(activeCategory, activeColor);
 }, [activeCategory, activeColor]);
+<button class="back-btn">BACK</button>
+.back-btn {
+background-color: #d22dc1;
+color: white;
+font-weight: bold;
+width: 300px;
+height: 40px;
+border-radius: 10px;
+border: none;
+}

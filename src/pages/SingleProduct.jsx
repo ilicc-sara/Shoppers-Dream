@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 function SingleProduct() {
   const params = useParams();
@@ -16,7 +17,7 @@ function SingleProduct() {
         setProduct(post);
         setDisplayImage(post.images[0].url);
       } catch (error) {
-        console.log(error);
+        toast.error("Ups, something went wrong...");
       }
     };
 
@@ -25,8 +26,9 @@ function SingleProduct() {
 
   return (
     <>
+      <ToastContainer position="top-center" />
       {product && (
-        <div className="w-4/5 grid grid-cols-2 !mx-auto gap-10 !mt-28">
+        <div className="w-4/5 grid grid-cols-2 !mx-auto gap-10 !mt-28 !mb-5 text-left">
           <div class="pictures-cont">
             <img
               src={displayImage}
@@ -35,53 +37,30 @@ function SingleProduct() {
             />
 
             <div class="!mt-5 flex w-full justify-between">
-              <img
-                src={product.images[0].url}
-                alt="Furniture-Picture"
-                class="w-24 h-18 rounded-sm object-cover"
-                onClick={(e) => setDisplayImage(e.target.src)}
-              />
-              <img
-                src={product.images[1].url}
-                alt="Furniture-Picture"
-                class="w-24 h-18 rounded-sm object-cover"
-                onClick={(e) => setDisplayImage(e.target.src)}
-              />
-              <img
-                src={product.images[2].url}
-                alt="Furniture-Picture"
-                class="w-24 h-18 rounded-sm object-cover"
-                onClick={(e) => setDisplayImage(e.target.src)}
-              />
-              <img
-                src={product.images[3].url}
-                alt="Furniture-Picture"
-                class="w-24 h-18 rounded-sm object-cover"
-                onClick={(e) => setDisplayImage(e.target.src)}
-              />
-              <img
-                src={product.images[4].url}
-                alt="Furniture-Picture"
-                class="w-24 h-18 rounded-sm object-cover"
-                onClick={(e) => setDisplayImage(e.target.src)}
-              />
+              {product?.images.map((image, index) => (
+                <img
+                  key={index}
+                  src={image.url}
+                  alt="Furniture-Picture"
+                  class="w-24 h-18 rounded-sm object-cover"
+                  onClick={(e) => setDisplayImage(e.target.src)}
+                />
+              ))}
             </div>
           </div>
 
           <div class="flex flex-col gap-[70px]">
             <h1 class="single-product-name">{product.name}</h1>
 
-            <p class="description text">${product.description}</p>
+            <p class="description text">{product.description}</p>
 
             <p>
-              Available: <span class="available-number">${product.stock}</span>
+              Available: <span class="available-number">{product.stock}</span>
             </p>
 
             <p>
-              Brand: <span class="brand-name">${product.company}</span>
+              Brand: <span class="brand-name">{product.company}</span>
             </p>
-
-            <button class="back-btn">BACK</button>
           </div>
         </div>
       )}
