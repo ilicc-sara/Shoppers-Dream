@@ -15,8 +15,14 @@ function ProductsSection() {
         </h1>
 
         <div className="flex justify-between !pt-[70px] !pb-[40px] max-mobile:flex-col max-mobile:w-[70%] max-mobile:!mx-auto max-mobile:gap-6">
-          {exampleProductsImg.map((img, index) => (
-            <ExampleProducts key={index} image={img} />
+          {exampleProductsImg.map((item, index) => (
+            <ExampleProducts
+              key={index}
+              image={item.image}
+              name={item.name}
+              price={item.price}
+              id={item.id}
+            />
           ))}
         </div>
         <Link to="/products">

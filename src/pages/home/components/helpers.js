@@ -7,9 +7,24 @@ export const featuresImg = [
 ];
 
 export const exampleProductsImg = [
-  "./exampleProducts/product-15.jpeg",
-  "./exampleProducts/product-16.jpeg",
-  "./exampleProducts/product-17.jpeg",
+  {
+    image: "./exampleProducts/product-15.jpeg",
+    name: "Sofa Set",
+    price: 1299.99,
+    id: "recs5BSVU3qQrOj4E",
+  },
+  {
+    image: "./exampleProducts/product-16.jpeg",
+    name: "Suede Armchair",
+    price: 159.99,
+    id: "recroK1VD8qVdMP5H",
+  },
+  {
+    image: "./exampleProducts/product-17.jpeg",
+    name: "Utopia Sofa",
+    price: 799.99,
+    id: "rec7JInsuCEHgmaGe",
+  },
 ];
 
 export const pillars = [
