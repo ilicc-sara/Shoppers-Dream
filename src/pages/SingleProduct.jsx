@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 function SingleProduct() {
   const params = useParams();
@@ -28,7 +29,13 @@ function SingleProduct() {
     <>
       <ToastContainer position="top-center" />
       {product && (
-        <div className="w-4/5 grid grid-cols-2 !mx-auto gap-10 !mt-28 !mb-5 text-left">
+        <div className="w-4/5 grid grid-cols-2 !mx-auto gap-10 !mt-28 !mb-5 text-left relative">
+          <Link
+            to="/products"
+            className="!text-brand-darker absolute !font-medium left-0 -top-9 !underline"
+          >
+            Back to products &darr;
+          </Link>
           <div class="pictures-cont">
             <img
               src={displayImage}
@@ -50,7 +57,7 @@ function SingleProduct() {
           </div>
 
           <div class="flex flex-col gap-[70px]">
-            <h1 class="single-product-name">{product.name}</h1>
+            <h1 class="single-product-name capitalize">{product.name}</h1>
 
             <p class="description text">{product.description}</p>
 
