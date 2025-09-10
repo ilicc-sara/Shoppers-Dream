@@ -48,6 +48,12 @@ function Button(props) {
     modifierClassName = "bg-red-500 text-white w-[70%]";
   }
 
+  if (variation === "amount-btn") {
+    baseClassName = "";
+    modifierClassName =
+      "w-[40px] h-[40px] bg-neutral-300 transition-all duration-300 rounded hover:bg-neutral-400 ";
+  }
+
   return (
     <button
       className={`${baseClassName} ${modifierClassName}`}

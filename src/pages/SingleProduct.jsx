@@ -59,7 +59,7 @@ function SingleProduct() {
             </div>
           </div>
 
-          <div class="flex flex-col gap-5">
+          <div class="flex flex-col gap-4">
             <h1 class="single-product-name capitalize">{product.name}</h1>
             <div className="flex gap-2 items-center justify-center w-[fit-content]">
               <span className="text-yellow-600">{product.stars}</span>
@@ -79,15 +79,15 @@ function SingleProduct() {
             <p class="description text">{product.description}</p>
 
             <p>
-              <span className="font-semibold">Available:</span> {product.stock}
+              <span className="font-semibold">Available: </span> {product.stock}
             </p>
 
             <p>
-              <span className="font-semibold">SKU:</span> {product.id}
+              <span className="font-semibold">SKU: </span> {product.id}
             </p>
 
             <p>
-              <span className="font-semibold">Available Brand:</span>
+              <span className="font-semibold">Available Brand: </span>
               {product.company}
             </p>
 
@@ -114,10 +114,14 @@ function SingleProduct() {
               </div>
             </div>
 
-            <div>
-              <Button></Button>
+            <div className="w-[fit-content] grid grid-cols-3 place-items-center">
+              <Button variation="amount-btn">-</Button>
               <span>1</span>
-              <Button></Button>
+              <Button variation="amount-btn">+</Button>
+            </div>
+
+            <div className="flex w-[fit-content]">
+              <Button variation="primary">Add to cart</Button>
             </div>
           </div>
         </div>

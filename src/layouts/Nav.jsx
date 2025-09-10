@@ -1,10 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Nav() {
   const sectionIsInView = useSelector((state) => state.view.isInView);
   const [showMobileNav, setShowMobileNav] = useState(false);
+  // const [width, setWidth] = useState(window.innerWidth);
+
+  // console.log(width);
+
+  // useEffect(() => {
+  //   function hideMobileNav() {
+  //     if (width > 800 && showMobileNav === true) {
+  //       setShowMobileNav(false);
+  //     }
+  //   }
+
+  //   return () => hideMobileNav();
+  // }, [width, showMobileNav]);
 
   return (
     <>
@@ -53,7 +66,7 @@ function Nav() {
       )}
 
       <nav
-        className={`fixed top-0 left-0 right-0 bg-white z-50 w-full h-screen flex flex-col gap-15 !p-[100px] transition-all duration-500 ease-in ${
+        className={`fixed top-0 left-0 right-0 bg-white z-50 w-full h-screen flex flex-col gap-15 !p-[100px] transition-all duration-500 ease-in   ${
           !showMobileNav
             ? "translate-x-full  opacity-0 pointer-events-none invisible"
             : "opacity-100 pointer-events-auto visible translate-x-0"
