@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 
 function SingleProduct() {
@@ -31,10 +31,10 @@ function SingleProduct() {
             <img
               src={displayImage}
               alt="Furniture-Picture"
-              class="w-[550px] h-[500px] rounded-lg object-cover"
+              class="w-full h-125 rounded-lg object-cover"
             />
 
-            <div class="!mt-5 flex w-[550px] justify-between">
+            <div class="!mt-5 flex w-full justify-between">
               <img
                 src={product.images[0].url}
                 alt="Furniture-Picture"
