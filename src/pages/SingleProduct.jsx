@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import Button from "../UI/Button";
 
 function SingleProduct() {
   const params = useParams();
@@ -92,15 +93,15 @@ function SingleProduct() {
 
             <hr className="border-t border-brand-darker" />
 
-            <div>
+            <div className="flex gap-4 items-center justify-center w-[fit-content]">
               <span className="font-semibold">Colors:</span>
-              <div>
+              <div className="flex gap-3">
                 {product.colors.map((color, index) => {
                   const isActive = activeColor == color;
                   return (
                     <div
                       key={index}
-                      className={`w-3 h-3 rounded-full cursor-pointer`}
+                      className="w-3 h-3 rounded-full cursor-pointer"
                       style={{
                         backgroundColor: color,
                         opacity: `${isActive ? 1 : 0.4}`,
@@ -111,6 +112,12 @@ function SingleProduct() {
                   );
                 })}
               </div>
+            </div>
+
+            <div>
+              <Button></Button>
+              <span>1</span>
+              <Button></Button>
             </div>
           </div>
         </div>
