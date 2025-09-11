@@ -3,7 +3,12 @@ import Button from "../UI/Button";
 import { Link } from "react-router-dom";
 import { cartIsEmpty, priceSum } from "../redux/cartSlice";
 import { useSelector } from "react-redux";
-import { increaseAmount, decreaseAmount } from "../redux/cartSlice";
+import {
+  increaseAmount,
+  decreaseAmount,
+  deleteCartItem,
+  clearCart,
+} from "../redux/cartSlice";
 import { useDispatch } from "react-redux";
 
 function Cart() {
@@ -78,15 +83,24 @@ function Cart() {
           </div>
 
           <p className="font-medium text-brand-darker">$ {item.totalPrice}</p>
-          <button className="h-7 w-7 bg-red-500 text-white flex items-center justify-center rounded absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 ">
+          <button
+            onClick={() =>
+              dispatch(deleteCartItem({ id: item.id, color: item.color }))
+            }
+            className="h-7 w-7 bg-red-500 text-white flex items-center justify-center rounded absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 "
+          >
             <i class="bxr  bxs-trash"></i>
           </button>
         </div>
       ))}
       <hr className="border-t border-neutral-300" />
       <div className="flex justify-between items-center !my-3">
-        <Button variation="primary">Keep shopping</Button>
-        <Button variation="clear">Clear the cart</Button>
+        <Link to="/products">
+          <Button variation="primary">Keep shopping</Button>
+        </Link>
+        <Button variation="clear" handleClick={() => dispatch(clearCart())}>
+          Clear the cart
+        </Button>
       </div>
 
       <p className="text-24 font-bold"> TOTAL: {sumPrice}</p>
