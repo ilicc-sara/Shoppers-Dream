@@ -5,19 +5,6 @@ import { useSelector } from "react-redux";
 function Nav() {
   const sectionIsInView = useSelector((state) => state.view.isInView);
   const [showMobileNav, setShowMobileNav] = useState(false);
-  // const [width, setWidth] = useState(window.innerWidth);
-
-  // console.log(width);
-
-  // useEffect(() => {
-  //   function hideMobileNav() {
-  //     if (width > 800 && showMobileNav === true) {
-  //       setShowMobileNav(false);
-  //     }
-  //   }
-
-  //   return () => hideMobileNav();
-  // }, [width, showMobileNav]);
 
   return (
     <>

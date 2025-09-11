@@ -3,12 +3,16 @@ import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import Button from "../UI/Button";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { addToCart } from "../redux/cartSlice";
 
 function SingleProduct() {
   const params = useParams();
   const [product, setProduct] = useState(null);
   const [displayImage, setDisplayImage] = useState(null);
   const [activeColor, setActiveColor] = useState(null);
+  const [amount, setAmount] = useState(1);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -28,6 +32,9 @@ function SingleProduct() {
     fetchPost();
   }, []);
 
+  const cart = useSelector((state) => state.cart);
+  console.log(cart);
+  const dispatch = useDispatch();
   return (
     <>
       <ToastContainer position="top-center" />
@@ -115,13 +122,56 @@ function SingleProduct() {
             </div>
 
             <div className="w-[fit-content] grid grid-cols-3 place-items-center">
-              <Button variation="amount-btn">-</Button>
-              <span>1</span>
-              <Button variation="amount-btn">+</Button>
+              <Button
+                variation="amount-btn"
+                handleClick={() =>
+                  setAmount((prev) => {
+                    if (prev !== 1) {
+                      return prev - 1;
+                    } else {
+                      return prev;
+                    }
+                  })
+                }
+              >
+                -
+              </Button>
+              <span> {amount} </span>
+              <Button
+                variation="amount-btn"
+                handleClick={() => {
+                  setAmount((prev) => {
+                    if (prev === product.stock) {
+                      return prev;
+                    } else {
+                      return prev + 1;
+                    }
+                  });
+                }}
+              >
+                +
+              </Button>
             </div>
 
             <div className="flex w-[fit-content]">
-              <Button variation="primary">Add to cart</Button>
+              <Button
+                handleClick={() =>
+                  dispatch(
+                    addToCart({
+                      image: product.images[0].url,
+                      name: product.name,
+                      id: product.id,
+                      quantity: amount,
+                      price: product.price / 100,
+                      productsAvailable: product.stock,
+                      color: activeColor,
+                    })
+                  )
+                }
+                variation="primary"
+              >
+                Add to cart
+              </Button>
             </div>
           </div>
         </div>

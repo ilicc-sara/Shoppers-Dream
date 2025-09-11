@@ -24,9 +24,21 @@ const initialState = [];
 const cartSlice = createSlice({
   name: "cartSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    addToCart: (state, action) => {
+      state.push({
+        image: action.payload.image,
+        name: action.payload.name,
+        id: action.payload.id,
+        quantity: action.payload.quantity,
+        price: action.payload.price,
+        productsAvailable: action.payload.productsAvailable,
+        color: action.payload.color,
+      });
+    },
+  },
 });
 
-export const {} = cartSlice.actions;
+export const { addToCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
