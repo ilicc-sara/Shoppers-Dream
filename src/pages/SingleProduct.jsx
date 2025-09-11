@@ -178,10 +178,15 @@ function SingleProduct() {
                           if (cur.id === product.id) {
                             return acc + cur.quantity;
                           } else return acc;
-                        }, 0) !== product.stock
-                          ? false
-                          : true
+                        }, 0) === product.stock
                       }
+                      // disabled={cart.includes(
+                      //   cart.find(
+                      //     (item) =>
+                      //       item.id === product.id &&
+                      //       item.quantity === product.stock
+                      //   )
+                      // )}
                     >
                       Add to cart
                     </Button>

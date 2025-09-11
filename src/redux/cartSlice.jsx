@@ -57,7 +57,10 @@ const cartSlice = createSlice({
       }
     },
     increaseAmount: (state, action) => {
-      const index = state.findIndex((item) => item.id === action.payload.id);
+      const index = state.findIndex(
+        (item) =>
+          item.id === action.payload.id && item.color === action.payload.color
+      );
       if (state[index].quantity !== state[index].productsAvailable) {
         state[index].quantity += 1;
         state[index].totalPrice = (
@@ -66,7 +69,10 @@ const cartSlice = createSlice({
       } else return;
     },
     decreaseAmount: (state, action) => {
-      const index = state.findIndex((item) => item.id === action.payload.id);
+      const index = state.findIndex(
+        (item) =>
+          item.id === action.payload.id && item.color === action.payload.color
+      );
       if (state[index].quantity !== 1) {
         state[index].quantity -= 1;
         state[index].totalPrice = (

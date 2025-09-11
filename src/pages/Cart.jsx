@@ -60,14 +60,18 @@ function Cart() {
           <div className="w-[fit-content] grid grid-cols-3 place-items-center">
             <Button
               variation="amount-btn"
-              handleClick={() => dispatch(decreaseAmount({ id: item.id }))}
+              handleClick={() =>
+                dispatch(decreaseAmount({ id: item.id, color: item.color }))
+              }
             >
               -
             </Button>
             <span> {item.quantity} </span>
             <Button
               variation="amount-btn"
-              handleClick={() => dispatch(increaseAmount({ id: item.id }))}
+              handleClick={() =>
+                dispatch(increaseAmount({ id: item.id, color: item.color }))
+              }
             >
               +
             </Button>
