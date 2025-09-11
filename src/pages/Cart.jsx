@@ -1,12 +1,17 @@
 import React from "react";
 import Button from "../UI/Button";
 import { Link } from "react-router-dom";
-import { cartIsEmpty } from "../redux/cartSlice";
+import { cartIsEmpty, priceSum } from "../redux/cartSlice";
 import { useSelector } from "react-redux";
+import { increaseAmount, decreaseAmount } from "../redux/cartSlice";
+import { useDispatch } from "react-redux";
 
 function Cart() {
   const emptyCart = useSelector((state) => cartIsEmpty(state));
+  const sumPrice = useSelector((state) => priceSum(state));
   const cart = useSelector((state) => state.cart);
+
+  const dispatch = useDispatch();
   return (
     <div className="w-4/5  !mx-auto  !mt-28 !mb-5   ">
       {/* {emptyCart && (
@@ -53,9 +58,19 @@ function Cart() {
           <p className="font-medium text-brand-darker">$ {item.unitPrice}</p>
 
           <div className="w-[fit-content] grid grid-cols-3 place-items-center">
-            <Button variation="amount-btn">-</Button>
+            <Button
+              variation="amount-btn"
+              handleClick={() => dispatch(decreaseAmount({ id: item.id }))}
+            >
+              -
+            </Button>
             <span> {item.quantity} </span>
-            <Button variation="amount-btn">+</Button>
+            <Button
+              variation="amount-btn"
+              handleClick={() => dispatch(increaseAmount({ id: item.id }))}
+            >
+              +
+            </Button>
           </div>
 
           <p className="font-medium text-brand-darker">$ {item.totalPrice}</p>
@@ -69,6 +84,8 @@ function Cart() {
         <Button variation="primary">Keep shopping</Button>
         <Button variation="clear">Clear the cart</Button>
       </div>
+
+      <p className="text-24 font-bold"> TOTAL: {sumPrice}</p>
     </div>
   );
 }

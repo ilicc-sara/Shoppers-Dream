@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { amountSum } from "../redux/cartSlice";
 
 function Nav() {
   const sectionIsInView = useSelector((state) => state.view.isInView);
   const [showMobileNav, setShowMobileNav] = useState(false);
+  const sumCartAmount = useSelector((state) => amountSum(state));
 
   return (
     <>
@@ -37,7 +39,7 @@ function Nav() {
                   className="w-[24px] h-[24px]"
                 ></ion-icon>
                 <div className="text-[14px] padding-[2px] bg-brand-pink !text-white w-[20px] h-[20px] flex justify-center items-center rounded-[222px] absolute -top-[1px] -right-[8px]">
-                  0
+                  {sumCartAmount}
                 </div>
               </div>
             </Link>
@@ -79,7 +81,7 @@ function Nav() {
               className="w-[36px] h-[36px]"
             ></ion-icon>
             <div className="text-[24px] padding-[2px] bg-brand-pink !text-white w-[30px] h-[30px] flex justify-center items-center rounded-[222px] absolute -top-[3px] -right-[11px]">
-              0
+              {sumCartAmount}
             </div>
           </div>
         </Link>

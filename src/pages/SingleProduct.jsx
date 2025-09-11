@@ -177,7 +177,7 @@ function SingleProduct() {
                         cart.find(
                           (item) =>
                             item.id === product.id &&
-                            item.amount === product.stock
+                            item.quantity === item.productsAvailable
                         )
                       )}
                     >
