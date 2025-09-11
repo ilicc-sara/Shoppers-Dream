@@ -174,7 +174,11 @@ function SingleProduct() {
                       }
                       variation="primary"
                       disabled={cart.includes(
-                        cart.find((item) => item.id === product.id)
+                        cart.find(
+                          (item) =>
+                            item.id === product.id &&
+                            item.amount === product.stock
+                        )
                       )}
                     >
                       Add to cart

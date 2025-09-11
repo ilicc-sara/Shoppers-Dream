@@ -45,7 +45,7 @@ function Button(props) {
   }
 
   if (variation === "clear") {
-    modifierClassName = "bg-red-500 text-white w-[70%]";
+    modifierClassName = "bg-red-500 text-white w-[fit-content]";
   }
 
   if (variation === "amount-btn") {
