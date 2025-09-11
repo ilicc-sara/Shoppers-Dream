@@ -34,6 +34,7 @@ function SingleProduct() {
 
   const cart = useSelector((state) => state.cart);
   console.log(cart);
+
   const dispatch = useDispatch();
   return (
     <>
@@ -46,28 +47,28 @@ function SingleProduct() {
           >
             Back to products &darr;
           </Link>
-          <div class="pictures-cont">
+          <div className="pictures-cont">
             <img
               src={displayImage}
               alt="Furniture-Picture"
-              class="w-full h-125 rounded-lg object-cover"
+              className="w-full h-125 rounded-lg object-cover"
             />
 
-            <div class="!mt-5 flex w-full justify-between">
+            <div className="!mt-5 flex w-full justify-between">
               {product?.images.map((image, index) => (
                 <img
                   key={index}
                   src={image.url}
                   alt="Furniture-Picture"
-                  class="w-24 h-18 rounded-sm object-cover"
+                  className="w-24 h-18 rounded-sm object-cover"
                   onClick={(e) => setDisplayImage(e.target.src)}
                 />
               ))}
             </div>
           </div>
 
-          <div class="flex flex-col gap-4">
-            <h1 class="single-product-name capitalize">{product.name}</h1>
+          <div className="flex flex-col gap-4">
+            <h1 className="single-product-name capitalize">{product.name}</h1>
             <div className="flex gap-2 items-center justify-center w-[fit-content]">
               <span className="text-yellow-600">{product.stars}</span>
               <div>
@@ -169,6 +170,9 @@ function SingleProduct() {
                   )
                 }
                 variation="primary"
+                disabled={cart.includes(
+                  cart.find((item) => item.id === product.id)
+                )}
               >
                 Add to cart
               </Button>

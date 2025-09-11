@@ -2,7 +2,7 @@ import { base } from "framer-motion/client";
 import React from "react";
 
 function Button(props) {
-  const { variation, children, handleClick } = props;
+  const { variation, children, handleClick, disabled } = props;
   let baseClassName =
     "!px-4 !py-3 tablet:text-base max-tablet:text-sm rounded-md font-semibold border-0";
   let operationsBase =
@@ -56,7 +56,10 @@ function Button(props) {
 
   return (
     <button
-      className={`${baseClassName} ${modifierClassName}`}
+      disabled={disabled}
+      className={`${baseClassName} ${modifierClassName} ${
+        disabled ? "opacity-[0.4] !cursor-not-allowed" : ""
+      }`}
       onClick={handleClick}
     >
       {children}
