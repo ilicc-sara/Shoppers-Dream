@@ -101,82 +101,88 @@ function SingleProduct() {
 
             <hr className="border-t border-brand-darker" />
 
-            <div className="flex gap-4 items-center justify-center w-[fit-content]">
-              <span className="font-semibold">Colors:</span>
-              <div className="flex gap-3">
-                {product.colors.map((color, index) => {
-                  const isActive = activeColor == color;
-                  return (
-                    <div
-                      key={index}
-                      className="w-3 h-3 rounded-full cursor-pointer"
-                      style={{
-                        backgroundColor: color,
-                        opacity: `${isActive ? 1 : 0.4}`,
-                        scale: `${isActive ? 1.5 : 1}`,
-                      }}
-                      onClick={() => setActiveColor(color)}
-                    ></div>
-                  );
-                })}
-              </div>
-            </div>
+            {!product.stock == 0 && (
+              <>
+                <div className="flex gap-4 items-center justify-center w-[fit-content]">
+                  <span className="font-semibold">Colors:</span>
+                  <div className="flex gap-3">
+                    {product.colors.map((color, index) => {
+                      const isActive = activeColor == color;
+                      return (
+                        <div
+                          key={index}
+                          className="w-3 h-3 rounded-full cursor-pointer"
+                          style={{
+                            backgroundColor: color,
+                            opacity: `${isActive ? 1 : 0.4}`,
+                            scale: `${isActive ? 1.5 : 1}`,
+                          }}
+                          onClick={() => setActiveColor(color)}
+                        ></div>
+                      );
+                    })}
+                  </div>
+                </div>
 
-            <div className="w-[fit-content] grid grid-cols-3 place-items-center">
-              <Button
-                variation="amount-btn"
-                handleClick={() =>
-                  setAmount((prev) => {
-                    if (prev !== 1) {
-                      return prev - 1;
-                    } else {
-                      return prev;
+                <div className="w-[fit-content] grid grid-cols-3 place-items-center">
+                  <Button
+                    variation="amount-btn"
+                    handleClick={() =>
+                      setAmount((prev) => {
+                        if (prev !== 1) {
+                          return prev - 1;
+                        } else {
+                          return prev;
+                        }
+                      })
                     }
-                  })
-                }
-              >
-                -
-              </Button>
-              <span> {amount} </span>
-              <Button
-                variation="amount-btn"
-                handleClick={() => {
-                  setAmount((prev) => {
-                    if (prev === product.stock) {
-                      return prev;
-                    } else {
-                      return prev + 1;
-                    }
-                  });
-                }}
-              >
-                +
-              </Button>
-            </div>
+                  >
+                    -
+                  </Button>
+                  <span> {amount} </span>
+                  <Button
+                    variation="amount-btn"
+                    handleClick={() => {
+                      setAmount((prev) => {
+                        if (prev === product.stock) {
+                          return prev;
+                        } else {
+                          return prev + 1;
+                        }
+                      });
+                    }}
+                  >
+                    +
+                  </Button>
+                </div>
 
-            <div className="flex w-[fit-content]">
-              <Button
-                handleClick={() =>
-                  dispatch(
-                    addToCart({
-                      image: product.images[0].url,
-                      name: product.name,
-                      id: product.id,
-                      quantity: amount,
-                      price: product.price / 100,
-                      productsAvailable: product.stock,
-                      color: activeColor,
-                    })
-                  )
-                }
-                variation="primary"
-                disabled={cart.includes(
-                  cart.find((item) => item.id === product.id)
-                )}
-              >
-                Add to cart
-              </Button>
-            </div>
+                <div className="flex w-[fit-content]">
+                  <Link to="/cart">
+                    <Button
+                      handleClick={() =>
+                        dispatch(
+                          addToCart({
+                            image: product.images[0].url,
+                            name: product.name,
+                            id: product.id,
+                            quantity: amount,
+                            price: product.price / 100,
+                            productsAvailable: product.stock,
+                            color: activeColor,
+                          })
+                        )
+                      }
+                      variation="primary"
+                      disabled={cart.includes(
+                        cart.find((item) => item.id === product.id)
+                      )}
+                    >
+                      Add to cart
+                    </Button>
+                  </Link>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}

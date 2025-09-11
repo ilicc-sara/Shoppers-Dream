@@ -17,9 +17,9 @@ const initialState = [];
 //   }, 0);
 // });
 
-// export const cartIsEmpty = createSelector([(state) => state.cart], (cart) => {
-//   return cart.length === 0;
-// });
+export const cartIsEmpty = createSelector([(state) => state.cart], (cart) => {
+  return cart.length === 0;
+});
 
 const cartSlice = createSlice({
   name: "cartSlice",
@@ -31,7 +31,8 @@ const cartSlice = createSlice({
         name: action.payload.name,
         id: action.payload.id,
         quantity: action.payload.quantity,
-        price: action.payload.price,
+        unitPrice: action.payload.price,
+        totalPrice: action.payload.price * action.payload.quantity,
         productsAvailable: action.payload.productsAvailable,
         color: action.payload.color,
       });
