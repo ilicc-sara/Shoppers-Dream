@@ -173,13 +173,15 @@ function SingleProduct() {
                         )
                       }
                       variation="primary"
-                      disabled={cart.includes(
-                        cart.find(
-                          (item) =>
-                            item.id === product.id &&
-                            item.quantity === item.productsAvailable
-                        )
-                      )}
+                      disabled={
+                        cart.reduce((acc, cur) => {
+                          if (cur.id === product.id) {
+                            return acc + cur.quantity;
+                          } else return acc;
+                        }, 0) !== product.stock
+                          ? false
+                          : true
+                      }
                     >
                       Add to cart
                     </Button>
