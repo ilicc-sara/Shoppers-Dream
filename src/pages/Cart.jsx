@@ -45,13 +45,15 @@ function Cart() {
               key={index}
               className="!py-6 grid grid-cols-4 place-items-center relative"
             >
-              <div className="justify-self-start flex gap-3 items-center">
+              <div className="justify-self-start flex max-tablet:flex-col tablet:gap-3 max-tablet:gap-1 tablet:items-center max-tablet:items-start">
                 <img
                   src={item.image}
                   className="w-24 h-18 rounded-sm object-cover"
                 />
                 <div className="flex flex-col">
-                  <p className="capitalize font-medium">{item.name}</p>
+                  <p className="capitalize font-medium text-left">
+                    {item.name}
+                  </p>
                   <div className="flex justify-start items-center gap-2">
                     Color:
                     <div

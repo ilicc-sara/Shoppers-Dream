@@ -40,7 +40,7 @@ function SingleProduct() {
     <>
       <ToastContainer position="top-center" />
       {product && (
-        <div className="w-4/5 grid tablet:grid-cols-2 max-tablet:grid-rows-2 !mx-auto gap-10 !mt-28 !mb-5 text-left relative">
+        <div className="w-4/5 grid tablet:grid-cols-2 max-tablet:grid-rows-2 !mx-auto tablet:gap-10 max-tablet:gap-5 !mt-28 !mb-5 text-left relative">
           <Link
             to="/products"
             className="!text-brand-darker absolute !font-medium left-0 -top-9 !underline"
@@ -51,7 +51,7 @@ function SingleProduct() {
             <img
               src={displayImage}
               alt="Furniture-Picture"
-              className="w-full rounded-lg object-cover desktop:h-125 laptop:h-120 smallLT:h-115 tablet:h-105 mobile:h-120 smallmobile:h-110"
+              className="w-full rounded-lg object-cover desktop:h-125 laptop:h-120 smallLT:h-115 tablet:h-105 mobile:h-120 smallmobile:h-105"
             />
 
             <div className="!mt-5 flex w-full justify-between">
