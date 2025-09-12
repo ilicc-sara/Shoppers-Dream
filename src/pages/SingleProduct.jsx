@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
 
+const URL = "https://www.course-api.com";
+
 function SingleProduct() {
   const params = useParams();
   const [product, setProduct] = useState(null);
@@ -18,7 +20,7 @@ function SingleProduct() {
     const fetchPost = async () => {
       try {
         const response = await fetch(
-          `https://www.course-api.com/react-store-single-product?id=${params.productId}`
+          `${URL}/react-store-single-product?id=${params.productId}`
         );
         const post = await response.json();
         setProduct(post);
