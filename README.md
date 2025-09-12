@@ -420,3 +420,10 @@ height: 40px;
 border-radius: 10px;
 border: none;
 }
+
+desktop:bg-green-300
+laptop:bg-blue-400
+smallLT:bg-red-300
+tablet:bg-pink-400
+mobile:bg-yellow-400
+smallmobile:bg-purple-300

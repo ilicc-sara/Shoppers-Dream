@@ -6,7 +6,7 @@ import "./index.css";
 import Index from "./pages/home/Index.jsx";
 import Products from "./pages/products/Products.jsx";
 import SingleProduct from "./pages/SingleProduct.jsx";
-import Cart from "./pages/Cart.jsx";
+import Cart from "./pages/cart/Cart.jsx";
 import SharedLayout from "./layouts/SharedLayout.jsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.jsx";

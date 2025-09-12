@@ -1,14 +1,14 @@
 import React from "react";
-import Button from "../UI/Button";
+import Button from "../../UI/Button";
 import { Link } from "react-router-dom";
-import { cartIsEmpty, priceSum } from "../redux/cartSlice";
+import { cartIsEmpty, priceSum } from "../../redux/cartSlice";
 import { useSelector } from "react-redux";
 import {
   increaseAmount,
   decreaseAmount,
   deleteCartItem,
   clearCart,
-} from "../redux/cartSlice";
+} from "../../redux/cartSlice";
 import { useDispatch } from "react-redux";
 
 function Cart() {

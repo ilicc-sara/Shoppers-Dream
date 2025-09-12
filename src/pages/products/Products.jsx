@@ -151,7 +151,7 @@ function Products() {
       </div>
 
       <div
-        className={`fixed top-0 left-0 right-0 bg-white z-50 w-full h-screen !p-[100px] transition-all duration-500 ease-in ${
+        className={`fixed top-0 left-0 right-0 bg-white z-50 w-full h-screen overflow-y-scroll !p-[100px] transition-all duration-500 ease-in ${
           !showMobileFIlters
             ? "-translate-x-full  opacity-0 pointer-events-none invisible"
             : "opacity-100 pointer-events-auto visible translate-x-0"
@@ -159,7 +159,7 @@ function Products() {
       >
         <ion-icon
           name="close"
-          className="w-[36px] h-[36px] absolute top-[30px] right-[30px]"
+          className="w-[36px] h-[36px] absolute cursor-pointer top-[30px] right-[30px]"
           onClick={() => setShowMobileFIlters(false)}
         ></ion-icon>
         <Sidebar
