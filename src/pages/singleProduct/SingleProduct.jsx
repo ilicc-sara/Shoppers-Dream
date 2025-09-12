@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import Button from "../../UI/Button";
+import Button from "@/UI/Button";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
 import ProductImage from "./components/ProductImage";
 import ProductInfo from "./components/ProductInfo";
 import ProductColors from "./components/ProductColors";
+import ProductAmount from "./components/ProductAmount";
 
 const URL = "https://www.course-api.com";
 
@@ -18,6 +19,9 @@ function SingleProduct() {
   const [displayImage, setDisplayImage] = useState(null);
   const [activeColor, setActiveColor] = useState(null);
   const [amount, setAmount] = useState(1);
+
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -36,9 +40,6 @@ function SingleProduct() {
 
     fetchPost();
   }, []);
-
-  const cart = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
 
   return (
     <>
@@ -71,37 +72,11 @@ function SingleProduct() {
                   setActiveColor={setActiveColor}
                 />
 
-                <div className="w-[fit-content] grid grid-cols-3 place-items-center">
-                  <Button
-                    variation="amount-btn"
-                    handleClick={() =>
-                      setAmount((prev) => {
-                        if (prev !== 1) {
-                          return prev - 1;
-                        } else {
-                          return prev;
-                        }
-                      })
-                    }
-                  >
-                    -
-                  </Button>
-                  <span> {amount} </span>
-                  <Button
-                    variation="amount-btn"
-                    handleClick={() => {
-                      setAmount((prev) => {
-                        if (prev === product.stock) {
-                          return prev;
-                        } else {
-                          return prev + 1;
-                        }
-                      });
-                    }}
-                  >
-                    +
-                  </Button>
-                </div>
+                <ProductAmount
+                  product={product}
+                  amount={amount}
+                  setAmount={setAmount}
+                />
 
                 <div className="flex w-[fit-content]">
                   <Link to="/cart">

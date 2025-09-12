@@ -1,5 +1,3 @@
-import React from "react";
-
 function ProductColors(props) {
   const { product, activeColor, setActiveColor } = props;
   return (
