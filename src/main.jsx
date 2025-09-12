@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Index from "./pages/home/Index.jsx";
 import Products from "./pages/products/Products.jsx";
-import SingleProduct from "./pages/SingleProduct.jsx";
+import SingleProduct from "./pages/singleProduct/SingleProduct.jsx";
 import Cart from "./pages/cart/Cart.jsx";
 import SharedLayout from "./layouts/SharedLayout.jsx";
 import { Provider } from "react-redux";
