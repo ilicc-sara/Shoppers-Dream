@@ -33,10 +33,18 @@ function Cart() {
         <>
           <div>
             <div className="w-full grid grid-cols-4 place-items-center">
-              <span className="text-lg font-medium">Item</span>
-              <span className="text-lg font-medium">Price</span>
-              <span className="text-lg font-medium">Quantity</span>
-              <span className="text-lg font-medium">Subtotal</span>
+              <span className="text-lg max-mobile:text-base font-medium">
+                Item
+              </span>
+              <span className="text-lg max-mobile:text-base font-medium">
+                Price
+              </span>
+              <span className="text-lg max-mobile:text-base font-medium">
+                Quantity
+              </span>
+              <span className="text-lg max-mobile:text-base font-medium">
+                Subtotal
+              </span>
             </div>
           </div>
           <hr className="border-t border-neutral-300" />
@@ -51,10 +59,10 @@ function Cart() {
                   className="w-24 h-18 rounded-sm object-cover"
                 />
                 <div className="flex flex-col">
-                  <p className="capitalize font-medium text-left">
+                  <p className="capitalize font-medium text-left max-mobile:text-xs">
                     {item.name}
                   </p>
-                  <div className="flex justify-start items-center gap-2">
+                  <div className="flex justify-start items-center gap-2 max-mobile:text-xs">
                     Color:
                     <div
                       className="w-3 h-3 rounded-full"
@@ -66,7 +74,7 @@ function Cart() {
                 </div>
               </div>
 
-              <p className="font-medium text-brand-darker">
+              <p className="font-medium text-brand-darker max-mobile:text-xs">
                 $ {item.unitPrice}
               </p>
 
@@ -79,7 +87,7 @@ function Cart() {
                 >
                   -
                 </Button>
-                <span> {item.quantity} </span>
+                <span className="max-mobile:text-xs"> {item.quantity} </span>
                 <Button
                   variation="amount-btn"
                   handleClick={() =>
@@ -90,14 +98,14 @@ function Cart() {
                 </Button>
               </div>
 
-              <p className="font-medium text-brand-darker">
+              <p className="font-medium text-brand-darker max-mobile:text-xs">
                 $ {item.totalPrice}
               </p>
               <button
                 onClick={() =>
                   dispatch(deleteCartItem({ id: item.id, color: item.color }))
                 }
-                className="h-7 w-7 bg-red-500 text-white flex items-center justify-center rounded absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 "
+                className="mobile:h-7 mobile:w-7 max-mobile:w-6 max-mobile:h-6 bg-red-500 text-white flex items-center justify-center rounded absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 "
               >
                 <i class="bxr  bxs-trash"></i>
               </button>

@@ -51,7 +51,7 @@ function Button(props) {
   if (variation === "amount-btn") {
     baseClassName = "";
     modifierClassName =
-      "w-[40px] h-[40px] bg-neutral-300 transition-all duration-300 rounded hover:bg-neutral-400 ";
+      "mobile:w-[40px] mobile:h-[40px] max-mobile:w-[30px] max-mobile:h-[30px] bg-neutral-300 transition-all duration-300 rounded hover:bg-neutral-400 ";
   }
 
   return (
