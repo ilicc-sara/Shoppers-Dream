@@ -1,4 +1,3 @@
-import React from "react";
 import { categories, brands, colors } from "./helpers";
 import Button from "../../../UI/Button";
 

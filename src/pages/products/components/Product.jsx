@@ -1,5 +1,3 @@
-import React from "react";
-
 function Product(props) {
   const { image, name, price } = props;
   return (
