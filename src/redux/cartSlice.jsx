@@ -53,6 +53,7 @@ const cartSlice = createSlice({
           ),
           productsAvailable: action.payload.productsAvailable,
           color: action.payload.color,
+          shipping: action.payload.shipping,
         });
       }
     },

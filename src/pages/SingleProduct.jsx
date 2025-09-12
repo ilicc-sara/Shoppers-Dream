@@ -169,6 +169,7 @@ function SingleProduct() {
                             price: product.price / 100,
                             productsAvailable: product.stock,
                             color: activeColor,
+                            shipping: product.shipping,
                           })
                         )
                       }
