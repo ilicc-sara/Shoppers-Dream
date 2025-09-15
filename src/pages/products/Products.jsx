@@ -4,6 +4,7 @@ import Product from "./components/Product";
 import Sidebar from "./components/Sidebar";
 import { ToastContainer, toast } from "react-toastify";
 import ProductsHeader from "./components/ProductsHeader";
+import { activeAnimations } from "framer-motion";
 
 const URL = "https://www.course-api.com";
 
@@ -18,6 +19,7 @@ function Products() {
   const [sortValue, setSortValue] = useState("price-lowest");
 
   const [filters, setFilters] = useState({
+    search: "",
     activeCategory: null,
     activeColor: null,
     brandOptionValue: null,
@@ -43,7 +45,7 @@ function Products() {
     return activeProducts
       ?.filter(
         (product) =>
-          product.name.toLowerCase().includes(searchValue.toLowerCase()) &&
+          // product.name.toLowerCase().includes(searchValue.toLowerCase()) &&
           +product.price / 100 <= Number(priceRangeValue)
       )
       .sort((a, b) => {
@@ -52,37 +54,74 @@ function Products() {
         if (sortValue === "price-highest") return b.price - a.price;
         if (sortValue === "price-lowest") return a.price - b.price;
       });
-  }, [activeProducts, searchValue, priceRangeValue, sortValue]);
+  }, [activeProducts, priceRangeValue, sortValue]);
 
-  function handleChangeFIlter({
-    category = filters.activeCategory,
-    color = filters.activeColor,
-    brand = filters.brandOptionValue,
-    shipping = filters.freeShipppingValue,
-  }) {
+  // function handleChangeFIlter({
+  //   category = filters.activeCategory,
+  //   color = filters.activeColor,
+  //   brand = filters.brandOptionValue,
+  //   shipping = filters.freeShipppingValue,
+  //   search = filters.search,
+  // }) {
+  //   setFilters((prev) => {
+  //     return {
+  //       ...prev,
+  //       activeCategory: category,
+  //       activeColor: color,
+  //       brandOptionValue: brand,
+  //       freeShipppingValue: shipping,
+  //     };
+  //   });
+
+  //   const result = products.filter((product) => {
+  //     const matchesCategory = category
+  //       ? product.category === category
+  //       : product;
+  //     const matchesColor = color ? product.colors.includes(color) : product;
+  //     const matchesBrand = brand ? product.company === brand : product;
+  //     const matchesShipping = shipping ? product.shipping === true : product;
+
+  //     return matchesCategory && matchesColor && matchesBrand && matchesShipping;
+  //   });
+
+  //   setActiveProducts(result);
+  // }
+
+  function handleChangeFIlter(payload) {
+    const { key, value } = payload;
+    console.log(key);
+    console.log(value);
+
     setFilters((prev) => {
-      return {
-        ...prev,
-        activeCategory: category,
-        activeColor: color,
-        brandOptionValue: brand,
-        freeShipppingValue: shipping,
-      };
+      return { ...prev, [key]: value };
     });
-
-    const result = products.filter((product) => {
-      const matchesCategory = category
-        ? product.category === category
-        : product;
-      const matchesColor = color ? product.colors.includes(color) : product;
-      const matchesBrand = brand ? product.company === brand : product;
-      const matchesShipping = shipping ? product.shipping === true : product;
-
-      return matchesCategory && matchesColor && matchesBrand && matchesShipping;
-    });
-
-    setActiveProducts(result);
   }
+  console.log(filters);
+
+  // use effect za objekat filters i unutar njega napraviti funkciju change filters
+  // if (filters search)
+
+  useEffect(() => {
+    const { search, activeCategory, activeColor } = filters;
+    if (!products) return;
+    let filteredProductsTemp = [...products];
+    if (search) {
+      filteredProductsTemp = filteredProductsTemp.filter((product) =>
+        product.name.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+    if (activeCategory) {
+      filteredProductsTemp = filteredProductsTemp.filter(
+        (product) => product.category === activeCategory
+      );
+    }
+    if (activeColor) {
+      filteredProductsTemp = filteredProductsTemp.filter((product) =>
+        product.colors.includes(activeColor)
+      );
+    }
+    setActiveProducts(filteredProductsTemp);
+  }, [filters]);
 
   function clearFilters() {
     setSearchValue("");

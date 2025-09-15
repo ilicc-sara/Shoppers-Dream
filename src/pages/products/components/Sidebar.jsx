@@ -17,8 +17,12 @@ function Sidebar(props) {
         type="search"
         placeholder="Search"
         className="bg-none border-[1px] border-brand-darker !pl-[10px]"
-        value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
+        value={filters.search}
+        // onChange={(e) => setSearchValue(e.target.value)}
+
+        onChange={(e) =>
+          handleChangeFIlter({ key: "search", value: e.target.value })
+        }
       />
       <div className="flex flex-col items-start">
         <p className="text-base font-medium">Category</p>
@@ -28,7 +32,14 @@ function Sidebar(props) {
             className={`text-base capitalize cursor-pointer ${
               filters.activeCategory === category.value ? "active" : ""
             }`}
-            onClick={() => handleChangeFIlter({ category: category.value })}
+            // onClick={() => handleChangeFIlter({ category: category.value })}
+
+            onClick={(e) =>
+              handleChangeFIlter({
+                key: "activeCategory",
+                value: category.value,
+              })
+            }
           >
             {category.categoryName}
           </p>
@@ -43,9 +54,14 @@ function Sidebar(props) {
           value={filters.brandOptionValue ? filters.brandOptionValue : "all"}
           onChange={(e) => {
             if (e.target.value === "all") {
-              handleChangeFIlter({ brand: null });
+              // handleChangeFIlter({ brand: null });
+              handleChangeFIlter({ key: "brandOptionValue", value: null });
             } else {
-              handleChangeFIlter({ brand: e.target.value });
+              // handleChangeFIlter({ brand: e.target.value });
+              handleChangeFIlter({
+                key: "brandOptionValue",
+                value: e.target.value,
+              });
             }
           }}
         >
@@ -64,7 +80,10 @@ function Sidebar(props) {
             className={`${
               !filters.activeColor ? "active" : ""
             } capitalize cursor-pointer`}
-            onClick={() => handleChangeFIlter({ color: null })}
+            // onClick={() => handleChangeFIlter({ color: null })}
+            onClick={() =>
+              handleChangeFIlter({ key: "activeColor", value: null })
+            }
           >
             all
           </div>
@@ -79,7 +98,13 @@ function Sidebar(props) {
                   opacity: `${isActive ? 1 : 0.4}`,
                   scale: `${isActive ? 1.5 : 1}`,
                 }}
-                onClick={() => handleChangeFIlter({ color: color.colorValue })}
+                // onClick={() => handleChangeFIlter({ color: color.colorValue })}
+                onClick={() =>
+                  handleChangeFIlter({
+                    key: "activeColor",
+                    value: color.colorValue,
+                  })
+                }
               ></div>
             );
           })}

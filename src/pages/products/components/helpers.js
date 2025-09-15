@@ -24,3 +24,6 @@ export const sortValues = [
   { name: "Name (A-Z)", value: "a-b" },
   { name: "Name (Z-A)", value: "b-a" },
 ];
+
+// za kategorije brendove i boje uraditi petlju preko proizvoda , izvuci npm sve brendove koji se pominju za svaki proizvod
+// rezultat ce biti array gde se brendovi ponavljaju npr : const arr = ["ikea", "marcos", "ikea", "liddy", "ikea"] napraviti set
