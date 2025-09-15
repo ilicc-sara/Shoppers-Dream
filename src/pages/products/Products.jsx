@@ -26,12 +26,12 @@ function Products() {
   });
 
   const [data, setData] = useState({
-    // postCategories: [],
+    postCategories: [],
     postColors: [],
     postBrands: [],
   });
 
-  const [postCategories, setPostCategories] = useState([]);
+  // const [postCategories, setPostCategories] = useState([]);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -40,13 +40,15 @@ function Products() {
         const posts = await response.json();
 
         if (posts) {
+          let categoriesArr = [];
           for (const objectPost of Object.values(posts)) {
-            // console.log(objectPost.category);
-            // postCategories.push(objectPost.category);
-            // console.log(postCategories);
-            setPostCategories(postCategories.push(objectPost.category));
+            categoriesArr.push(objectPost.category);
           }
-          console.log(postCategories);
+
+          setData((prev) => {
+            return { ...prev, postCategories: [...new Set(categoriesArr)] };
+          });
+          console.log(data);
           setProducts(posts);
           setActiveProducts(posts);
         } else return;
@@ -57,6 +59,7 @@ function Products() {
 
     fetchPost();
   }, []);
+  console.log(data);
 
   const filteredProducts = useMemo(() => {
     return activeProducts?.sort((a, b) => {
