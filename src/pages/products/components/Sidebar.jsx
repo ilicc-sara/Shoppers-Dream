@@ -10,8 +10,6 @@ function Sidebar(props) {
         placeholder="Search"
         className="bg-none border-[1px] border-brand-darker !pl-[10px]"
         value={filters.search}
-        // onChange={(e) => setSearchValue(e.target.value)}
-
         onChange={(e) =>
           handleChangeFIlter({ key: "search", value: e.target.value })
         }
@@ -24,9 +22,7 @@ function Sidebar(props) {
             className={`text-base capitalize cursor-pointer ${
               filters.activeCategory === category.value ? "active" : ""
             }`}
-            // onClick={() => handleChangeFIlter({ category: category.value })}
-
-            onClick={(e) =>
+            onClick={() =>
               handleChangeFIlter({
                 key: "activeCategory",
                 value: category.value,
@@ -46,10 +42,8 @@ function Sidebar(props) {
           value={filters.brandOptionValue ? filters.brandOptionValue : "all"}
           onChange={(e) => {
             if (e.target.value === "all") {
-              // handleChangeFIlter({ brand: null });
               handleChangeFIlter({ key: "brandOptionValue", value: null });
             } else {
-              // handleChangeFIlter({ brand: e.target.value });
               handleChangeFIlter({
                 key: "brandOptionValue",
                 value: e.target.value,
@@ -72,7 +66,6 @@ function Sidebar(props) {
             className={`${
               !filters.activeColor ? "active" : ""
             } capitalize cursor-pointer`}
-            // onClick={() => handleChangeFIlter({ color: null })}
             onClick={() =>
               handleChangeFIlter({ key: "activeColor", value: null })
             }
@@ -90,7 +83,6 @@ function Sidebar(props) {
                   opacity: `${isActive ? 1 : 0.4}`,
                   scale: `${isActive ? 1.5 : 1}`,
                 }}
-                // onClick={() => handleChangeFIlter({ color: color.colorValue })}
                 onClick={() =>
                   handleChangeFIlter({
                     key: "activeColor",
@@ -113,7 +105,6 @@ function Sidebar(props) {
           value={filters.priceRange}
           min="0"
           max="3999"
-          // onChange={(e) => setPriceRangeValule(e.target.value)}
           onChange={(e) =>
             handleChangeFIlter({ key: "priceRange", value: e.target.value })
           }
@@ -126,7 +117,6 @@ function Sidebar(props) {
         <input
           type="checkbox"
           checked={filters.freeShipppingValue}
-          // onChange={(e) => handleChangeFIlter({ shipping: e.target.checked })}
           onChange={(e) =>
             handleChangeFIlter({
               key: "freeShipppingValue",

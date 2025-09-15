@@ -4,7 +4,6 @@ import Product from "./components/Product";
 import Sidebar from "./components/Sidebar";
 import { ToastContainer, toast } from "react-toastify";
 import ProductsHeader from "./components/ProductsHeader";
-import { activeAnimations } from "framer-motion";
 
 const URL = "https://www.course-api.com";
 
@@ -49,50 +48,13 @@ function Products() {
     });
   }, [activeProducts, sortValue]);
 
-  // function handleChangeFIlter({
-  //   category = filters.activeCategory,
-  //   color = filters.activeColor,
-  //   brand = filters.brandOptionValue,
-  //   shipping = filters.freeShipppingValue,
-  //   search = filters.search,
-  // }) {
-  //   setFilters((prev) => {
-  //     return {
-  //       ...prev,
-  //       activeCategory: category,
-  //       activeColor: color,
-  //       brandOptionValue: brand,
-  //       freeShipppingValue: shipping,
-  //     };
-  //   });
-
-  //   const result = products.filter((product) => {
-  //     const matchesCategory = category
-  //       ? product.category === category
-  //       : product;
-  //     const matchesColor = color ? product.colors.includes(color) : product;
-  //     const matchesBrand = brand ? product.company === brand : product;
-  //     const matchesShipping = shipping ? product.shipping === true : product;
-
-  //     return matchesCategory && matchesColor && matchesBrand && matchesShipping;
-  //   });
-
-  //   setActiveProducts(result);
-  // }
-
   function handleChangeFIlter(payload) {
     const { key, value } = payload;
-    console.log(key);
-    console.log(value);
 
     setFilters((prev) => {
       return { ...prev, [key]: value };
     });
   }
-  console.log(filters);
-
-  // use effect za objekat filters i unutar njega napraviti funkciju change filters
-  // if (filters search)
 
   useEffect(() => {
     const {
@@ -139,10 +101,10 @@ function Products() {
   }, [filters]);
 
   function clearFilters() {
-    setSearchValue("");
-    setPriceRangeValule("3999");
     setSortValue("price-lowest");
-    handleChangeFIlter({
+    setFilters({
+      search: "",
+      priceRange: "3999",
       category: null,
       color: null,
       brand: null,
