@@ -32,7 +32,6 @@ const cartSlice = createSlice({
             (product) =>
               product.id === action.payload.id &&
               product.color === action.payload.color
-            //  && product.quantity !== product.productsAvailable
           )
         )
       ) {
@@ -82,10 +81,11 @@ const cartSlice = createSlice({
       } else return;
     },
     deleteCartItem: (state, action) => {
-      return (state = state.filter(
+      const targetItem = state.find(
         (item) =>
-          item.id !== action.payload.id && item.color !== action.payload.color
-      ));
+          item.id === action.payload.id && item.color === action.payload.color
+      );
+      return (state = state.filter((item) => item !== targetItem));
     },
     clearCart: (state) => {
       return (state = []);

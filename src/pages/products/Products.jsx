@@ -9,6 +9,7 @@ const URL = "https://www.course-api.com";
 
 function Products() {
   const [showMobileFIlters, setShowMobileFIlters] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
 
   const [products, setProducts] = useState(null);
   const [activeProducts, setActiveProducts] = useState(null);
@@ -110,6 +111,23 @@ function Products() {
       brand: null,
       shipping: false,
     });
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (width >= 800) {
+      setShowMobileFIlters(false);
+    }
+  }, [width]);
+
+  function handleResize() {
+    setWidth(window.innerWidth);
   }
 
   return (
