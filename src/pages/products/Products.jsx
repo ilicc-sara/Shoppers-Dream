@@ -25,13 +25,31 @@ function Products() {
     freeShipppingValue: false,
   });
 
+  const [data, setData] = useState({
+    // postCategories: [],
+    postColors: [],
+    postBrands: [],
+  });
+
+  const [postCategories, setPostCategories] = useState([]);
+
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const response = await fetch(`${URL}/react-store-products`);
         const posts = await response.json();
-        setProducts(posts);
-        setActiveProducts(posts);
+
+        if (posts) {
+          for (const objectPost of Object.values(posts)) {
+            // console.log(objectPost.category);
+            // postCategories.push(objectPost.category);
+            // console.log(postCategories);
+            setPostCategories(postCategories.push(objectPost.category));
+          }
+          console.log(postCategories);
+          setProducts(posts);
+          setActiveProducts(posts);
+        } else return;
       } catch (error) {
         toast.error("Ups, something went wrong...");
       }
