@@ -5,8 +5,26 @@ import { amountSum } from "../redux/cartSlice";
 
 function Nav() {
   const sectionIsInView = useSelector((state) => state.view.isInView);
-  const [showMobileNav, setShowMobileNav] = useState(false);
   const sumCartAmount = useSelector((state) => amountSum(state));
+  const [showMobileNav, setShowMobileNav] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (width >= 800) {
+      setShowMobileNav(false);
+    }
+  }, [width]);
+
+  function handleResize() {
+    setWidth(window.innerWidth);
+  }
 
   return (
     <>
