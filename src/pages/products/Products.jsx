@@ -14,12 +14,11 @@ function Products() {
   const [products, setProducts] = useState(null);
   const [activeProducts, setActiveProducts] = useState(null);
 
-  const [searchValue, setSearchValue] = useState("");
-  const [priceRangeValue, setPriceRangeValule] = useState("3999");
   const [sortValue, setSortValue] = useState("price-lowest");
 
   const [filters, setFilters] = useState({
     search: "",
+    priceRange: "3999",
     activeCategory: null,
     activeColor: null,
     brandOptionValue: null,
@@ -42,19 +41,13 @@ function Products() {
   }, []);
 
   const filteredProducts = useMemo(() => {
-    return activeProducts
-      ?.filter(
-        (product) =>
-          // product.name.toLowerCase().includes(searchValue.toLowerCase()) &&
-          +product.price / 100 <= Number(priceRangeValue)
-      )
-      .sort((a, b) => {
-        if (sortValue === "a-b") return a.name.localeCompare(b.name);
-        if (sortValue === "b-a") return b.name.localeCompare(a.name);
-        if (sortValue === "price-highest") return b.price - a.price;
-        if (sortValue === "price-lowest") return a.price - b.price;
-      });
-  }, [activeProducts, priceRangeValue, sortValue]);
+    return activeProducts?.sort((a, b) => {
+      if (sortValue === "a-b") return a.name.localeCompare(b.name);
+      if (sortValue === "b-a") return b.name.localeCompare(a.name);
+      if (sortValue === "price-highest") return b.price - a.price;
+      if (sortValue === "price-lowest") return a.price - b.price;
+    });
+  }, [activeProducts, sortValue]);
 
   // function handleChangeFIlter({
   //   category = filters.activeCategory,
@@ -102,12 +95,24 @@ function Products() {
   // if (filters search)
 
   useEffect(() => {
-    const { search, activeCategory, activeColor } = filters;
+    const {
+      search,
+      priceRange,
+      activeCategory,
+      activeColor,
+      brandOptionValue,
+      freeShipppingValue,
+    } = filters;
     if (!products) return;
     let filteredProductsTemp = [...products];
     if (search) {
       filteredProductsTemp = filteredProductsTemp.filter((product) =>
         product.name.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+    if (priceRange) {
+      filteredProductsTemp = filteredProductsTemp.filter(
+        (product) => +product.price / 100 <= Number(priceRange)
       );
     }
     if (activeCategory) {
@@ -118,6 +123,16 @@ function Products() {
     if (activeColor) {
       filteredProductsTemp = filteredProductsTemp.filter((product) =>
         product.colors.includes(activeColor)
+      );
+    }
+    if (brandOptionValue) {
+      filteredProductsTemp = filteredProductsTemp.filter(
+        (product) => product.company === brandOptionValue
+      );
+    }
+    if (freeShipppingValue) {
+      filteredProductsTemp = filteredProductsTemp.filter(
+        (product) => product.shipping === true
       );
     }
     setActiveProducts(filteredProductsTemp);
@@ -141,11 +156,7 @@ function Products() {
       <div className="max-mobile:hidden">
         <Sidebar
           filters={filters}
-          searchValue={searchValue}
-          priceRangeValue={priceRangeValue}
-          setPriceRangeValule={setPriceRangeValule}
           handleChangeFIlter={handleChangeFIlter}
-          setSearchValue={setSearchValue}
           clearFilters={clearFilters}
         />
       </div>
@@ -187,11 +198,7 @@ function Products() {
         ></ion-icon>
         <Sidebar
           filters={filters}
-          searchValue={searchValue}
-          priceRangeValue={priceRangeValue}
-          setPriceRangeValule={setPriceRangeValule}
           handleChangeFIlter={handleChangeFIlter}
-          setSearchValue={setSearchValue}
           clearFilters={clearFilters}
         />
       </div>

@@ -2,15 +2,7 @@ import { categories, brands, colors } from "./helpers";
 import Button from "../../../UI/Button";
 
 function Sidebar(props) {
-  const {
-    searchValue,
-    setSearchValue,
-    filters,
-    handleChangeFIlter,
-    priceRangeValue,
-    setPriceRangeValule,
-    clearFilters,
-  } = props;
+  const { filters, handleChangeFIlter, clearFilters } = props;
   return (
     <div className="flex flex-col gap-5 max-mobile:w-[70%] max-mobile:!mx-auto">
       <input
@@ -114,14 +106,17 @@ function Sidebar(props) {
       <div className="flex flex-col items-start">
         <p className="text-base font-medium">Price</p>
         <p className="text-base font-medium text-brand-darker">
-          ${priceRangeValue}
+          ${filters.priceRange}
         </p>
         <input
           type="range"
-          value={priceRangeValue}
+          value={filters.priceRange}
           min="0"
           max="3999"
-          onChange={(e) => setPriceRangeValule(e.target.value)}
+          // onChange={(e) => setPriceRangeValule(e.target.value)}
+          onChange={(e) =>
+            handleChangeFIlter({ key: "priceRange", value: e.target.value })
+          }
           className="w-[100%] cursor-pointer"
         />
       </div>
@@ -131,7 +126,13 @@ function Sidebar(props) {
         <input
           type="checkbox"
           checked={filters.freeShipppingValue}
-          onChange={(e) => handleChangeFIlter({ shipping: e.target.checked })}
+          // onChange={(e) => handleChangeFIlter({ shipping: e.target.checked })}
+          onChange={(e) =>
+            handleChangeFIlter({
+              key: "freeShipppingValue",
+              value: e.target.checked,
+            })
+          }
         />
       </div>
 
