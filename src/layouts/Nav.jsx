@@ -9,6 +9,8 @@ function Nav() {
   const [showMobileNav, setShowMobileNav] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
+  const loading = useSelector((state) => state.loading.isLoading);
+
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => {
@@ -28,6 +30,7 @@ function Nav() {
 
   return (
     <>
+      {loading && <div className="loader"></div>}
       {!showMobileNav && (
         <nav
           className={`w-full !py-5  ${

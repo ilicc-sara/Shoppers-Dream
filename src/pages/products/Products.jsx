@@ -4,6 +4,8 @@ import Product from "./components/Product";
 import Sidebar from "./components/Sidebar";
 import { ToastContainer, toast } from "react-toastify";
 import ProductsHeader from "./components/ProductsHeader";
+import { useDispatch } from "react-redux";
+import { toggleLoading } from "../../redux/loadingSlice";
 
 const URL = "https://www.course-api.com";
 
@@ -13,6 +15,8 @@ function Products() {
 
   const [products, setProducts] = useState(null);
   const [activeProducts, setActiveProducts] = useState(null);
+
+  const dispatch = useDispatch();
 
   const [sortValue, setSortValue] = useState("price-lowest");
 
@@ -34,6 +38,7 @@ function Products() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
+        dispatch(toggleLoading({ isLoading: true }));
         const response = await fetch(`${URL}/react-store-products`);
         const posts = await response.json();
 
@@ -45,6 +50,7 @@ function Products() {
             categoriesArr.push(objectPost.category);
             colorsArr.push(...objectPost.colors);
             companyArr.push(objectPost.company);
+            dispatch(toggleLoading({ isLoading: false }));
           }
 
           setData((prev) => {
@@ -159,6 +165,7 @@ function Products() {
   return (
     <div className="!mt-28 flex gap-8 !mx-auto desktop:w-7xl laptop:w-6xl smallLT:w-5xl tablet:w-4xl mobile:w-3xl smallmobile:w-[90%] ">
       <ToastContainer position="top-center" />
+
       <div className="max-mobile:hidden">
         <Sidebar
           data={data}
