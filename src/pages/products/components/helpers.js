@@ -1,29 +1,6 @@
-export const categories = [
-  // { categoryName: "all", value: null },
-  { categoryName: "office", value: "office" },
-  { categoryName: "living room", value: "living room" },
-  { categoryName: "kitchen", value: "kitchen" },
-  { categoryName: "bedroom", value: "bedroom" },
-  { categoryName: "dining", value: "dining" },
-  { categoryName: "kids", value: "kids" },
-];
-
-// export const brands = ["all", "marcos", "liddy", "ikea", "caressa"];
-
-export const colors = [
-  { colorName: "red", colorValue: "#ff0000" },
-  { colorName: "green", colorValue: "#00ff00" },
-  { colorName: "blue", colorValue: "#0000ff" },
-  { colorName: "gray", colorValue: "#000" },
-  { colorName: "yellow", colorValue: "#ffb900" },
-];
-
 export const sortValues = [
   { name: "Price (Lowest)", value: "price-lowest" },
   { name: "Price (Highest)", value: "price-highest" },
   { name: "Name (A-Z)", value: "a-b" },
   { name: "Name (Z-A)", value: "b-a" },
 ];
-
-// za kategorije brendove i boje uraditi petlju preko proizvoda , izvuci npm sve brendove koji se pominju za svaki proizvod
-// rezultat ce biti array gde se brendovi ponavljaju npr : const arr = ["ikea", "marcos", "ikea", "liddy", "ikea"] napraviti set

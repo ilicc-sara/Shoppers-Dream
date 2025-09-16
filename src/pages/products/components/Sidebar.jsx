@@ -1,8 +1,7 @@
-import { categories, brands, colors } from "./helpers";
 import Button from "../../../UI/Button";
 
 function Sidebar(props) {
-  const { filters, handleChangeFIlter, clearFilters, data, products } = props;
+  const { filters, handleChangeFIlter, clearFilters, data } = props;
   return (
     <div className="flex flex-col gap-5 max-mobile:w-[70%] max-mobile:!mx-auto">
       <input
@@ -17,24 +16,12 @@ function Sidebar(props) {
       <div className="flex flex-col items-start">
         <p className="text-base font-medium">Category</p>
         {/* prettier-ignore */}
-        <p className={`text-base capitalize cursor-pointer ${filters.activeCategory === null ? "active" : ""}`} onClick={() => handleChangeFIlter({key: "activeCategory", value: null, })}> all </p>
+        <p className={`text-base capitalize cursor-pointer ${filters.activeCategory === null ? "active" : ""}`} onClick={() => handleChangeFIlter({ key: "activeCategory", value: null, })}> all </p>
 
-        {data.postCategories.map((category, index) => (
-          <p
-            key={index}
-            className={`text-base capitalize cursor-pointer ${
-              filters.activeCategory === category ? "active" : ""
-            }`}
-            onClick={() =>
-              handleChangeFIlter({
-                key: "activeCategory",
-                value: category,
-              })
-            }
-          >
-            {category}
-          </p>
-        ))}
+        {data.postCategories.map((category, index) =>
+          // prettier-ignore
+          <p key={index} className={`text-base capitalize cursor-pointer ${filters.activeCategory === category ? "active" : ""}`} onClick={() => handleChangeFIlter({ key: "activeCategory", value: category, })}> {category} </p>
+        )}
       </div>
 
       <div className="flex flex-col items-start">

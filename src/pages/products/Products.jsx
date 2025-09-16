@@ -161,7 +161,6 @@ function Products() {
       <ToastContainer position="top-center" />
       <div className="max-mobile:hidden">
         <Sidebar
-          products={products}
           data={data}
           filters={filters}
           handleChangeFIlter={handleChangeFIlter}
@@ -205,7 +204,6 @@ function Products() {
           onClick={() => setShowMobileFIlters(false)}
         ></ion-icon>
         <Sidebar
-          products={products}
           data={data}
           filters={filters}
           handleChangeFIlter={handleChangeFIlter}
