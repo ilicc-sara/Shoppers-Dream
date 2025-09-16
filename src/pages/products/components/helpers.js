@@ -1,5 +1,5 @@
 export const categories = [
-  { categoryName: "all", value: null },
+  // { categoryName: "all", value: null },
   { categoryName: "office", value: "office" },
   { categoryName: "living room", value: "living room" },
   { categoryName: "kitchen", value: "kitchen" },
@@ -8,7 +8,7 @@ export const categories = [
   { categoryName: "kids", value: "kids" },
 ];
 
-export const brands = ["all", "marcos", "liddy", "ikea", "caressa"];
+// export const brands = ["all", "marcos", "liddy", "ikea", "caressa"];
 
 export const colors = [
   { colorName: "red", colorValue: "#ff0000" },

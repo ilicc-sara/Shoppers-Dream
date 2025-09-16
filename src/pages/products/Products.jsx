@@ -31,8 +31,6 @@ function Products() {
     postBrands: [],
   });
 
-  // const [postCategories, setPostCategories] = useState([]);
-
   useEffect(() => {
     const fetchPost = async () => {
       try {
@@ -41,14 +39,22 @@ function Products() {
 
         if (posts) {
           let categoriesArr = [];
+          let colorsArr = [];
+          let companyArr = [];
           for (const objectPost of Object.values(posts)) {
             categoriesArr.push(objectPost.category);
+            colorsArr.push(...objectPost.colors);
+            companyArr.push(objectPost.company);
           }
 
           setData((prev) => {
-            return { ...prev, postCategories: [...new Set(categoriesArr)] };
+            return {
+              ...prev,
+              postCategories: [...new Set(categoriesArr)],
+              postColors: [...new Set(colorsArr)],
+              postBrands: [...new Set(companyArr)],
+            };
           });
-          console.log(data);
           setProducts(posts);
           setActiveProducts(posts);
         } else return;
@@ -59,7 +65,6 @@ function Products() {
 
     fetchPost();
   }, []);
-  console.log(data);
 
   const filteredProducts = useMemo(() => {
     return activeProducts?.sort((a, b) => {
@@ -156,6 +161,8 @@ function Products() {
       <ToastContainer position="top-center" />
       <div className="max-mobile:hidden">
         <Sidebar
+          products={products}
+          data={data}
           filters={filters}
           handleChangeFIlter={handleChangeFIlter}
           clearFilters={clearFilters}
@@ -198,6 +205,8 @@ function Products() {
           onClick={() => setShowMobileFIlters(false)}
         ></ion-icon>
         <Sidebar
+          products={products}
+          data={data}
           filters={filters}
           handleChangeFIlter={handleChangeFIlter}
           clearFilters={clearFilters}

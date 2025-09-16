@@ -2,7 +2,7 @@ import { categories, brands, colors } from "./helpers";
 import Button from "../../../UI/Button";
 
 function Sidebar(props) {
-  const { filters, handleChangeFIlter, clearFilters } = props;
+  const { filters, handleChangeFIlter, clearFilters, data, products } = props;
   return (
     <div className="flex flex-col gap-5 max-mobile:w-[70%] max-mobile:!mx-auto">
       <input
@@ -16,20 +16,23 @@ function Sidebar(props) {
       />
       <div className="flex flex-col items-start">
         <p className="text-base font-medium">Category</p>
-        {categories.map((category, index) => (
+        {/* prettier-ignore */}
+        <p className={`text-base capitalize cursor-pointer ${filters.activeCategory === null ? "active" : ""}`} onClick={() => handleChangeFIlter({key: "activeCategory", value: null, })}> all </p>
+
+        {data.postCategories.map((category, index) => (
           <p
             key={index}
             className={`text-base capitalize cursor-pointer ${
-              filters.activeCategory === category.value ? "active" : ""
+              filters.activeCategory === category ? "active" : ""
             }`}
             onClick={() =>
               handleChangeFIlter({
                 key: "activeCategory",
-                value: category.value,
+                value: category,
               })
             }
           >
-            {category.categoryName}
+            {category}
           </p>
         ))}
       </div>
@@ -51,7 +54,10 @@ function Sidebar(props) {
             }
           }}
         >
-          {brands.map((brand, index) => (
+          <option className="capitalize" value="all">
+            all
+          </option>
+          {data.postBrands.map((brand, index) => (
             <option className="capitalize" key={index} value={brand}>
               {brand}
             </option>
@@ -72,21 +78,21 @@ function Sidebar(props) {
           >
             all
           </div>
-          {colors.map((color, index) => {
-            const isActive = filters.activeColor == color.colorValue;
+          {data.postColors.map((color, index) => {
+            const isActive = filters.activeColor == color;
             return (
               <div
                 key={index}
                 className="w-3 h-3 rounded-full cursor-pointer"
                 style={{
-                  backgroundColor: color.colorValue,
+                  backgroundColor: color,
                   opacity: `${isActive ? 1 : 0.4}`,
                   scale: `${isActive ? 1.5 : 1}`,
                 }}
                 onClick={() =>
                   handleChangeFIlter({
                     key: "activeColor",
-                    value: color.colorValue,
+                    value: color,
                   })
                 }
               ></div>
