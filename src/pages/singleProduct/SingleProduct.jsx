@@ -10,6 +10,7 @@ import ProductImage from "./components/ProductImage";
 import ProductInfo from "./components/ProductInfo";
 import ProductColors from "./components/ProductColors";
 import ProductAmount from "./components/ProductAmount";
+import { toggleLoading } from "../../redux/loadingSlice";
 
 const URL = "https://www.course-api.com";
 
@@ -26,6 +27,7 @@ function SingleProduct() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
+        dispatch(toggleLoading({ isLoading: true }));
         const response = await fetch(
           `${URL}/react-store-single-product?id=${params.productId}`
         );
@@ -33,6 +35,7 @@ function SingleProduct() {
         setProduct(post);
         setDisplayImage(post.images[0].url);
         setActiveColor(post.colors[0]);
+        dispatch(toggleLoading({ isLoading: false }));
       } catch (error) {
         toast.error("Ups, something went wrong...");
       }
